@@ -1,0 +1,193 @@
+<mockup version="1.0" skin="sketch" measuredW="1154" measuredH="1022" mockupW="1094" mockupH="1002">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="60" y="20" w="1094" h="1002" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Afternoon%20Sound%20Alternative%20on%20KGNU%0Ahttp%3A//www.kgnu.org/asa</text>
+        <verticalScrollbar>false</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::VerticalTabBar" x="67" y="175" w="1080" h="817" measuredW="200" measuredH="394" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>0</selectedIndex>
+        <text>Listen%20To%20Us%0ASupport%20Us%0AVolunteer%0ABuy%20Our%20Stuff%0ASubmit%20Stuff%0AContact%20Us%0A%20%0AOn-air%20Shows%0AOur%20Services%0AAbout%20Us%0A%20%0ACalendars</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Image" x="67" y="95" w="-1" h="-1" measuredW="2" measuredH="1" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <filter>true</filter>
+        <src>http%3A//www.kgnu.org/music/newbanner/tan-color-logo-new.gif</src>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="375" y="107" w="-1" h="-1" measuredW="565" measuredH="62" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>40</size>
+        <text>Afternoon%20Sound%20Alternative</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::FieldSet" x="187" y="188" w="945" h="136" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Friday%2C%201/28/2011</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="202" y="212" w="-1" h="-1" measuredW="131" measuredH="25" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Host%3A%2099%20and%20Barry</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="202" y="235" w="-1" h="-1" measuredW="556" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <italic>true</italic>
+        <text>An%20exploration%20of%20the%20music%20that%20humpback%20whales%20make%20when%20they%20shop%20for%20furniture</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::MediaControls" x="598" y="273" w="-1" h="-1" measuredW="110" measuredH="36" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::PointyButton" x="449" y="275" w="-1" h="-1" measuredW="99" measuredH="28" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>View%20Playlist</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::FieldSet" x="187" y="324" w="945" h="190" measuredW="200" measuredH="170" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Thursday%2C%201/27/2011</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="200" y="348" w="-1" h="-1" measuredW="139" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Host%3A%20Shareef%20Aleem</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Label" x="200" y="371" w="-1" h="-1" measuredW="129" measuredH="25" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <italic>true</italic>
+        <text>Ghettoboogie-ology</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::MediaControls" x="598" y="463" w="-1" h="-1" measuredW="110" measuredH="36" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::PointyButton" x="449" y="465" w="-1" h="-1" measuredW="99" measuredH="28" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>View%20Playlist</text>
+      </controlProperties>
+    </control>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Image" x="746" y="346" w="262" h="159" measuredW="320" measuredH="216" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>http%3A//3.bp.blogspot.com/_-2QsXSUokIU/RckqS-pkF5I/AAAAAAAAAAk/bIS8w0PIhpE/s320/3-11-2006-19.jpg</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::FieldSet" x="187" y="520" w="945" h="467" measuredW="200" measuredH="170" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wednesday%2C%201/26/2011</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="200" y="544" w="-1" h="-1" measuredW="173" measuredH="25" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Host%3A%20Stephen%20Whitehead</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::MediaControls" x="598" y="574" w="-1" h="-1" measuredW="110" measuredH="36" zOrder="16" locked="false" isInGroup="-1"/>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::PointyButton" x="449" y="576" w="-1" h="-1" measuredW="102" measuredH="28" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>left</direction>
+        <text>Hide%20Playlist</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::DataGrid" x="193" y="618" w="931" h="361" measuredW="727" measuredH="538" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Artist%09CD%20%09Track%20%0AMenomena%09%20%20Mines%09%20%20Oh%20Pretty%20Boy%20You%27re%20Such%20a%20Big%20Boy%0AClare%20%26%20The%20Reasons%09%20%20Arrow%09%20%20You%20Got%20Time%0ADirty%20Projectors%20%26%20Bjork%09%20%20Mount%20Wittenberg%20Orca%09%20%20Beautiful%20Mother%0AFour%20Tet%09%20%20There%20Is%20Love%20in%20You%09%20%20Circling%0APaper%20Tiger%09%20%20Made%20Like%20Us%09%20%20The%20Bully%20Plank%0ALibrary%20Science%09%20%20Dolphin%09%20%20Do%20It%20To%20It%0A%20%09%20%20Voice%20Break%09%20%20%0APSA%3A%20Rocky%20Mtn%20Peace%20and%20Justice%20Center%0AUnderwriting%3A%20Grant%20Family%20Farms%0AThe%20Shaky%20Hands%09%20%20Let%20It%20Die%09%20%20Caught%20In%20The%20Storm%0AHarlem%09%20%20Hippies%09%20%20Tila%20And%20I%0ADub%20Spencer%20%26%20Trance%20Hill%09%20%20Riding%20Strange%20Horses%09%20%20When%20I%20Fall%20In%20Love%20feat.%20Ken%20Boothe%0ACaribou%09%20%20Swim%09%20%20Bowls%0ATyphoon%09%20%20Hunger%20and%20Thirst%09%20%20Starting%20Over%20%28Bad%20Habits%29%0AEddy%20Current%20Suppression%20Ring%09%20%20Rush%20to%20Relax%09%20%20I%20Can%20Be%20A%20Jerk%0ATaylor%20Hollingsworth%09%20%20Life%20with%20a%20Slow%20Ear%09%20%20I%20Didn%27t%20Know%20It%20Was%20The%20Devil%0AHis%20%26%20Her%20Vanities%09%20%20The%20Mighty%20Lunge%09%20%20Hits%20Like%20Hail</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Link" x="1025" y="643" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buy%20on%20iTunes</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::PointyButton" x="474" y="855" w="-1" h="-1" measuredW="50" measuredH="28" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>View</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Link" x="1025" y="675" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buy%20on%20iTunes</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Link" x="1025" y="706" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buy%20on%20iTunes</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Link" x="1025" y="738" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buy%20on%20iTunes</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Link" x="1025" y="764" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buy%20on%20iTunes</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Link" x="1025" y="796" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buy%20on%20iTunes</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Link" x="1025" y="913" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buy%20on%20iTunes</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::PointyButton" x="474" y="886" w="-1" h="-1" measuredW="50" measuredH="28" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>View</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Link" x="1025" y="945" w="-1" h="-1" measuredW="92" measuredH="25" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buy%20on%20iTunes</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::CallOut" x="614" y="799" w="-1" h="-1" measuredW="235" measuredH="40" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Popup%20long%20text%20in%20JQuery%20popup</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Arrow" x="500" y="821" w="126" h="37" measuredW="150" measuredH="100" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>bottom</direction>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::CallOut" x="662" y="520" w="-1" h="-1" measuredW="184" measuredH="40" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Expand/contract%20playlist</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Arrow" x="548" y="542" w="126" h="37" measuredW="150" measuredH="100" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>bottom</direction>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::TextInput" x="746" y="273" w="-1" h="-1" measuredW="75" measuredH="29" zOrder="34" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>ShareThis</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::CallOut" x="866" y="220" w="-1" h="-1" measuredW="251" measuredH="40" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Not%20sure%20if%20possible%20w/o%20WordPress</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Arrow" x="783" y="239" w="91" h="37" measuredW="150" measuredH="100" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>bottom</direction>
+        <rightArrow>false</rightArrow>
+        <text/>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
