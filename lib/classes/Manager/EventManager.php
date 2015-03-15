@@ -22,7 +22,7 @@ class EventManager extends Manager {
 		if (is_numeric($startDateTime)) $startDateTime = date('Y-m-d H:i:s', $startDateTime);
 		if (is_numeric($endDateTime)) $endDateTime = date('Y-m-d H:i:s', $endDateTime);
 		
-		$exceptions = $this->getScheduledEventExceptionsBetween($startDateTime, $endDateTime);
+		$exceptions = $this->getScheduledEventExceptionsBetween(date('Y-m-d', strtotime($startDateTime)), date('Y-m-d', strtotime($endDateTime)));
 		
 		// Be backwards compatible, convert $eventParameters and $instanceParameters
 		if ($eventParameters && count($eventParameters) > 0 && !array_key_exists(0, $eventParameters)) {
@@ -112,6 +112,25 @@ class EventManager extends Manager {
 			}
 			$results = $filteredResults;
 		}
+		
+		return $results;
+	}
+	
+	// This function returns the event instances associated with a particular HostId
+	// It should return an array of ScheduledEventInstance objects
+	public function getShowsByHostId($hostId) {
+		
+		$startDateTime = date('Y-m-d H:i:s', 0);
+		$endDateTime = date('Y-m-d H:i:s', time());
+		
+		$instancesFromScheduledEventInstances = $this->getEventInstancesFromScheduledEventInstancesBetween(
+			$startDateTime,
+			$endDateTime,
+			$this->buildTypeClause('Show'),
+			'AND sei.sei_HostId = "' . intval($hostId) . '"' //use intval to prevent SQL injection by only allowing integers
+		);
+		
+		$results = $instancesFromScheduledEventInstances;
 		
 		return $results;
 	}
@@ -229,6 +248,7 @@ class EventManager extends Manager {
 	}
 	
 	private function getEventInstancesFromScheduledEventInstancesBetween($startDateTime, $endDateTime, $typeClause, $eventParametersClause, $scheduledEventId = NULL) {
+
 		
 		if ($scheduledEventId) {
 			$scheduledEventClause = 'se.se_id = ?';
