@@ -1,0 +1,11 @@
+Alias /phpmyadmin /usr/share/phpmyadmin
+
+<VirtualHost *:80>
+  DocumentRoot <%= @params[:docroot] %>
+  <Directory <%= @params[:docroot] %>>
+    Options +FollowSymLinks +ExecCGI
+    AllowOverride All
+    Allow from All
+    DirectoryIndex index.php
+  </Directory>
+</VirtualHost>

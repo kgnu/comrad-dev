@@ -1,0 +1,98 @@
+<Schema Name="Events">
+	<Table Name="PSA" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" /> 
+		<Column Name="StartDate" Type="DATE" Nullable="False" />
+		<Column Name="KillDate" Type="DATE" Nullable="False" />
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="Copy" Type="TEXT" Nullable="False" />
+		<Column Name="OrgName" Type="TEXT" Nullable="False" />
+		<Column Name="ContactName" Type="TEXT" Nullable="False" />
+		<Column Name="ContactPhone" Type="TEXT" Nullable="False" />
+		<Column Name="ContactWebsite" Type="TEXT" Nullable="True" />
+		<Column Name="ContactEmail" Type="TEXT" Nullable="True" />
+		<Column Name="Active" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="Underwriting" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" /> 
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="Copy" Type="TEXT" Nullable="False" />
+		<Column Name="Active" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="Announcement" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" /> 
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="Copy" Type="TEXT" Nullable="False" />
+		<Column Name="Active" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="Alert" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" />
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="Copy" Type="TEXT" Nullable="False" />
+		<Column Name="Active" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="TicketGiveaway" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" />
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="Copy" Type="TEXT" Nullable="False" />
+		<Column Name="EventDate" Type="DATE" Nullable="False" />
+		<Column Name="VenueID" Type="INT" Nullable="False" />
+		<Column Name="WinnerName" Type="TEXT" Nullable="True" />
+		<Column Name="WinnerPhone" Type="TEXT" Nullable="True" />
+		<Column Name="Type" Type="ENUM('Hard Ticket', 'Guest List')" Nullable="False" />
+		<Column Name="Active" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="Venue" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" />
+		<Column Name="Name" Type="TEXT" Nullable="False" />
+		<Column Name="Location" Type="TEXT" Nullable="False" />
+	</Table>
+	<Table Name="Feature" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" />
+		<Column Name="ProducerName" Type="TEXT" Nullable="False" />
+		<Column Name="GuestName" Type="TEXT" Nullable="True" />
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="Description" Type="TEXT" Nullable="True" />
+		<Column Name="InternalNote" Type="TEXT" Nullable="True" />	
+		<Column Name="Active" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="LegalID" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" />
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="Copy" Type="TEXT" Nullable="False" />
+		<Column Name="Active" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="ShowMetadata" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" />
+		<Column Name="Name" Type="TEXT" Nullable="False" />
+		<Column Name="HostID" Type="INT" Nullable="True" />
+		<Column Name="HasHost" Type="BOOLEAN" Nullable="False" />
+		<Column Name="Duration" Type="INT" Nullable="False" />
+		<Column Name="StartDateTime" Type="DATETIME" Nullable="False" />
+		<Column Name="Description" Type="TEXT" Nullable="False" />
+		<Column Name="mp3_code" Type="TEXT" Nullable="False" />
+		<Column Name="record_audio" Type="BOOLEAN" Nullable="False" />
+		<Column Name="ShowURL" Type="TEXT" Nullable="True" />
+		<Column Name="Source" Type="ENUM('KGNU', 'Ext')" Nullable="False" />		
+		<Column Name="Category" Type="ENUM('Announcements', 'Mix', 'Music', 'NewsPA', 'OurMusic')" Nullable="False" />
+		<Column Name="Class" Type="TEXT" Nullable="False" />
+		<Column Name="DescriptionShort" Type="TEXT" Nullable="True" />
+		<Column Name="DescriptionLong" Type="TEXT" Nullable="True" />
+		<Column Name="Active" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="Host" PrimaryKey="UID">
+		<Column Name="UID" Type="INT" Nullable="False" />
+		<Column Name="Name" Type="TEXT" Nullable="False" />
+	</Table>
+	<Table Name="ScheduledInstances" PrimaryKey="ID">
+		<Column Name="ID" Type="INT" Nullable="False" />
+		<Column Name="Username" Type="TEXT" Nullable="False" />
+		<Column Name="EventID" Type="INT" Nullable="False" />
+		<Column Name="EventType" Type="INT" Nullable="False" />
+		<Column Name="StartDateTime" Type="DATE" Nullable="False" />
+		<Column Name="Duration" Type="INT" Nullable="True" />
+		<Column Name="Description" Type="TEXT" Nullable="False" />
+		<Column Name="ShowID" Type="INT" Nullable="True" />
+		<Column Name="Scheduled" Type="BOOLEAN" Nullable="False" />
+		<ForeignKey Name="ShowID" Table="ShowMetadata" Column="UID" OnDelete="Cascade" OnUpdate="Cascade" />
+	</Table>
+</Schema>

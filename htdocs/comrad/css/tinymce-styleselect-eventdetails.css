@@ -1,0 +1,30 @@
+.heading {
+	margin: 0px 0px 2px 0px;
+	padding: 0px;
+	font-family: calibri, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	}
+
+.importantHeading {
+	margin: 0px 0px 2px 0px;
+	padding: 0px;
+	font-family: calibri, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: red;
+	}
+
+.description {
+	margin: 0px 0px 2px 8px;
+	font-family: calibri, sans-serif;
+	font-size: 12px;
+	}
+
+.importantDescription {
+	margin: 0px 0px 2px 8px;
+	font-family: calibri, sans-serif;
+	font-style: italic;
+	font-size: 12px;
+	color: red;
+	}

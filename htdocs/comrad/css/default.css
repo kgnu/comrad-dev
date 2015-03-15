@@ -1,0 +1,359 @@
+/* General */
+body {margin: 0px; height: 100%; background-color: #ffffff; font-family: 'Calibri', sans-serif; font-size: 14px;}
+/* table {margin: 0px 0px 0px 20px; font-family: 'Calibri', sans-serif; font-size: 14px;} */
+a {color: #007084;}
+a:hover {text-decoration: none; color: #2eadc4;}
+a:active {color: #2eadc4;}
+tt {font-family: 'Lucida Console', 'Courier New', 'Courier', sans-serif; font-size: 15px; font-weight: 500;}
+h4 {margin: 4px 0px 6px 0px; font-size: 18px; color: #007084;}
+h5 {margin: 8px 0px 0px 20px; font-size: 16px; color: #06444f;}
+ul {margin: 0px 0px 16px 38px; padding: 0px;}
+li {margin: 0px 0px 12px 0px; }
+p {margin: 0px 0px 10px 20px;}
+form {margin: 0px; padding: 0px;}
+fieldset { border: 1px solid #cccccc; margin: 0px; padding: 4px 8px 8px 8px; }
+fieldset legend { color: #007084; }
+
+
+
+/*.fullCalendar { margin: 0px; padding: 0px; width: 100%; height: 800px; }
+.fullCalendar table { margin: 0px; padding: 0px; }*/
+
+/* Full Calendar Colors for Events */
+
+.Alert, .fullCalEvent-Alert .fc-agenda, .fullCalEvent-Alert .fc-event-time, .fullCalEvent-Alert a
+{background-color: green; border: 1px solid green; color: yellow;}
+.Alert a { color: yellow; }
+
+.Announcement, .fullCalEvent-Announcement .fc-agenda, .fullCalEvent-Announcement .fc-event-time, .fullCalEvent-Announcement a
+{border: 1px solid #8a64d1; background-color: #bea0f5; color: #3e1b7e; }
+.Announcement a { color: #3e1b7e; }
+
+.Track, .fullCalEvent-Track .fc-agenda, .fullCalEvent-Track .fc-event-time, .fullCalEvent-Track a
+{border: 1px solid #92b6d2; background-color: #bbdbf3; color: #1b6ead; }
+.Track a { color: #1b6ead; }
+
+.Feature, .fullCalEvent-Feature .fc-agenda, .fullCalEvent-Feature .fc-event-time, .fullCalEvent-Feature a
+{background-color: #ffa77f; border: 1px solid #c84a12; color: #c84a12;}
+.Feature a { color: #c84a12; }
+
+.PSA, .fullCalEvent-PSA .fc-agenda, .fullCalEvent-PSA .fc-event-time, .fullCalEvent-PSA a
+{background-color: #ffcb00; border: 1px solid #ffcb00; color: #a68400;}
+.PSA a { color: #a68400; }
+
+.Show, .fullCalEvent-Show .fc-agenda, .fullCalEvent-Show .fc-event-time, .fullCalEvent-Show a
+{background-color: #d7f970; border: 1px solid #d7f970; color: #cbf93e;}
+.ShowMetadata, .fullCalEvent-ShowMetadata .fc-agenda, .fullCalEvent-ShowMetadata .fc-event-time, .fullCalEvent-ShowMetadata a
+{background-color: #d7f970; border: 1px solid #d7f970; color: #779e00;}
+.Show a, .ShowMetadata a { color: #779e00; }
+
+.TicketGiveaway, .fullCalEvent-TicketGiveaway .fc-agenda, .fullCalEvent-TicketGiveaway .fc-event-time, .fullCalEvent-TicketGiveaway a
+{background-color: #f6ca8a; border: 1px solid #df7309; color: #df7309;}
+.TicketGiveaway a { color: #df7309; }
+
+.Underwriting, .fullCalEvent-Underwriting .fc-agenda, .fullCalEvent-Underwriting .fc-event-time, .fullCalEvent-Underwriting a
+{background-color: #84e900; border: 1px solid #84e900; color: #0d8800;}
+.Underwriting a { color: #0d8800; }
+
+.Venue, .fullCalEvent-Venue .fc-agenda, .fullCalEvent-Venue .fc-event-time, .fullCalEvent-Venue a
+{background-color: red; border: 1px solid #ee0000; color: #ee0000; }
+.Venue a { color: #ee0000; }
+
+.Other, .fullCalEvent-Other .fc-agenda, .fullCalEvent-Other .fc-event-time, .fullCalEvent-Other a
+{border: 1px solid #92b6d2; background-color: #bbdbf3; color: #1b6ead; }
+.Other a { color: #1b6ead; }
+
+
+
+
+
+#slotMinutes { float: right; width: 330px; height: 20px; margin: 10px 0px 10px 0px; }
+#slotMinutesField { float: left; font-weight: bold; margin-right: 6px; }
+#slotMinutesSliderValue { float: right; margin-left: 14px; }
+#slotMinutesSlider { float: right; width: 150px; display: inline-block; }
+
+
+
+
+
+.permission { }
+.permission .field { float: left; width: 130px; }
+.permission .fieldTitle { float: left; width: 160px; font-weight: bold; }
+
+
+
+
+
+.showListing { border: 1px solid #cccccc; background-color: #eeeeee; margin: 0px 0px 8px 20px; padding: 4px; }
+.showListingToday { background-color: #cae0e4; }
+.showListingLive { background-color: #8bbfc8; }
+.showListingLive .liveNote { float: right; font-weight: bold; }
+.showListing a { display: block; width: 100%; text-decoration: none; color: #004a57; }
+.showListing a:hover { display: block; width: 100%; text-decoration: none; color: #007084; }
+
+
+
+
+/*
+#schedule, #scratchPad { list-style-type: none; margin: 0px; padding: 0px;
+	border: 1px solid #aed0ea; background-color: #f2f5f7;
+	height: 200px; overflow: auto; overflow-x: hidden; }
+
+#schedule { height: 600px; background-color: #ddeaf4;
+	background-image: url('../media/schedule-background.jpg');
+	background-repeat: repeat-y; background-position: top left; }
+*/
+
+li.showbuilderItem { margin: 5px; padding: 2px; font-size: 12px; list-style-type: none; 
+	list-style-image: url(''); }
+li.showbuilderItem .fieldLabel { font-weight: bold; width: 80; float: left; }
+li.showbuilderItem .operationSpace { margin-top: 2px; padding: 2px; border-top: inherit; }
+li.showbuilderItem .tools { float: right; }
+
+li.showbuilderItem .titlebar { cursor: hand; }
+
+li.showbuilderItem .trackInfo { display: block; width: 76%; }
+li.showbuilderItem .artist { display: inline-block; width: 33%; white-space: nowrap; overflow: hidden; }
+li.showbuilderItem .albumTitle { display: inline-block; width: 33%; white-space: nowrap; overflow: hidden; }
+li.showbuilderItem .trackTitle { display: inline-block; width: 33%; white-space: nowrap; overflow: hidden; }
+
+li.showbuilderItem .details { display: none; padding: 6px 0px 0px 8px; }
+li.showbuilderItem .details p { margin: 0px 0px 0px 0px; padding: 0px; }
+li.showbuilderItem .details p.copy { margin: 4px 0px 4px 2px; border-left: 1px solid; padding-left: 4px; font-size: 20px; line-height: 18px; }
+
+
+
+
+
+.showbuilderItemTip { margin: 0px; padding: 0px; font-size: 12px; }
+.showbuilderItemTip .showbuilderItemTipTitle { display: block; text-align: center; font-size: 13px; font-weight: bold; margin-bottom: 8px; }
+.showbuilderItemTip .showbuilderItemTipRow { display: table-row; }
+.showbuilderItemTip .showbuilderItemTipField { display: table-cell; width: 80px; font-weight: bold; }
+.showbuilderItemTip .showbuilderItemTipDescription { display: table-cell; padding-bottom: 4px; }
+
+
+.showbuilderEventPreview {
+	display: block;
+	width: 370px;
+	/*
+	background-color: #bbdbf3;
+	border: 1px solid #92b6d2;
+	*/
+	margin: 10px 0px 0px 1px;
+	padding: 2px;
+}
+.showbuilderEventPreview .fieldLabel {
+	float: left;
+	width: 90px;
+	font-weight: bold;
+}
+
+
+
+
+
+
+#exceptionContainer { margin-bottom: 4px; text-align: middle; }
+#exceptionContainer span.exception { display: inline-block; padding: 2px; margin: 2px; }
+#exceptionContainer span.exception span.exceptionDate { float: left; font-size: 14px; }
+#exceptionContainer span.exception span.exceptionRemove { float: right; margin-left: 4px; cursor: hand; }
+
+
+
+
+
+
+
+/* Autocomplete Highlight */
+/* .ac_results li:last-child { background-color: #c7ebf1; border-top: 1px solid #94d2dd; } */
+.ac_over { background-color: #007084; color: white; }
+.ac_icon { vertical-align: middle; margin: 0px 6px 2px 2px; }
+
+
+/* JQuery Theme Overrides */
+.ui-dialog { color: red; font-size: 12px; }
+.ui-dialog-titlebar { font-size: 14px; }
+.ui-datepicker { font-size: 12px; z-index: 2003; /* must be > than popup editor (1002) */ }
+
+
+/* Contents Button Styles */
+.disabledText { color: #abadb3; }
+
+.columnCollection { padding: 16px 0px 0px 8px; width: 786px; margin: 25px auto 0px auto; }
+
+.darkColumn { float: left; background-image: url('../media/tab-background2.png'); 
+	background-repeat: no-repeat; background-position: top left; width: 254px; 
+	padding: 0px; margin: 0px 8px 0px 0px; height: 100px;}
+.darkColumn h1 { font-size: 14px; font-weight: bold; padding: 4px 0px 0px 8px; margin: 0px; }
+.darkColumn p { font-size: 12px; color: #000000; padding: 2px 9px 10px 8px; margin: 0px; }
+.darkColumn a { display: block; width: 100%; height: 100%; text-decoration: none; }
+
+.column { float: left; background-image: url('../media/tab-background.png'); 
+	background-repeat: no-repeat; background-position: top left; width: 254px; 
+	padding: 0px; margin: 0px 8px 0px 0px; height: 100px;}
+.column h1 { font-size: 14px; font-weight: bold; padding: 4px 0px 0px 8px; margin: 0px; }
+.column p { font-size: 12px; color: #000000; padding: 2px 9px 10px 8px; margin: 0px; }
+.column a { display: block; width: 100%; height: 100%; text-decoration: none; }
+
+.icon img { float: left; padding-top: 7px; padding-left: 8px; border: 0px; }
+.icon h1 { padding-left: 64px; }
+.icon p { padding-left: 64px; }
+
+
+
+/* Page (Contains everything... sessionTools, body, close) */
+#Head {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0px auto -50px;
+	}
+
+/* Session Tools Information/Navigation Bar */
+#Head #Head_SessionTools {display: block; font-size: 16px; font-weight: 600; background-color: #007084; border-bottom: 1px solid #06444f; color: #ffffff; padding: 2px 10px 2px 0px; text-align: right;}
+#Head #Head_SessionTools tt {text-decoration: none; color: #eeeeee;}
+#Head #Head_SessionTools a {text-decoration: none; color: white;}
+#Head #Head_SessionTools a:hover {color: #ffffff;}
+#Head #Head_SessionTools a:active {color: #ffffff;}
+#Head #Head_SessionTools span {float: left; padding: 2px 0px 2px 10px;}
+
+
+/* Body Section */
+#Head #Head_Content {padding: 5px 5px 20px 10px;}
+
+
+/* Error Box */
+#Head #Head_Content div.errorBox {width: 400px; margin: 0px 0px 14px 20px; padding: 10px; color: #8c3a3a;
+	background-color: #f2d7d7; border: 1px solid #8c3a3a; font-family: calibri, sans-serif;
+	font-size: 12px; background-image: url('../media/red-background.jpg'); background-repeat: no-repeat;
+	background-position: bottom right;}
+#Head #Head_Content div.errorBox div.content {background-image: url('../media/error.png');
+	background-repeat: no-repeat; background-position: top left; padding-left: 32px;
+	min-height: 24px;}
+
+
+/* Information Box */
+#Head #Head_Content div.infoBox {width: 400px; margin: 4px 4px 10px 20px; padding: 10px; color: #3a6a8c;
+	background-color: #d9e3f4; border: 1px solid #3a6a8c; font-family: calibri, sans-serif;
+	font-size: 12px; background-image: url('../media/blue-background.jpg'); background-repeat: no-repeat;
+	background-position: bottom right;}
+#Head #Head_Content div.infoBox div.content {background-image: url('../media/info.png');
+	background-repeat: no-repeat; background-position: top left; padding-left: 32px;
+	min-height: 24px;}
+
+
+/* Table */
+#Head #Head_Content div.tableHeading {margin: 0px 0px 0px 20px; padding: 4px; background-color: #007084; border-top: 1px solid #00a0bc; border-bottom: 1px solid #06444f; color: #ffffff; font-weight: 600; text-align: left;}
+#Head #Head_Content div.tableSubheading {margin: 0px 0px 0px 20px; padding: 4px; background-color: #74ccdc; border-bottom: 1px solid #4a929f; color: #000000; text-align: left;}
+#Head #Head_Content div.tableSubheading table {margin: 0px; padding: 0px;}
+#Head #Head_Content div.tableBody {margin: 0px 0px 0px 20px; padding: 4px; background: url('../media/table-background.png'); border-top: 1px solid #dddddd; border-bottom: 1px solid #f9f9f9; color: #000000; text-align: left;}
+#Head #Head_Content div.tableBody table {margin: 0px; padding: 0px;}
+#Head #Head_Content div.tableBody textarea {width: 100%; margin: 0px;}
+#Head #Head_Content div.tableBody input {margin: 0px;}
+#Head #Head_Content div.tableRow {margin: 0px;}
+#Head #Head_Content div.tableCommands {margin: 12px 0px 0px 20px;}
+
+
+/* Sign In Page Form Fields */
+#Head #Head_Content input.signInUsername {width: 400px; height: 30px; font-size: 20px; margin: 10px 0px 10px 0px;}
+#Head #Head_Content input.signInPassword {width: 400px; height: 30px; font-size: 20px;}
+#Head #Head_Content input.signInCode {width: 245px; height: 30px; font-size: 20px; font-family: 'Lucida Console', 'Courier New', 'Courier', sans-serif; margin-top: 2px;}
+#Head #Head_Content input.signInButton {width: auto; height: 35px; font-size: 20px;}
+
+
+/* Flexigrid */
+.flexigrid div {
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	}
+
+.flexigrid div.fbutton .add {
+	background: url('../media/flexigrid/add.png') no-repeat center left;
+	}
+	
+.flexigrid div.fbutton .edit {
+	background: url('../media/flexigrid/edit.png') no-repeat center left;
+	}
+
+.flexigrid div.fbutton .delete {
+	background: url('../media/flexigrid/close.png') no-repeat center left;
+	}
+
+
+/* JQuery Dialog */
+.dialog {
+	font-size: 12px;
+	}
+.dialog p {
+	margin: 0px 0px 20px 0px; padding: 0px;
+	}
+.dialog table {
+	font-size: 12px;
+	}
+
+/* Tag editor */
+.ui-ptags {
+	display: block;
+}
+
+.ui-ptags-tag-box-container, .ui-ptags-tag-container {
+	float: left;
+}
+
+.ui-ptags-tag {
+	float: left;
+	margin-left: 5px;
+	padding: 2px 3px;
+}
+
+.ui-ptags-tag-text {
+	float: left;
+	cursor: pointer;
+}
+
+.ui-ptags-tag .ui-ptags-tag-remover {
+	float: left;
+	margin: 1px;
+}
+
+.ui-ptags-clear {
+	height: 0px;
+}
+
+/* Pronounced Region to Bring Attention to Content */
+#Head #Head_Content p.pedestal {padding: 10px; background-color: #efefef; border: 1px solid #c0c0c0;}
+
+
+/* Console Region */
+#Head #Head_Content div.console {margin: 0px 0px 10px 20px; width: auto; padding: 10px; border: 1px solid #000000; background-color: #111111; color: #00ee00; font-family: 'Lucida Console', courier;}
+#Head #Head_Content div.console b {color: #00ff00;}
+
+
+/* Form Check Box Style */
+#Head #Head_Content .formCheck {font-size: 13px;}
+#Head #Head_Content .formCheck table {margin: 0px;}
+#Head #Head_Content .formCheck a input {width: 17px; height: 17px; margin: 0px; float: left;}
+#Head #Head_Content .formCheck a:link, .formcheck a:visited, .formcheck a:active {display: inline-block; margin: 1px 10px 1px 1px; padding: 0px 4px 0px 0px; color: #000000; text-decoration: none;}
+#Head #Head_Content .formCheck a:hover {margin: 0px 9px 0px 0px; background-color: #74ccdc; border: 1px #4a929f solid;}
+
+
+/* Pushes Close Section Down */
+#Head #Head_Content_Push {
+/*	height: 50px;		*/							/* Close Height */
+	}
+
+
+/* Footer */
+#Foot {
+/*	height: 49px;		*/							/* Close Height - 1 (Because of Border) */
+	border-top: 1px solid white;
+	}
+
+
+/* Navigation Footer */
+#Foot #Foot_Nav {text-align: center; padding: 6px;}
+
+
+/* Credits */
+#Foot #Foot_Credits {text-align: center; font-size: 11px;}
+

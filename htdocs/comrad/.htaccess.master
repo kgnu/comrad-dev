@@ -1,0 +1,13 @@
+# Force SSL access to the tools section...
+
+	RewriteEngine On
+	RewriteCond %{SERVER_PORT} 80
+	RewriteCond %{REQUEST_URI} comrad
+	RewriteRule ^(.*)$ https://comrad.cs.colorado.edu/comrad/$1 [R,L]
+
+# Let users upload larger files (50 MB over 12 hours)...
+
+	php_value upload_max_filesize 50M
+	php_value post_max_size 50M
+	php_value max_execution_time 43200
+	php_value max_input_time 43200

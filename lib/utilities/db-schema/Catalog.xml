@@ -1,0 +1,37 @@
+<Schema Name="Catalog">
+	<Table Name="Albums" PrimaryKey="AlbumID">
+		<Column Name="AlbumID" Type="INT" Nullable="False" />
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="Artist" Type="TEXT" Nullable="True" />
+		<Column Name="Label" Type="TEXT" Nullable="False" />
+		<Column Name="GenreID" Type="INT" Nullable="False" />
+		<ForeignKey Name="GenreID" Table="Genres" Column="GenreID" OnDelete="Restrict" OnUpdate="Cascade" />
+		<Column Name="AddDate" Type="DATETIME" Nullable="False" />
+		<Column Name="Local" Type="BOOLEAN" Nullable="True" />
+		<Column Name="Compilation" Type="BOOLEAN" Nullable="True" />
+		<Column Name="CDCode" Type="INT" Nullable="True" />
+		<Column Name="Location" Type="ENUM('GNU Bin', 'Personal', 'Library', 'Digital Library')" Nullable="False" />
+	</Table>
+	<Table Name="Genres" PrimaryKey="GenreID">
+		<Column Name="GenreID" Type="INT" Nullable="False" />
+		<Column Name="Name" Type="TEXT" Nullable="False" />
+		<Column Name="TopLevel" Type="BOOLEAN" Nullable="False" />
+	</Table>
+	<Table Name="GenreTags" PrimaryKey="GenreTagID">
+		<Column Name="GenreTagID" Type="INT" Nullable="False" />
+		<Column Name="GenreID" Type="INT" Nullable="False" />
+		<ForeignKey Name="GenreID" Table="Genres" Column="GenreID" OnDelete="Cascade" OnUpdate="Cascade" />
+		<Column Name="AlbumID" Type="INT" Nullable="False" />
+		<ForeignKey Name="AlbumID" Table="Albums" Column="AlbumID" OnDelete="Cascade" OnUpdate="Cascade" />
+	</Table>
+	<Table Name="Tracks" PrimaryKey="TrackID">
+		<Column Name="TrackID" Type="INT" Nullable="False" />
+		<Column Name="AlbumID" Type="INT" Nullable="False" />
+		<ForeignKey Name="AlbumID" Table="Albums" Column="AlbumID" OnDelete="Cascade" OnUpdate="Cascade" />
+		<Column Name="Title" Type="TEXT" Nullable="False" />
+		<Column Name="TrackNumber" Type="SMALLINT" Nullable="False" />
+		<Column Name="Artist" Type="TEXT" Nullable="True" />
+		<Column Name="DiskNumber" Type="SMALLINT" Nullable="False" />
+		<Column Name="Duration" Type="INT" Nullable="False" />
+	</Table>
+</Schema>
