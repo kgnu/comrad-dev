@@ -7,6 +7,13 @@ var verbMapping = {
 	'delete': 'POST'
 };
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 function dbCommand(method, type, db, attributes, options, callback) {
 	$.ajax({
 		type: verbMapping[method],
@@ -23,6 +30,10 @@ function dbCommand(method, type, db, attributes, options, callback) {
 		},
 		success: function(response) {
 			callback(response);
+		},
+		error: function(a, b) {
+			alert('AJAX error: ' + a.responseText);
+			debugger;
 		}
 	});
 }

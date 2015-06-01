@@ -6,35 +6,32 @@ class TicketGiveawayInstanceColumnSet extends EventWithCopyInstanceColumnSet
 		parent::__construct();
 		
 		$this->addColumns(array(
-			'EventDate' => array(
-				'type' => 'Date',
-				'tostring' => 'Event Date',
-				'showinform' => true
-			),
-			'VenueId' => array(
-				'type' => 'Integer',
-				'tostring' => 'Venue',
-				'showinform' => true
+			'NoCallers' => array(
+				'type' => 'Boolean',
+				'tostring' => 'No Callers'
 			),
 			'WinnerName' => array(
 				'type' => 'UppercaseString',
-				'tostring' => 'Winner Name',
-				'showinform' => true
+				'tostring' => 'Winner\'s Name'
 			),
 			'WinnerPhone' => array(
 				'type' => 'ShortString',
-				'tostring' => 'Winner Phone',
-				'showinform' => true
+				'tostring' => 'Winner\'s Phone Number'
 			),
-			'TicketType' => array(
-				'type' => 'Enumeration',
-				'possiblevalues' => array(
-					'Hard Ticket',
-					'Guest List'
-				),
-				'showinform' => true
+			'WinnerEmail' => array(
+				'type' => 'ShortString',
+				'tostring' => 'Winner\'s Email'
+			),
+			'WinnerAddress' => array(
+				'type' => 'ShortString',
+				'tostring' => 'Winner\'s Address'
+			),
+			'IsListenerMember' => array(
+				'type' => 'Boolean',
+				'tostring' => 'Mark if the winner is a KGNU listener-member'
 			)
 		));
+		
 	}
 }
 ?>

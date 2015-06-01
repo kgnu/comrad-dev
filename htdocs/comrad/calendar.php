@@ -9,10 +9,10 @@
 		'Announcement' => 'AnnouncementEvent',
 		'EAS Test' => 'EASTestEvent',
 		'Feature' => 'FeatureEvent',
+		'Giveaway' => 'TicketGiveawayEvent',
 		'Legal ID' => 'LegalIdEvent',
 		'PSA' => 'PSAEvent',
 		'Show' => 'ShowEvent',
-		// 'Ticket Giveaway' => 'TicketGiveawayEvent',
 		'Underwriting' => 'UnderwritingEvent'
 	);
 	
@@ -21,10 +21,10 @@
 		'Announcement' => 'ScheduledAnnouncementInstance',
 		'EAS Test' => 'ScheduledEASTestInstance',
 		'Feature' => 'ScheduledFeatureInstance',
+		'Giveaway' => 'TicketGiveawayEvent',
 		'Legal ID' => 'ScheduledLegalIdInstance',
 		'PSA' => 'ScheduledPSAInstance',
 		'Show' => 'ScheduledShowInstance',
-		// 'Ticket Giveaway' => 'ScheduledTicketGiveawayInstance',
 		'Underwriting' => 'ScheduledUnderwritingInstance'
 	);
 

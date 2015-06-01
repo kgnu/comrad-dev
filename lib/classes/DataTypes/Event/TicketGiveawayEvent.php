@@ -1,5 +1,5 @@
 <?php
-class TicketGiveawayEvent extends EventWithCopy
+class TicketGiveawayEvent extends Event
 {
 	public function __construct($params = array())
 	{

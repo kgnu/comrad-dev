@@ -222,7 +222,7 @@
 		function getReadableEventType(eventType) {
 			var readableEventTypes = {
 				'LegalId': 'Legal Id',
-				// 'TicketGiveaway': 'Ticket Giveaway',
+				'TicketGiveaway': 'Giveaway',
 				'TrackPlay': 'Track'
 			};
 			
@@ -403,8 +403,16 @@
 						// Create the event details list element
 						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function() { if (e.target.tagName.toLowerCase() != 'a') return false }).hide();
 						for (var key in eventDetails) {
+							if (key != 'NoCallers' && key != 'WinnerName' && key != 'WinnerPhone' && key != 'WinnerEmail' && key != 'WinnerAddress' && key != 'IsListenerMember') {
+								eventDetailsList.append(
+									'<li><strong>' + key + ': </strong>' + eventDetails[key] + '</li>'
+								);
+							}
+						}
+						
+						if (type == 'TicketGiveaway') {
 							eventDetailsList.append(
-								'<li><strong>' + key + ': </strong>' + eventDetails[key] + '</li>'
+								'<li><button onclick="window.open(\'giveaway.php?seiid=' + instanceId + '\', \'giveaway\', \'width=550, height=650\');">Enter/View Winner Information</button></li>'
 							);
 						}
 					
@@ -926,7 +934,7 @@
 						$.get('ajax/geteventsbetween.php', {
 							start: $('#showStartTime').val(),
 							end: $('#showEndTime').val(),
-							types: $.toJSON([ 'Alert', 'Announcement', 'EASTest', 'Feature', 'LegalId', 'PSA'/*, 'TicketGiveaway'*/, 'Underwriting' ])
+							types: $.toJSON([ 'Alert', 'Announcement', 'EASTest', 'TicketGiveaway', 'Feature', 'LegalId', 'PSA', 'Underwriting' ])
 						}, function(eventInstances) {
 							$.get('ajax/getfloatingshowelements.php', {
 								showid: $('#showId').val()

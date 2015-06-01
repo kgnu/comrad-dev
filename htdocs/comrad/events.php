@@ -7,11 +7,11 @@
 		'AnnouncementEvent' => 'Announcement',
 		'EASTestEvent' => 'EAS Test',
 		'FeatureEvent' => 'Feature',
+		'TicketGiveawayEvent' => 'Giveaway',
 		'Host' => 'Host',
 		'LegalIdEvent' => 'Legal ID',
 		'PSAEvent' => 'PSA',
 		'ShowEvent' => 'Show',
-		// 'TicketGiveawayEvent' => 'Ticket Giveaway',
 		'UnderwritingEvent' => 'Underwriting',
 		'Venue' => 'Venue'
 	);
@@ -68,12 +68,16 @@
 		    $('.eventForm :input').each(function() {
 				var inputType = this.type;
 				var inputTag = this.tagName.toLowerCase();
+				var value = '';
+				if ($(this).is("[defaultvalue]") != '') {
+					value = $(this).attr("defaultvalue");
+				}
 				if (inputType == 'text' || inputType == 'password' || inputType == 'hidden') {
-					this.value = '';
+					this.value = value;
 				} else if (inputType == 'checkbox' || inputType == 'radio') {
 					this.checked = false;
 				} else if (inputTag == 'textarea') {
-				    $(this).val('');
+				    $(this).val(value);
 				} else if (inputTag == 'select') {
 					this.selectedIndex = -1;
 				}
@@ -308,7 +312,7 @@
 								<?php break;
 								
 								case 'String': ?>
-									<textarea name="<?php echo $eventType.$columnName ?>" id="<?php echo $eventType.$columnName ?>" class="inputField tinymce<?php if($titleColumnName == $columnName) echo ' titleColumn' ?>"></textarea>
+									<textarea name="<?php echo $eventType.$columnName ?>" id="<?php echo $eventType.$columnName ?>" class="inputField tinymce<?php if($titleColumnName == $columnName) echo ' titleColumn' ?>" <?php if (isset($column['defaultvalue'])) echo 'defaultvalue="' . str_replace('"', '\"', $column['defaultvalue']) . '"'; ?>></textarea>
 								<?php break;
 								
 								case 'ShortString':
