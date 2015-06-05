@@ -6,6 +6,17 @@ class TicketGiveawayInstanceColumnSet extends EventWithCopyInstanceColumnSet
 		parent::__construct();
 		
 		$this->addColumns(array(
+			'ShowName' => array(
+				'type' => 'ShortString',
+				'tostring' => 'Show Name'
+			),
+			'ShowDate' => array(
+				'type' => 'Date',
+				'tostring' => 'Show Date'
+			),
+			'Venue' => array(
+				'type' => 'ShortString'
+			),
 			'NoCallers' => array(
 				'type' => 'Boolean',
 				'tostring' => 'No Callers'

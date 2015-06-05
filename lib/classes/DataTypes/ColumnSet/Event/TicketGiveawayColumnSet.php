@@ -6,6 +6,17 @@ class TicketGiveawayColumnSet extends EventColumnSet
 		parent::__construct();
 		
 		$this->addColumns(array(
+			'ShowName' => array(
+				'type' => 'ShortString',
+				'tostring' => 'Show Name'
+			),
+			'ShowDate' => array(
+				'type' => 'Date',
+				'tostring' => 'Show Date'
+			),
+			'Venue' => array(
+				'type' => 'ShortString'
+			),
 			'Copy' => array(
 				'defaultvalue' => file_get_contents(
 									str_replace('classes/DataTypes/ColumnSet/Event', 'resources/TicketGiveawayDefaultCopy.html', dirname(__FILE__))

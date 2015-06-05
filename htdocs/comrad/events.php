@@ -89,6 +89,22 @@
 			var selected = $(':input', '#' + type + 'Form');
 			var lastSelectedEvent;
 			
+			//custom validation: validate the ShowName, ShowDate and Venue for Giveaways
+			if (type == 'TicketGiveawayEvent') {
+				var ticketType = $("#TicketGiveawayEventTicketType").val();
+				if (ticketType == 'Paper Ticket' || ticketType == 'Guest List Ticket') {
+					//we require ShowName, ShowDate and Venue because they are used in the winner's email template
+					if (!$("#TicketGiveawayEventShowName").val() || !$("#TicketGiveawayEventShowDate").val() || !$("#TicketGiveawayEventVenue").val()) {
+						$.jGrowl('You must provide a Show Name, Show Date and Venue for giveaways with Paper or Guest List Tickets.', {
+							header: 'Error',
+							life: 10000,
+							glue: 'before'
+						});
+						return false;
+					}
+				}
+			}
+			
 			$(':input', '#' + type + 'Form').each(function() {
 				if (this.name.substr(0, type.length) == type) {
 					var inputType = this.type;
@@ -163,8 +179,10 @@
 					var elementType = element[0].type;
 					var elementTag = element[0].tagName.toLowerCase();
 					if (element.hasClass('datePickerInput')) {
-						var d = new Date(event.Attributes[key] * 1000);
-						element[0].value = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
+						if (event.Attributes[key]) {
+							var d = new Date(event.Attributes[key] * 1000);
+							element[0].value = (d.getMonth() + 1) + '/' + (d.getDate() + 1) + '/' + d.getFullYear();
+						}
 					} else if (element.hasClass('autocomplete')) {
 						element[0].value = event.Attributes[key];
 						element.change();
