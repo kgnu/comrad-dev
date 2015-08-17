@@ -410,10 +410,33 @@
 							}
 						}
 						
+						var elementId = type + ':' + startDateTime.getTime() / 1000 + '-' + endDateTime.getTime() / 1000;
+						
 						if (type == 'TicketGiveaway') {
-							eventDetailsList.append(
-								'<li><button onclick="window.open(\'giveaway.php?seiid=' + instanceId + '\', \'giveaway\', \'width=550, height=650\');">Enter/View Winner Information</button></li>'
-							);
+							var giveawayLi = $('<li><button ' +
+													(!instanceId ? ' disabled="disabled"' : 'onclick="window.open(\'giveaway.php?seiid=' + instanceId + '\', \'giveaway\', \'width=550, height=650\');"') +
+													' class="WinnerInfo">Enter/View Winner Information</button></li>');
+							eventDetailsList.append(giveawayLi);
+							
+							if (!instanceId) {
+								var scheduledEventInstance = {
+									'Type': 'Scheduled' + type + 'Instance',
+									'Attributes': {
+										'StartDateTime': startDateTime.format('yyyy-mm-dd HH:MM:ss'),
+										'Duration': duration,
+										'ScheduledEventId': scheduledEventId
+									}
+								};
+								
+								dbCommand('save', scheduledEventInstance.Type, 'MySql', scheduledEventInstance.Attributes, {}, function(response) {
+									if (response && !response.error) {
+										scheduledEventInstance.Attributes.Id = response.Id;
+										$("[id='" + elementId + "'] button.WinnerInfo").attr("onclick", "window.open('giveaway.php?seiid=" + response.Id + "\', \'giveaway\', \'width=550, height=650\');").
+											attr("disabled", false);
+										$("[id='" + elementId + "'] button.AddToSavedItems").data("scheduledEventInstance", scheduledEventInstance);
+									}
+								});
+							}
 						}
 					
 						// Create the event element
@@ -430,7 +453,7 @@
 						).click(function() {
 							eventDetailsList.toggle();
 						}).attr(
-							'id', type + ':' + startDateTime.getTime() / 1000 + '-' + endDateTime.getTime() / 1000
+							'id', elementId
 						);
 						
 						if (executedDateTime) {
@@ -451,7 +474,7 @@
 							);
 						} else {
 							element.prepend(
-								$('<button class="disableWhenLoading" style="float: right">-&gt;</button>').click(function() {
+								$('<button class="disableWhenLoading AddToSavedItems" style="float: right">-&gt;</button>').click(function() {
 									if (new Date() < new Date($('#showStartTime').val() * 1000)) {
 										alert('This operation is not available before the show starts.');
 										return false;
@@ -460,7 +483,7 @@
 									var listElement = $(this).parent();
 									
 									// If it's not an instance, create a new instance
-									if (!instanceId) {
+									if (!instanceId && !$(this).data("scheduledEventInstance")) {
 										var scheduledEventInstance = {
 											'Type': 'Scheduled' + type + 'Instance',
 											'Attributes': {
@@ -484,6 +507,9 @@
 										});
 									} else {
 									    startLoading();
+										if ($(this).data("scheduledEventInstance")) {
+											eventInstance = $(this).data("scheduledEventInstance");
+										}
 										setScheduledEventInstanceExecutedAndSave(eventInstance, true, function(savedScheduledEventInstance) {
 											if (savedScheduledEventInstance && !savedScheduledEventInstance.error) {
 												$('#schedule_list').prepend(listElement);
@@ -526,7 +552,7 @@
 						}
 				
 						// Create the event details list element
-						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function() { if (e.target.tagName.toLowerCase() != 'a') return false }).hide();
+						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function(e) { if (e.target.tagName.toLowerCase() != 'a') return false }).hide();
 						for (var key in eventDetails) {
 							eventDetailsList.append(
 								'<li><strong>' + key + ': </strong>' + eventDetails[key] + '</li>'

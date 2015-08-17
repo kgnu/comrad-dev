@@ -166,9 +166,9 @@
 	<h4>Enter Giveaway Info</h4>
 
 	<fieldset>
-		<legend>
-			Giveaway Title
-		</legend>
+		<p>
+			Please fill out this entire form, and press the save button.  This will automatically send all of the show information to the ticket winner's email.  If there is not a winner, check no callers.
+		</p>
 		
 		<form id="ScheduledTicketGiveawayEventInstanceForm" action="giveaway.php">
 		

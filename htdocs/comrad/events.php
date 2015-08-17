@@ -252,6 +252,21 @@
             
 			resetEventTypes();
 		});
+		
+		$(function() {
+			$("#TicketGiveawayEventShowName").data("token", "[ShowName]");
+			$("#TicketGiveawayEventShowDate").data("token", "[ShowDate]");
+			$("#TicketGiveawayEventVenue").data("token", "[Venue]");
+			
+			$("#TicketGiveawayEventShowName,#TicketGiveawayEventShowDate,#TicketGiveawayEventVenue").change(function() {
+				if (jQuery.trim($(this).val()).length == 0) return;
+				
+				var value = $(this).val();
+				var token = $(this).data("token");
+				$("#TicketGiveawayEventCopy").val($("#TicketGiveawayEventCopy").val().replace(token, value));
+				$(this).data("token", value);
+			});
+		});
 	</script>
 
 <?php ###################################################################### ?>
