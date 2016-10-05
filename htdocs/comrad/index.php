@@ -1,7 +1,7 @@
 <?php
 
 	require_once('initialize.php');
-	require_once('recaptcha/recaptchalib.php');
+	require_once('recaptcha/recaptchalib-1.10.php');
 
 	// Check if the user is active...
 	if ($init->isActiveCodeValid((array_key_exists('Active', $_SESSION) ? $_SESSION['Active'] : null)))
