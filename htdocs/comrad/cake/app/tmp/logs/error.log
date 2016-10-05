@@ -1,0 +1,1774 @@
+2012-04-25 14:23:12 Error: [MissingPluginException] Plugin TwitterBootstrap could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/Config/bootstrap.php(126): CakePlugin::load('TwitterBootstra...')
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Core/Configure.php(88): include('/Users/work-kgn...')
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/bootstrap.php(142): Configure::bootstrap(true)
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(77): include('/Users/work-kgn...')
+#4 {main}
+2012-04-25 14:24:30 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 14:25:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 14:25:20 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 14:27:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 14:27:32 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 14:27:38 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 14:35:19 Error: [MissingTableException] Table sessions for model Session was not found in datasource default.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('sessions')
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Model/Model.php(775): Model->getDataSource()
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/Controller/AlbumsController.php(72): Model->__call('setFlash', Array)
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/Controller/AlbumsController.php(72): AppModel->setFlash('The album was s...', 'flash_success', Array, 'success')
+#4 [internal function]: AlbumsController->edit('10151')
+#5 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#6 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#8 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-04-25 14:42:40 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/json/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 14:42:50 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/json/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 14:45:20 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/xml/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/XmlView.php(101): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): XmlView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 14:45:41 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/csv/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 14:45:46 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/json/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 14:56:56 Error: [XmlException] Invalid input.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Utility/Xml.php(94): Xml::fromArray(Array, Array)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/json/view.ctp(3): Xml::build(Array)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(908): include('/Users/work-kgn...')
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(872): View->_evaluate('/Users/work-kgn...', Array)
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/JsonView.php(102): View->_render('/Users/work-kgn...')
+#5 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#6 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#7 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#8 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-04-25 14:58:37 Error: [MissingActionException] Action AlbumsController::first() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-25 14:58:50 Error: [MissingControllerException] Controller class Albums.jsonController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 14:58:57 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 14:59:55 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 15:02:34 Error: [MissingControllerException] Controller class Albums.jsonController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 15:15:38 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/xml/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/XmlView.php(101): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): XmlView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 15:15:46 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 15:46:44 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/ITunes/import.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 15:47:58 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/ITunes/import.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 15:48:03 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/ITunes/import.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 15:48:17 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/ITunes/import.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 15:48:55 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/json/add.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 16:02:36 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/Albums/xml/index.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/XmlView.php(101): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): XmlView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 16:56:38 Error: [NotFoundException] Not Found
+#0 [internal function]: ITunesController->view()
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 16:57:03 Error: [NotFoundException] Not Found
+#0 [internal function]: ITunesController->view()
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 16:57:05 Error: [NotFoundException] Not Found
+#0 [internal function]: ITunesController->view()
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-25 16:58:35 Error: [MissingControllerException] Controller class AlbumController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-25 16:58:43 Error: [MissingControllerException] Controller class AlbumController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-26 02:41:18 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/ITunes/json/search.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-26 02:41:29 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/ITunes/json/search.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-30 15:40:12 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:05:10 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:08:44 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:08:52 Error: [MissingActionException] Action MusicLibraryController::index() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:11:02 Error: [MissingActionException] Action AlbumsController::catalog() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:11:05 Error: [MissingActionException] Action AlbumsController::catalog() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:11:21 Error: [MissingActionException] Action AlbumsController::catalog() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:11:23 Error: [MissingActionException] Action AlbumsController::catalog() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:17:08 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:26:42 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:28:26 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:28:30 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:28:42 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:30:05 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:30:43 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:31:03 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:31:19 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:31:34 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:31:57 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:32:00 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:32:33 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-04-30 16:32:38 Error: [MissingControllerException] Controller class ScheduleController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-30 16:33:42 Error: [MissingControllerException] Controller class ScheduleController could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-04-30 16:38:00 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-02 13:19:55 Error: [MissingViewException] View file "/Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/View/MusicLibrary/json/catalog.ctp" is missing.
+#0 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#4 /Users/work-kgnu/Sites/htdocs/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-12 08:48:29 Error: [MissingConnectionException] Database connection "SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)" is missing, or could not be created.
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(245): Mysql->connect()
+#1 /vagrant/cakephp/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(3372): ConnectionManager::getDataSource('default')
+#3 /vagrant/cakephp/lib/Cake/Model/Model.php(1083): Model->setDataSource('default')
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Albums')
+#5 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): Model->getDataSource()
+#6 /vagrant/cakephp/app/Controller/AlbumsController.php(32): Model->find('all', Array)
+#7 [internal function]: AlbumsController->index()
+#8 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#11 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-05-12 08:48:48 Error: [MissingConnectionException] Database connection "SQLSTATE[42000] [1049] Unknown database 'comrad'" is missing, or could not be created.
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(245): Mysql->connect()
+#1 /vagrant/cakephp/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(3372): ConnectionManager::getDataSource('default')
+#3 /vagrant/cakephp/lib/Cake/Model/Model.php(1083): Model->setDataSource('default')
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Albums')
+#5 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): Model->getDataSource()
+#6 /vagrant/cakephp/app/Controller/AlbumsController.php(32): Model->find('all', Array)
+#7 [internal function]: AlbumsController->index()
+#8 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#11 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-05-12 08:53:20 Error: [MissingControllerException] Controller class PhpmyadminController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-12 09:28:53 Error: [MissingControllerException] Controller class CakephpController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-12 09:29:41 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-12 09:29:48 Error: [MissingConnectionException] Database connection "SQLSTATE[42000] [1049] Unknown database 'comrad'" is missing, or could not be created.
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(245): Mysql->connect()
+#1 /vagrant/cakephp/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(3372): ConnectionManager::getDataSource('default')
+#3 /vagrant/cakephp/lib/Cake/Model/Model.php(1083): Model->setDataSource('default')
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Albums')
+#5 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): Model->getDataSource()
+#6 /vagrant/cakephp/app/Controller/AlbumsController.php(32): Model->find('all', Array)
+#7 [internal function]: AlbumsController->index()
+#8 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#11 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-05-12 11:10:47 Error: [MissingControllerException] Controller class DocController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-12 11:10:51 Error: [MissingControllerException] Controller class DocController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-18 19:59:25 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-18 19:59:29 Error: [MissingTableException] Table Albums for model Album was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Albums')
+#1 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): Model->getDataSource()
+#2 /vagrant/cakephp/app/Controller/MusiclibraryController.php(10): Model->find('all', Array)
+#3 [internal function]: MusicLibraryController->catalog()
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#5 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#6 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#7 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 {main}
+2012-05-18 20:05:56 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-18 20:06:00 Error: [MissingActionException] Action MusicLibraryController::albums() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-18 20:17:36 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(24): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-18 20:19:22 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1536): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1049): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(59): Model->find('first', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:24:35 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1536): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1049): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(60): Model->find('first', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:24:44 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1536): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1049): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(60): Model->find('first', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:34:37 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1536): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1049): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(60): Model->find('first', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:37:18 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1536): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1049): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(60): Model->find('first', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:42:46 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2185): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1538): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1051): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(60): Model->find('first', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:47:32 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2185): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1538): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1051): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(61): Model->find('first', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:47:45 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2185): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1538): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1051): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(61): Model->find('all', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:49:52 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2185): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1538): DboSource->fields(Object(AppModel), 'Albums', false)
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1051): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, false, NULL)
+#6 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#7 /vagrant/cakephp/app/Controller/AlbumsController.php(61): Model->find('first', Array)
+#8 [internal function]: AlbumsController->add()
+#9 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#10 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#12 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-18 20:50:10 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Genre.g_Id' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Genre`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Genre`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1060): DboSource->fetchAll('SELECT `Genre`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Genre), Array)
+#5 /vagrant/cakephp/app/Controller/AlbumsController.php(62): Model->find('first', Array)
+#6 [internal function]: AlbumsController->add()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-18 21:00:11 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-18 21:37:05 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-18 21:58:43 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-18 22:04:16 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 00:38:35 Error: [MissingActionException] Action MusicLibraryController::show() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 06:10:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 06:10:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 06:10:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 07:50:38 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:51:01 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:51:25 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:52:25 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:52:46 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:52:48 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:52:50 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:52:51 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:52:51 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 07:53:12 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/cakephp/app/Controller/ItunesController.php(48): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 09:32:49 Error: [MissingActionException] Action MusicLibraryController::index() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 09:32:54 Error: [MissingActionException] Action MusicLibraryController::index() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 09:34:58 Error: [MissingActionException] Action MusicLibraryController::catalog() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 09:35:11 Error: [MissingActionException] Action MusicLibraryController::catalog() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 09:35:21 Error: [NotFoundException] Album does not exist
+#0 [internal function]: AlbumsController->view('7')
+#1 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-19 09:35:23 Error: [NotFoundException] Album does not exist
+#0 [internal function]: AlbumsController->view('7')
+#1 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-19 09:46:56 Error: [MissingActionException] Action MusicLibraryController::index() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 10:25:04 Error: [NotFoundException] Album does not exist
+#0 [internal function]: AlbumsController->view('10')
+#1 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-19 11:07:32 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:07:52 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:07:58 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:07:59 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:08:10 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:08:19 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:08:22 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:08:24 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:08:37 Error: [MissingActionException] Action MusicLibraryController::view() could not be found.
+#0 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:15:43 Error: [NotFoundException] Track does not exist
+#0 [internal function]: TracksController->view()
+#1 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#2 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#4 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-19 11:21:42 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:21:45 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:21:58 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:22:07 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:22:45 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:22:45 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:22:46 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:22:46 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:22:46 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:22:46 Error: [MissingTableException] Table Genres for model Genre was not found in datasource default.
+#0 /vagrant/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Genres')
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1044): Model->getDataSource()
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#3 /vagrant/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#4 /vagrant/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#5 /vagrant/cakephp/app/Controller/MusiclibraryController.php(17): Controller->paginate('Album')
+#6 [internal function]: MusicLibraryController->index()
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:43:51 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:39 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:40 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:42 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:44 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:45 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:45 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:46 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:46 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:46 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:46 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:46 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:47 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:47 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 11:44:56 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Track.fse_TrackId' in 'on clause'
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Floatin...', Array)
+#2 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Floatin...', Array, Array)
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Floatin...', false)
+#4 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(FloatingShowElement), Array)
+#5 /vagrant/cakephp/app/Controller/TracksController.php(19): Model->find('all', Array)
+#6 [internal function]: TracksController->view('252477')
+#7 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(TracksController), Array)
+#8 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(TracksController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 12:35:45 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1485): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1155): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, true, Array)
+#6 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1252): DboSource->queryAssociation(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, true, Array, 0, Array)
+#7 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1087): DboSource->queryAssociation(Object(Album), Object(Genre), 'belongsTo', 'Genre', Array, Array, true, Array, 1, Array)
+#8 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#9 /vagrant/cakephp/app/Controller/AlbumsController.php(158): Model->find('first', Array)
+#10 [internal function]: AlbumsController->delete('43101')
+#11 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#12 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#13 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#14 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2012-05-19 12:36:08 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1485): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1155): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, true, Array)
+#6 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1252): DboSource->queryAssociation(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, true, Array, 0, Array)
+#7 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1087): DboSource->queryAssociation(Object(Album), Object(Genre), 'belongsTo', 'Genre', Array, Array, true, Array, 1, Array)
+#8 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#9 /vagrant/cakephp/app/Controller/AlbumsController.php(158): Model->find('first', Array)
+#10 [internal function]: AlbumsController->delete('43101')
+#11 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#12 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#13 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#14 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2012-05-19 12:36:33 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1485): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1155): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, true, Array)
+#6 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1252): DboSource->queryAssociation(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, true, Array, 0, Array)
+#7 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1087): DboSource->queryAssociation(Object(Album), Object(Genre), 'belongsTo', 'Genre', Array, Array, true, Array, 1, Array)
+#8 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#9 /vagrant/cakephp/app/Controller/AlbumsController.php(158): Model->find('first', Array)
+#10 [internal function]: AlbumsController->delete('43101')
+#11 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#12 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#13 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#14 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2012-05-19 12:36:35 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'comrad.albums' doesn't exist
+#0 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/cakephp/lib/Cake/Model/Datasource/Database/Mysql.php(308): DboSource->_execute('SHOW FULL COLUM...')
+#2 /vagrant/cakephp/lib/Cake/Model/Model.php(1279): Mysql->describe(Object(AppModel))
+#3 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(2183): Model->schema()
+#4 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1485): DboSource->fields(Object(AppModel), 'Albums', '')
+#5 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1155): DboSource->generateAssociationQuery(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, true, Array)
+#6 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1252): DboSource->queryAssociation(Object(Genre), Object(AppModel), 'hasMany', 'Albums', Array, Array, true, Array, 0, Array)
+#7 /vagrant/cakephp/lib/Cake/Model/Datasource/DboSource.php(1087): DboSource->queryAssociation(Object(Album), Object(Genre), 'belongsTo', 'Genre', Array, Array, true, Array, 1, Array)
+#8 /vagrant/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#9 /vagrant/cakephp/app/Controller/AlbumsController.php(158): Model->find('first', Array)
+#10 [internal function]: AlbumsController->delete('43101')
+#11 /vagrant/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#12 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#13 /vagrant/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#14 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2012-05-19 12:57:17 Error: [MissingControllerException] Controller class Comrad-devController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 12:57:23 Error: [MissingControllerException] Controller class Comrad-devController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 12:58:23 Error: [MissingControllerException] Controller class Comrad-devController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 12:58:25 Error: [MissingControllerException] Controller class Comrad-devController could not be found.
+#0 /vagrant/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 15:12:29 Error: [MissingActionException] Action AlbumsController::view2768() could not be found.
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 15:26:56 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/htdocs/comrad/comrad/cakephp/app/Controller/ItunesController.php(26): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 15:27:44 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/htdocs/comrad/comrad/cakephp/app/Controller/ItunesController.php(26): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 15:33:04 Error: [MissingControllerException] Controller class ShowbuilderController could not be found.
+#0 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 17:02:31 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 'NULL'    LIMIT 2' at line 1
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/htdocs/comrad/comrad/cakephp/app/Controller/ItunesController.php(95): Model->find('all', Array)
+#6 [internal function]: ITunesController->doctor()
+#7 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 17:02:48 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(a_AlbumArt)    LIMIT 2' at line 1
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /vagrant/htdocs/comrad/comrad/cakephp/app/Controller/ItunesController.php(95): Model->find('all', Array)
+#6 [internal function]: ITunesController->doctor()
+#7 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 17:40:53 Error: [MissingActionException] Action ITunesController::<pre class=() could not be found.
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 17:43:41 Error: [MissingActionException] Action ITunesController::<pre class=() could not be found.
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 17:44:55 Error: [MissingActionException] Action ITunesController::<pre class=() could not be found.
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 17:45:37 Error: [MissingActionException] Action ITunesController::<pre class=() could not be found.
+#0 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /vagrant/htdocs/comrad/comrad/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#2 /vagrant/htdocs/comrad/comrad/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 11:32:04 Error: [MissingControllerException] Controller class MusiclibraryController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 11:32:18 Error: [MissingControllerException] Controller class MusiclibraryController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 11:51:10 Error: [MissingControllerException] Controller class MusiclibraryController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 11:51:21 Error: [MissingControllerException] Controller class ItunesController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 11:51:24 Error: [MissingControllerException] Controller class ItunesController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 12:00:47 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/MusicLibrary/i_n_d_e_x.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-19 12:00:54 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/MusicLibrary/i_n_de_x.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-19 12:01:00 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/MusicLibrary/i_ndex.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-19 12:01:04 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/MusicLibrary/i_ndex.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-19 12:46:54 Error: [MissingControllerException] Controller class MusicIbraryController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 12:47:06 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /home/comrad/comrad-cake/cakephp/app/Controller/ITunesController.php(26): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 14:35:29 Error: [MissingControllerException] Controller class TestingController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 14:35:39 Error: [MissingControllerException] Controller class TestingController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 14:47:20 Error: [MissingControllerException] Controller class IndexController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-19 14:47:46 Error: [MissingActionException] Action AppController::index() could not be found.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AppController), Object(CakeRequest), Object(CakeResponse))
+#2 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-05-19 15:00:54 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Album.a_ITunesId' in 'field list'
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /home/comrad/comrad-cake/cakephp/app/Controller/ITunesController.php(26): Model->find('list', Array)
+#6 [internal function]: ITunesController->search()
+#7 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#8 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#9 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#10 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-05-19 22:16:38 Error: [NotFoundException] Album does not exist
+#0 [internal function]: AlbumsController->view('function.sessio...')
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-05-22 14:49:47 Error: [MissingControllerException] Controller class MusicManagerController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-22 14:49:52 Error: [MissingControllerException] Controller class MusicManagerController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-05-24 00:44:16 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY `Album`.`a_AddDate` desc  LIMIT 20' at line 1
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Album`....', Array)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Album`....', Array, Array)
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT `Album`....', false)
+#4 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(Album), Array)
+#5 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Component/PaginatorComponent.php(172): Model->find('all', Array)
+#6 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(1084): PaginatorComponent->paginate('Album', Array, Array)
+#7 /home/comrad/comrad-cake/cakephp/app/Controller/MusicLibraryController.php(38): Controller->paginate('Album', Array)
+#8 [internal function]: MusicLibraryController->index()
+#9 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(MusicLibraryController), Array)
+#10 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#11 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#12 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-05-24 02:48:08 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/MusicLibrary/json/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(MusicLibraryController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-06-19 19:17:51 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/comrad/comrad-cake/cakephp/app/Controller/ITunesController.php, line 19]
+Trace:
+ITunesController::search() - APP/Controller/ITunesController.php, line 19
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE/Cake/Controller/Controller.php, line 485
+Dispatcher::_invoke() - CORE/Cake/Routing/Dispatcher.php, line 103
+Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 85
+[main] - APP/webroot/index.php, line 96
+
+2012-06-19 19:19:54 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/comrad/comrad-cake/cakephp/app/Controller/ITunesController.php, line 19]
+Trace:
+ITunesController::search() - APP/Controller/ITunesController.php, line 19
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE/Cake/Controller/Controller.php, line 485
+Dispatcher::_invoke() - CORE/Cake/Routing/Dispatcher.php, line 103
+Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 85
+[main] - APP/webroot/index.php, line 96
+
+2012-06-19 19:20:55 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/comrad/comrad-cake/cakephp/app/Controller/ITunesController.php, line 19]
+Trace:
+ITunesController::search() - APP/Controller/ITunesController.php, line 19
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE/Cake/Controller/Controller.php, line 485
+Dispatcher::_invoke() - CORE/Cake/Routing/Dispatcher.php, line 103
+Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 85
+[main] - APP/webroot/index.php, line 96
+
+2012-06-19 19:24:13 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/comrad/comrad-cake/cakephp/app/Controller/ITunesController.php, line 19]
+Trace:
+ITunesController::search() - APP/Controller/ITunesController.php, line 19
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE/Cake/Controller/Controller.php, line 485
+Dispatcher::_invoke() - CORE/Cake/Routing/Dispatcher.php, line 103
+Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 85
+[main] - APP/webroot/index.php, line 96
+
+2012-07-18 18:27:40 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/PSAs/pdf/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PSAsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-07-19 13:17:18 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/Shows/json/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ShowsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-07-19 13:17:21 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/Shows/json/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ShowsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-07-19 13:17:52 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/Shows/json/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ShowsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-07-19 13:18:14 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/Albums/json/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-07-19 13:18:46 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/Albums/json/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-07-19 13:19:19 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/Albums/json/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-07-19 13:20:29 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:20:46 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:21:12 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:21:26 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:21:33 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:22:01 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:22:16 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:22:57 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:23:01 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:23:01 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-19 13:24:57 Error: [MissingViewException] View file "/home/comrad/comrad-cake/cakephp/app/View/Albums/json/index.ctp" is missing.
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/View/JsonView.php(98): View->_getViewFileName(NULL)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): JsonView->render(NULL, NULL)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-07-19 13:24:58 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-22 12:33:08 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-22 12:33:12 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-22 12:33:19 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-22 12:39:59 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sei_StartDateTie' in 'where clause'
+#0 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(437): PDOStatement->execute(Array)
+#1 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT COUNT(*)...', Array)
+#2 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT COUNT(*)...', Array, Array)
+#3 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(1058): DboSource->fetchAll('SELECT COUNT(*)...', false)
+#4 /home/comrad/comrad-cake/cakephp/lib/Cake/Model/Model.php(2653): DboSource->read(Object(ScheduledEventInstance), Array)
+#5 /home/comrad/comrad-cake/cakephp/app/Controller/AppController.php(80): Model->find('count', Array)
+#6 /home/comrad/comrad-cake/cakephp/app/Controller/ScheduledEventInstancesController.php(11): AppController->api_index(Object(ScheduledEventInstance))
+#7 [internal function]: ScheduledEventInstancesController->api_index()
+#8 /home/comrad/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ScheduledEventInstancesController), Array)
+#9 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#10 /home/comrad/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ScheduledEventInstancesController), Object(CakeRequest), Object(CakeResponse))
+#11 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-07-22 17:50:00 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-07-22 17:51:31 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /home/comrad/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-08-12 15:26:30 Error: [MissingHelperException] Helper class TwitterBootstrapHelper could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(850): HelperCollection->load('TB', Array)
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render('home', NULL)
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/PagesController.php(80): Controller->render('home')
+#4 [internal function]: PagesController->display('home')
+#5 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#6 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#8 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-08-12 16:41:00 Error: [MissingHelperException] Helper class TwitterBootstrapHelper could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(850): HelperCollection->load('TB', Array)
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render('home', NULL)
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/PagesController.php(80): Controller->render('home')
+#4 [internal function]: PagesController->display('home')
+#5 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#6 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#8 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-08-12 16:41:05 Error: [MissingHelperException] Helper class TwitterBootstrapHelper could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(850): HelperCollection->load('TB', Array)
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render('home', NULL)
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/PagesController.php(80): Controller->render('home')
+#4 [internal function]: PagesController->display('home')
+#5 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#6 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#8 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-08-12 16:41:07 Error: [MissingHelperException] Helper class TwitterBootstrapHelper could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(850): HelperCollection->load('TB', Array)
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render('home', NULL)
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/PagesController.php(80): Controller->render('home')
+#4 [internal function]: PagesController->display('home')
+#5 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#6 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#8 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-08-12 16:42:57 Error: [MissingHelperException] Helper class TwitterBootstrapHelper could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(850): HelperCollection->load('TB', Array)
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render('home', NULL)
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/PagesController.php(80): Controller->render('home')
+#4 [internal function]: PagesController->display('home')
+#5 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#6 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#8 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-08-12 16:42:58 Error: [MissingHelperException] Helper class TwitterBootstrapHelper could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(850): HelperCollection->load('TB', Array)
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/View/View.php(456): View->loadHelpers()
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(959): View->render('home', NULL)
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/PagesController.php(80): Controller->render('home')
+#4 [internal function]: PagesController->display('home')
+#5 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#6 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#7 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#8 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2012-09-13 18:53:06 Error: [MissingControllerException] Controller class Controller could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-09-13 18:53:13 Error: [MissingControllerException] Controller class Controller could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-09-13 18:53:31 Error: [MissingControllerException] Controller class Controller could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-10-04 17:03:13 Error: [MissingPluginException] Plugin  could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(278): CakePlugin::path('')
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(70): Dispatcher->asset('/playlist/cake/...', Object(CakeResponse))
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-10-04 17:03:19 Error: [MissingControllerException] Controller class ApiController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-23 19:51:30 Error: [NotFoundException] Not Found
+#0 [internal function]: AlbumsController->add()
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2013-04-19 09:11:58 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-04-19 09:12:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-10-02 18:15:05 Error: [NotFoundException] Not Found
+#0 [internal function]: AlbumsController->add()
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2013-10-30 19:14:09 Error: [NotFoundException] Not Found
+#0 [internal function]: AlbumsController->add()
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-06-16 19:19:20 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)" is missing, or could not be created.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Datasource/DboSource.php(245): Mysql->connect()
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Model.php(3372): ConnectionManager::getDataSource('default')
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Model.php(1083): Model->setDataSource('default')
+#4 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Model.php(3398): Model->setSource('Albums')
+#5 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Model.php(2750): Model->getDataSource()
+#6 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Model.php(2690): Model->_findCount('before', Array)
+#7 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Model.php(2648): Model->buildQuery('count', Array)
+#8 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Model.php(2578): Model->find('count', Array)
+#9 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Model/Model.php(1607): Model->exists()
+#10 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/AlbumsController.php(254): Model->save(Array)
+#11 [internal function]: AlbumsController->edit('44636')
+#12 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#13 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#14 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#15 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2015-01-27 21:23:16 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-01-27 21:23:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-04-13 19:42:08 Error: [NotFoundException] Not Found
+#0 [internal function]: AlbumsController->add()
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-04-13 20:18:04 Error: [NotFoundException] Not Found
+#0 [internal function]: AlbumsController->add()
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(AlbumsController), Array)
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(AlbumsController), Object(CakeRequest), Object(CakeResponse))
+#4 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-10-26 16:21:49 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-28 16:56:06 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-28 16:56:06 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-19 18:38:33 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-19 18:38:40 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-02-23 23:52:39 Error: [SocketException] Connection timed out
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Network/CakeSocket.php(193): CakeSocket->connect()
+#1 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Network/Http/HttpSocket.php(362): CakeSocket->write('GET /search?ter...')
+#2 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Network/Http/HttpSocket.php(450): HttpSocket->request(Array)
+#3 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/Component/ITunesComponent.php(7): HttpSocket->get('http://itunes.a...')
+#4 /srv/www/kgnu.org/comrad-cake/cakephp/app/Controller/ITunesController.php(16): ITunesComponent->searchAlbums('self defense fa...')
+#5 [internal function]: ITunesController->search()
+#6 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(ITunesController), Array)
+#7 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#8 /srv/www/kgnu.org/comrad-cake/cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(ITunesController), Object(CakeRequest), Object(CakeResponse))
+#9 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-06-02 22:32:05 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-06-02 22:32:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /srv/www/kgnu.org/comrad-cake/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

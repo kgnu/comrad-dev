@@ -1,0 +1,36 @@
+i.icon-showbuilder { background-image: url('../img/icon-dj-schedule-32.png'); }
+i.icon-schedule { background-image: url('../img/icon-schedule-32.png'); }
+i.icon-musiclibrary { background-image: url('../img/icon-music-management-32.png'); }
+i.icon-events { background-image: url('../img/icon-events-32.png'); }
+
+/** Album Elements **/
+
+img.album-art {
+	width: 25px;
+	height: 25px;
+}
+
+/* Set margin to 0 for form controls inside tables */
+.form-horizontal table .control-group,
+.form-horizontal table .controls {
+	margin: 0;
+}
+
+th a {
+	color: inherit;
+}
+
+th .caret {
+	margin-top: 0.6em;
+}
+
+th.ascending .caret {
+	border-top: 0;
+	border-bottom: 4px solid black;
+	content: "\2191";
+}
+
+th a:hover + .caret {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
