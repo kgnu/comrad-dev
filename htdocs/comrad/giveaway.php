@@ -7,6 +7,11 @@
 	$results = DB::getInstance('MySql')->find(new ScheduledTicketGiveawayInstance(array('Id' => $seiid)));
 	$instance = $results[0];
 	
+	$results = DB::getInstance('MySql')->find(new ScheduledEvent(array('Id' => $instance->ScheduledEventId)));
+	$scheduledEvent = $results[0];
+	$scheduledEvent->fetchForeignKeyItem('Event');
+	$event = $scheduledEvent->Event;
+	
 	$winnerName = $instance->WinnerName;
 	if ($instance->NoCallers || ! empty($winnerName)) {
 		$disabled = TRUE;
@@ -205,11 +210,16 @@
 				</div>
 				<div class="field">
 					<label for="ScheduledTicketGiveawayEventInstanceIsListenerMember">Delivery method</label>
-					<input type="radio" name="ScheduledTicketGiveawayEventInstanceDeliveryMethod" id="ScheduledTicketGiveawayEventInstanceDeliveryMethod" value="Pick Up in Studio" <?php if ($instance->DeliveryMethod == 'Pick Up in Studio') echo 'checked="checked"'; ?> <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
-					Pick up In Studio
-					&nbsp;
-					<input type="radio" name="ScheduledTicketGiveawayEventInstanceDeliveryMethod" id="ScheduledTicketGiveawayEventInstanceDeliveryMethod" value="Mail Tickets" <?php if ($instance->DeliveryMethod == 'Mail Tickets') echo 'checked="checked"'; ?> <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
-					Mail Tickets
+					<?php if ($event->TicketType == 'Guest List Ticket'): ?>
+						Guest list ticket
+						<input style="display:none" type="radio" name="ScheduledTicketGiveawayEventInstanceDeliveryMethod" id="ScheduledTicketGiveawayEventInstanceDeliveryMethod" value="Guest List Tickets" checked="checked" <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
+					<?php else: ?>
+						<input type="radio" name="ScheduledTicketGiveawayEventInstanceDeliveryMethod" id="ScheduledTicketGiveawayEventInstanceDeliveryMethod" value="Pick Up in Studio" <?php if ($instance->DeliveryMethod == 'Pick Up in Studio') echo 'checked="checked"'; ?> <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
+						Pick up In Studio
+						&nbsp;
+						<input type="radio" name="ScheduledTicketGiveawayEventInstanceDeliveryMethod" id="ScheduledTicketGiveawayEventInstanceDeliveryMethod" value="Mail Tickets" <?php if ($instance->DeliveryMethod == 'Mail Tickets') echo 'checked="checked"'; ?> <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
+						Mail Tickets
+					<?php endif; ?>
 				</div>
 				<input type="submit" value="Save" id="saveButton" <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
 				<input type="button" onclick="window.close();" value="Cancel" id="cancelButton">
