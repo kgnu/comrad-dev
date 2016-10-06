@@ -82,6 +82,13 @@
 		</div>
 		
 		<div class="column">
+		<a href="ticketrequest.php">
+		<h1>Volunteer Ticket Request</h1>
+		<p>Request tickets to events</p>
+		</a>
+		</div>
+		
+		<div class="column">
 		<a href="about.php">
 		<h1>Help</h1>
 		<p>Get help with system features</p>
