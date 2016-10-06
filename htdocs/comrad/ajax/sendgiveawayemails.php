@@ -19,6 +19,7 @@
 		$emailBody .= 'Address: ' . $_GET['winnerAddress'] . '<br />';
 		$emailBody .= 'Email: ' . $_GET['winnerEmail'] . '<br />';
 		$emailBody .= 'Is Listener Member: ' . ($_GET['isListenerMember'] ? 'Yes' : 'No') . '<br />';
+		$emailBody .= 'Delivery Method: ' . $_GET['deliveryMethod'] . '<br />';
 	}
 	
 	$emailBody .= '<br /><br /><b>Giveaway Information:</b><br />';

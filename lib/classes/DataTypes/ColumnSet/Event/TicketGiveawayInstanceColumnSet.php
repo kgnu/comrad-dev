@@ -40,6 +40,10 @@ class TicketGiveawayInstanceColumnSet extends EventWithCopyInstanceColumnSet
 			'IsListenerMember' => array(
 				'type' => 'Boolean',
 				'tostring' => 'Mark if the winner is a KGNU listener-member'
+			),
+			'DeliveryMethod' => array(
+				'type' => 'ShortString',
+				'tostring' => 'Delivery Method'
 			)
 		));
 		

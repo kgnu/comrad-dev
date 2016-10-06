@@ -67,9 +67,12 @@
 							valid = false;
 						}
 					});
+					if ($("input[type='radio']:checked").length == 0) {
+						valid = false;
+					}
 				}
 				if ( ! valid) {
-					$.jGrowl('You must either fill out the winner\'s name, phone number, email and address or indicate that there were no callers.', {
+					$.jGrowl('You must either fill out the winner\'s name, phone number, email, address and delivery method or indicate that there were no callers.', {
 						header: 'Error',
 						life: 10000,
 						glue: 'before'
@@ -135,7 +138,8 @@
 							winnerPhone: $("[name=ScheduledTicketGiveawayEventInstanceWinnerPhone]").val(),
 							winnerAddress: $("[name=ScheduledTicketGiveawayEventInstanceWinnerAddress]").val(),
 							winnerEmail: $("[name=ScheduledTicketGiveawayEventInstanceWinnerEmail]").val(),
-							isListenerMember: $("[name=ScheduledTicketGiveawayEventInstanceIsListenerMember]").is(":checked") ? 1 : 0
+							isListenerMember: $("[name=ScheduledTicketGiveawayEventInstanceIsListenerMember]").is(":checked") ? 1 : 0,
+							deliveryMethod: $("[name=ScheduledTicketGiveawayEventInstanceDeliveryMethod]").val()
 						}
 					});
 					window.close();
@@ -198,6 +202,14 @@
 				<div class="field">
 					<label for="ScheduledTicketGiveawayEventInstanceIsListenerMember">Mark if the winner is a KGNU listener-member</label>
 					<input type="checkbox" name="ScheduledTicketGiveawayEventInstanceIsListenerMember" id="ScheduledTicketGiveawayEventInstanceIsListenerMember" <?php if ($instance->IsListenerMember) echo 'checked="checked"'; ?> <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
+				</div>
+				<div class="field">
+					<label for="ScheduledTicketGiveawayEventInstanceIsListenerMember">Delivery method</label>
+					<input type="radio" name="ScheduledTicketGiveawayEventInstanceDeliveryMethod" id="ScheduledTicketGiveawayEventInstanceDeliveryMethod" value="Pick Up in Studio" <?php if ($instance->DeliveryMethod == 'Pick Up in Studio') echo 'checked="checked"'; ?> <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
+					Pick up In Studio
+					&nbsp;
+					<input type="radio" name="ScheduledTicketGiveawayEventInstanceDeliveryMethod" id="ScheduledTicketGiveawayEventInstanceDeliveryMethod" value="Mail Tickets" <?php if ($instance->DeliveryMethod == 'Mail Tickets') echo 'checked="checked"'; ?> <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
+					Mail Tickets
 				</div>
 				<input type="submit" value="Save" id="saveButton" <?php if ($disabled) { echo 'disabled="disabled"'; } ?>>
 				<input type="button" onclick="window.close();" value="Cancel" id="cancelButton">
