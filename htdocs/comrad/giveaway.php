@@ -139,7 +139,7 @@
 							winnerAddress: $("[name=ScheduledTicketGiveawayEventInstanceWinnerAddress]").val(),
 							winnerEmail: $("[name=ScheduledTicketGiveawayEventInstanceWinnerEmail]").val(),
 							isListenerMember: $("[name=ScheduledTicketGiveawayEventInstanceIsListenerMember]").is(":checked") ? 1 : 0,
-							deliveryMethod: $("[name=ScheduledTicketGiveawayEventInstanceDeliveryMethod]:selected").val()
+							deliveryMethod: $("[name=ScheduledTicketGiveawayEventInstanceDeliveryMethod]:checked").val()
 						}
 					});
 					window.close();
