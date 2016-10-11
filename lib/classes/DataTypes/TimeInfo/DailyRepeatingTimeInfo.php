@@ -15,10 +15,10 @@ class DailyRepeatingTimeInfo extends RepeatingTimeInfo
 		$interval = ($this->Interval > 0 ? $this->Interval : 1);
 		$startDateTime = $this->StartDateTime;
 		$originalSDT = $startDateTime;
-		$intervalMultiplier = 256;
+		$intervalMultiplier = 512;
 		while ($intervalMultiplier >= 1) {
 			while (strtotime('+' . $interval * $intervalMultiplier . ' day', $startDateTime) < strtotime('-' . $interval . ' day', $timeWindowStart)) {
-				$startDateTime = strtotime('+' . $interval . ' day', $startDateTime);
+				$startDateTime = strtotime('+' . $interval * $intervalMultiplier . ' day', $startDateTime);
 			}
 			$intervalMultiplier = $intervalMultiplier / 2;
 		}
