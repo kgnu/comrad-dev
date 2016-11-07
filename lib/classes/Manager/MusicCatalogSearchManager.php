@@ -29,11 +29,14 @@ class MusicCatalogSearchManager extends Manager {
 	}
 	
 	protected function searchTracks($searchString, $options = array()) {
-		$query = "SELECT t.*, a.*, g.*
+		//we will query Tracks, Albums and Genres separately so that the queries go faster
+		//otherwise, the query takes a long time because the full text index isn't set up to span all three tables
+		
+		$trackIds = array();
+		
+		$query = "SELECT t.t_TrackId
 			FROM Tracks AS t
-			LEFT JOIN Albums AS a ON t.t_AlbumID = a.a_AlbumID
-			LEFT JOIN Genres AS g ON a.a_GenreID = g.g_GenreID
-			".($searchString != '' ? "WHERE MATCH (g.g_Name, a.a_Title, a.a_Artist, a.a_Label, t.t_Title, t.t_Artist) AGAINST (? IN BOOLEAN MODE)" : "")."
+			".($searchString != '' ? "WHERE MATCH (t.t_Title, t.t_Artist) AGAINST (? IN BOOLEAN MODE)" : "")."
 			ORDER BY t.t_{$options['sortcolumn']} ".($options['ascending'] ? "ASC" : "DESC")."
 			LIMIT {$options['offset']}, {$options['limit']}";
 		
@@ -41,6 +44,50 @@ class MusicCatalogSearchManager extends Manager {
 		if ($searchString != null) $params->add('s', '', $searchString);
 		
 		$queryResults = $this->doQuery($query, $params);
+		
+		foreach ($queryResults as $queryResult) {
+			$trackIds[] = $queryResult['t_TrackId'];
+		}
+		
+		$query = "SELECT t.t_TrackId
+			FROM Albums AS a
+			INNER JOIN Tracks as t ON t.t_AlbumID = a.a_AlbumId
+			".($searchString != '' ? "WHERE MATCH (a.a_Title, a.a_Artist, a.a_Label) AGAINST (? IN BOOLEAN MODE)" : "")."
+			ORDER BY t.t_{$options['sortcolumn']} ".($options['ascending'] ? "ASC" : "DESC")."
+			LIMIT {$options['offset']}, {$options['limit']}";
+		
+		$queryResults = $this->doQuery($query, $params);
+		
+		foreach ($queryResults as $queryResult) {
+			$trackIds[] = $queryResult['t_TrackId'];
+		}
+		
+		$query = "SELECT t.t_TrackId
+			FROM Albums AS a
+			INNER JOIN Tracks as t ON t.t_AlbumID = a.a_AlbumId
+			INNER JOIN Genres AS g ON a.a_GenreId = g.g_GenreId
+			".($searchString != '' ? "WHERE MATCH (g.g_Name) AGAINST (? IN BOOLEAN MODE)" : "")."
+			LIMIT {$options['offset']}, {$options['limit']}";
+		
+		$queryResults = $this->doQuery($query, $params);
+		
+		foreach ($queryResults as $queryResult) {
+			$trackIds[] = $queryResult['t_TrackId'];
+		}
+		
+		if (count($trackIds) == 0) {
+			return array();
+		}
+		
+		$query = "SELECT t.*, a.*, g.*
+			FROM Tracks AS t
+			LEFT JOIN Albums AS a ON t.t_AlbumID = a.a_AlbumID
+			LEFT JOIN Genres AS g ON a.a_GenreID = g.g_GenreID
+			WHERE t.t_TrackId IN (" . implode(",", $trackIds) . ") 
+			ORDER BY t.t_{$options['sortcolumn']} ".($options['ascending'] ? "ASC" : "DESC")."
+			LIMIT {$options['offset']}, {$options['limit']}";
+		
+		$queryResults = $this->doQuery($query);
 		
 		// Form the results
 		$results = array();
