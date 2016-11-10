@@ -95,6 +95,34 @@ class Track extends AppModel {
 		return true;
 	}
 	
+	function afterSave($created) {
+		//update the TrackFullTextSearchInfo with the new data
+		if (! $created) {
+			$query = "DELETE FROM TrackFullTextSearchInfo WHERE tftsi_TrackId = " . $this->getDataSource()->value($this->data['Track']['t_TrackID']);
+			$this->query($query);
+		}
+		
+		$query = "INSERT INTO TrackFullTextSearchInfo 
+			(tftsi_TrackId, tftsi_TrackArtist, tftsi_TrackTitle, 
+			tftsi_AlbumArtist, tftsi_AlbumLabel, tftsi_AlbumTitle,
+			tftsi_GenreName)
+		SELECT
+			t.t_TrackId, t.t_Artist, t.t_Title,
+			a.a_Artist, a.a_Label, a.a_Title,
+			g.g_Name
+		FROM
+			Tracks AS t
+			LEFT JOIN Albums as a ON t.t_AlbumId = a.a_AlbumId
+			LEFT JOIN Genres as g ON a.a_GenreId = g.g_GenreId
+		WHERE t.t_TrackId = " . $this->getDataSource()->value($this->data['Track']['t_TrackID']);
+		$this->query($query);
+	}
+	
+	function afterDelete() {
+		$query = "DELETE FROM TrackFullTextSearchInfo WHERE tftsi_TrackId = " . $this->getDataSource()->value($this->id);
+		$this->query($query);
+	}
+	
 	function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
 	}

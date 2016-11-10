@@ -176,6 +176,18 @@ CREATE TABLE `TimeInfo` (
   PRIMARY KEY (`ti_Id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `TrackFullTextSearchInfo` (
+  `tftsi_TrackId` int(11) NOT NULL,
+  `tftsi_TrackArtist` text,
+  `tftsi_TrackTitle` text NOT NULL,
+  `tftsi_AlbumArtist` text,
+  `tftsi_AlbumLabel` text,
+  `tftsi_AlbumTitle` text NOT NULL,
+  `tftsi_GenreName` text NOT NULL,
+  PRIMARY KEY (`tftsi_TrackId`),
+  FULLTEXT KEY `tftsi_FullText` (`tftsi_TrackArtist`,`tftsi_TrackTitle`,`tftsi_AlbumArtist`,`tftsi_AlbumLabel`,`tftsi_AlbumTitle`,`tftsi_GenreName`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
 CREATE TABLE `Venue` (
   `UID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,

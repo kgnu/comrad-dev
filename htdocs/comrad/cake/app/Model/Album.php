@@ -73,6 +73,36 @@ class Album extends AppModel {
 		return true;
 	}
 	
+	function afterSave($created) {
+		//update the TrackFullTextSearchInfo with the new data
+		if (! $created) {
+			$query = "DELETE FROM TrackFullTextSearchInfo 
+					  WHERE tftsi_TrackId IN (SELECT t_TrackId FROM Tracks WHERE t_AlbumId = " . $this->getDataSource()->value($this->data['Album']['a_AlbumID']) . ")";
+			$this->query($query);
+		}
+		
+		$query = "INSERT INTO TrackFullTextSearchInfo 
+			(tftsi_TrackId, tftsi_TrackArtist, tftsi_TrackTitle, 
+			tftsi_AlbumArtist, tftsi_AlbumLabel, tftsi_AlbumTitle,
+			tftsi_GenreName)
+		SELECT
+			t.t_TrackId, t.t_Artist, t.t_Title,
+			a.a_Artist, a.a_Label, a.a_Title,
+			g.g_Name
+		FROM
+			Tracks AS t
+			LEFT JOIN Albums as a ON t.t_AlbumId = a.a_AlbumId
+			LEFT JOIN Genres as g ON a.a_GenreId = g.g_GenreId
+		WHERE t.t_AlbumId = " . $this->getDataSource()->value($this->data['Album']['a_AlbumID']);
+		$this->query($query);
+	}
+	
+	function afterDelete() {
+		$query = "DELETE FROM TrackFullTextSearchInfo 
+				  WHERE tftsi_TrackId IN (SELECT t_TrackId FROM Tracks WHERE t_AlbumId = " . $this->getDataSource()->value($this->id) . ")";
+		$this->query($query);
+	}
+	
 	// Require artist unless the album is a compilation
 	protected function _hasArtistOrIsCompilation() {
 		return ($this->data['Album']['a_Compilation'] || !empty($this->data['Album']['a_Artist']));

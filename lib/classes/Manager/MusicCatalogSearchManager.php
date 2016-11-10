@@ -29,65 +29,16 @@ class MusicCatalogSearchManager extends Manager {
 	}
 	
 	protected function searchTracks($searchString, $options = array()) {
-		//we will query Tracks, Albums and Genres separately so that the queries go faster
-		//otherwise, the query takes a long time because the full text index isn't set up to span all three tables
 		
-		$trackIds = array();
-		
-		$query = "SELECT t.t_TrackId
-			FROM Tracks AS t
-			".($searchString != '' ? "WHERE MATCH (t.t_Title, t.t_Artist) AGAINST (? IN BOOLEAN MODE)" : "")."
-			ORDER BY t.t_{$options['sortcolumn']} ".($options['ascending'] ? "ASC" : "DESC")."
+		$query = "SELECT *
+			FROM TrackFullTextSearchInfo
+			".($searchString != '' ? "WHERE MATCH (tftsi_TrackArtist,tftsi_TrackTitle,tftsi_AlbumArtist,tftsi_AlbumLabel,tftsi_AlbumTitle,tftsi_GenreName) AGAINST (? IN BOOLEAN MODE)" : "")."
 			LIMIT {$options['offset']}, {$options['limit']}";
-		
+			
 		$params = new ParameterList();
 		if ($searchString != null) $params->add('s', '', $searchString);
 		
 		$queryResults = $this->doQuery($query, $params);
-		
-		foreach ($queryResults as $queryResult) {
-			$trackIds[] = $queryResult['t_TrackId'];
-		}
-		
-		$query = "SELECT t.t_TrackId
-			FROM Albums AS a
-			INNER JOIN Tracks as t ON t.t_AlbumID = a.a_AlbumId
-			".($searchString != '' ? "WHERE MATCH (a.a_Title, a.a_Artist, a.a_Label) AGAINST (? IN BOOLEAN MODE)" : "")."
-			ORDER BY t.t_{$options['sortcolumn']} ".($options['ascending'] ? "ASC" : "DESC")."
-			LIMIT {$options['offset']}, {$options['limit']}";
-		
-		$queryResults = $this->doQuery($query, $params);
-		
-		foreach ($queryResults as $queryResult) {
-			$trackIds[] = $queryResult['t_TrackId'];
-		}
-		
-		$query = "SELECT t.t_TrackId
-			FROM Albums AS a
-			INNER JOIN Tracks as t ON t.t_AlbumID = a.a_AlbumId
-			INNER JOIN Genres AS g ON a.a_GenreId = g.g_GenreId
-			".($searchString != '' ? "WHERE MATCH (g.g_Name) AGAINST (? IN BOOLEAN MODE)" : "")."
-			LIMIT {$options['offset']}, {$options['limit']}";
-		
-		$queryResults = $this->doQuery($query, $params);
-		
-		foreach ($queryResults as $queryResult) {
-			$trackIds[] = $queryResult['t_TrackId'];
-		}
-		
-		if (count($trackIds) == 0) {
-			return array();
-		}
-		
-		$query = "SELECT t.*, a.*, g.*
-			FROM Tracks AS t
-			LEFT JOIN Albums AS a ON t.t_AlbumID = a.a_AlbumID
-			LEFT JOIN Genres AS g ON a.a_GenreID = g.g_GenreID
-			WHERE t.t_TrackId IN (" . implode(",", $trackIds) . ") 
-			ORDER BY t.t_{$options['sortcolumn']} ".($options['ascending'] ? "ASC" : "DESC")."
-			LIMIT {$options['offset']}, {$options['limit']}";
-		
-		$queryResults = $this->doQuery($query);
 		
 		// Form the results
 		$results = array();
@@ -97,22 +48,41 @@ class MusicCatalogSearchManager extends Manager {
 			$g = new Genre();
 			
 			// Sort out the columns and remove the prefixes
-			$tCols = $aCols = $gCols = array();
-			foreach ($queryResult as $key => $value) {
-				if (strpos($key, $t->getTableColumnPrefix()) === 0) {
-					$tCols[str_replace($t->getTableColumnPrefix(), '', $key)] = $value;
-				} else if (strpos($key, $a->getTableColumnPrefix()) === 0) {
-					$aCols[str_replace($a->getTableColumnPrefix(), '', $key)] = $value;
-				} else if (strpos($key, $g->getTableColumnPrefix()) === 0) {
-					$gCols[str_replace($g->getTableColumnPrefix(), '', $key)] = $value;
-				}
-			}
+			$tCols['TrackId'] = $queryResult['tftsi_TrackId'];
+			$tCols['Artist'] = $queryResult['tftsi_TrackArtist'];
+			$tCols['Title'] = $queryResult['tftsi_TrackTitle'];
+			$aCols['Artist'] = $queryResult['tftsi_AlbumArtist'];
+			$aCols['Label'] = $queryResult['tftsi_AlbumLabel'];
+			$aCols['Title'] = $queryResult['tftsi_AlbumTitle'];
+			$gCols['GenreName'] = $queryResult['tftsi_GenreName'];
 			
 			$t = new Track($tCols);
 			$t->Album = new Album($aCols);
 			$t->Album->Genre = new Genre($gCols);
 
 			array_push($results, $t);
+		}
+		
+		if (count($results) == 0) {
+			//check to be sure TrackFullTextSearchInfo has values. If not, regenerate the table
+			$query = "SELECT COUNT(*) as c FROM TrackFullTextSearchInfo";
+			$queryResults = $this->doQuery($query);
+			if ($queryResults[0]['c'] == 0) {
+				$this->doQuery("
+					INSERT INTO TrackFullTextSearchInfo 
+						(tftsi_TrackId, tftsi_TrackArtist, tftsi_TrackTitle, 
+						tftsi_AlbumArtist, tftsi_AlbumLabel, tftsi_AlbumTitle,
+						tftsi_GenreName)
+					SELECT
+						t.t_TrackId, t.t_Artist, t.t_Title,
+						a.a_Artist, a.a_Label, a.a_Title,
+						g.g_Name
+					FROM
+						Tracks AS t
+						LEFT JOIN Albums as a ON t.t_AlbumId = a.a_AlbumId
+						LEFT JOIN Genres as g ON a.a_GenreId = g.g_GenreId
+				");
+			}
 		}
 		
 		return $results;
