@@ -73,6 +73,8 @@ CREATE TABLE `FloatingShowElement` (
   PRIMARY KEY (`fse_Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+ALTER TABLE  `FloatingShowElement` ADD INDEX (  `fse_ScheduledShowInstanceId` ) ;
+
 
 CREATE TABLE `Genres` (
   `g_GenreID` int(11) NOT NULL AUTO_INCREMENT,
