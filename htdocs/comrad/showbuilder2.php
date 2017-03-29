@@ -403,7 +403,7 @@
 						// Create the event details list element
 						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function() { if (e.target.tagName.toLowerCase() != 'a') return false }).hide();
 						for (var key in eventDetails) {
-							if (key != 'NoCallers' && key != 'WinnerName' && key != 'WinnerPhone' && key != 'WinnerEmail' && key != 'WinnerAddress' && key != 'IsListenerMember' && key != 'ShowName' && key != 'ShowDate' && key != 'Venue'&& key != 'DeliveryMethod') {
+							if (key != 'NoCallers' && key != 'WinnerName' && key != 'WinnerPhone' && key != 'WinnerEmail' && key != 'WinnerAddress' && key != 'IsListenerMember' && key != 'ShowName' && key != 'ShowDate' && key != 'Venue') {
 								eventDetailsList.append(
 									'<li><strong>' + key + ': </strong>' + eventDetails[key] + '</li>'
 								);
