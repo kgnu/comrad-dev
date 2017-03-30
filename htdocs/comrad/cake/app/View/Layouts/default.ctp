@@ -110,7 +110,7 @@
 			
 			<div class="row-fluid">
 				<div class="span12">
-					<?php echo $this->TB->flashes(array('closable' => true)); ?>
+					<?php if ($this->TB) echo $this->TB->flashes(array('closable' => true)); /* check for existence of TB, it does not exist on error page */?>
 				</div>
 			</div>
 			
