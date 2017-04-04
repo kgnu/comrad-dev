@@ -180,9 +180,11 @@ CREATE TABLE IF NOT EXISTS `TrackFullTextSearchInfo` (
   `tftsi_TrackId` int(11) NOT NULL,
   `tftsi_TrackArtist` text,
   `tftsi_TrackTitle` text NOT NULL,
+  `tftsi_AlbumId` int(11) NOT NULL,
   `tftsi_AlbumArtist` text,
   `tftsi_AlbumLabel` text,
   `tftsi_AlbumTitle` text NOT NULL,
+  `tftsi_AlbumArt` varchar(500) DEFAULT NULL,
   `tftsi_GenreName` text NOT NULL,
   PRIMARY KEY (`tftsi_TrackId`),
   FULLTEXT KEY `tftsi_FullText` (`tftsi_TrackArtist`,`tftsi_TrackTitle`,`tftsi_AlbumArtist`,`tftsi_AlbumLabel`,`tftsi_AlbumTitle`,`tftsi_GenreName`)

@@ -104,11 +104,13 @@ class Track extends AppModel {
 		
 		$query = "INSERT INTO TrackFullTextSearchInfo 
 			(tftsi_TrackId, tftsi_TrackArtist, tftsi_TrackTitle, 
-			tftsi_AlbumArtist, tftsi_AlbumLabel, tftsi_AlbumTitle,
+			tftsi_AlbumId, tftsi_AlbumArtist, tftsi_AlbumLabel, 
+			tftsi_AlbumTitle, tftsi_AlbumArt,
 			tftsi_GenreName)
 		SELECT
 			t.t_TrackId, t.t_Artist, t.t_Title,
-			a.a_Artist, a.a_Label, a.a_Title,
+			a.a_AlbumId, a.a_Artist, a.a_Label, 
+			a.a_Title, a.a_AlbumArt,
 			g.g_Name
 		FROM
 			Tracks AS t

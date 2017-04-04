@@ -48,12 +48,15 @@ class MusicCatalogSearchManager extends Manager {
 			$g = new Genre();
 			
 			// Sort out the columns and remove the prefixes
-			$tCols['TrackId'] = $queryResult['tftsi_TrackId'];
+			$tCols['TrackID'] = $queryResult['tftsi_TrackId'];
+			$tCols['AlbumID'] = $queryResult['tftsi_AlbumId'];
 			$tCols['Artist'] = $queryResult['tftsi_TrackArtist'];
 			$tCols['Title'] = $queryResult['tftsi_TrackTitle'];
+			$aCols['AlbumID'] = $queryResult['tftsi_AlbumId'];
 			$aCols['Artist'] = $queryResult['tftsi_AlbumArtist'];
 			$aCols['Label'] = $queryResult['tftsi_AlbumLabel'];
 			$aCols['Title'] = $queryResult['tftsi_AlbumTitle'];
+			$aCols['AlbumArt'] = $queryResult['tftsi_AlbumArt'];
 			$gCols['GenreName'] = $queryResult['tftsi_GenreName'];
 			
 			$t = new Track($tCols);
@@ -71,11 +74,13 @@ class MusicCatalogSearchManager extends Manager {
 				$this->doQuery("
 					INSERT INTO TrackFullTextSearchInfo 
 						(tftsi_TrackId, tftsi_TrackArtist, tftsi_TrackTitle, 
-						tftsi_AlbumArtist, tftsi_AlbumLabel, tftsi_AlbumTitle,
+						tftsi_AlbumId, tftsi_AlbumArtist, tftsi_AlbumLabel, 
+						tftsi_AlbumTitle, tftsi_AlbumArt,
 						tftsi_GenreName)
 					SELECT
 						t.t_TrackId, t.t_Artist, t.t_Title,
-						a.a_Artist, a.a_Label, a.a_Title,
+						a.a_AlbumId, a.a_Artist, a.a_Label, 
+						a.a_Title, a.a_AlbumArt,
 						g.g_Name
 					FROM
 						Tracks AS t
