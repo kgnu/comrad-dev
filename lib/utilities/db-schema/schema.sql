@@ -196,3 +196,9 @@ CREATE TABLE `Venue` (
   `Location` text NOT NULL,
   PRIMARY KEY (`UID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Structure for view `SoundExchangePlaylist`
+--
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `SoundExchangePlaylist` AS select `e`.`e_Title` AS `ShowName`,`h`.`Name` AS `Host`,`FloatingShowElement`.`fse_Executed` AS `StartDateTime`,`FloatingShowElement`.`fse_TrackId` AS `fse_TrackId`,`t`.`t_Title` AS `TrackTitle`,`t`.`t_Duration` AS `Duration`,`t`.`t_Artist` AS `TrackArtist`,`a`.`a_Artist` AS `Artist`,`a`.`a_AlbumID` AS `AlbumId`,`a`.`a_Title` AS `AlbumTitle`,`a`.`a_Label` AS `Label`,`a`.`a_AddDate` AS `AddDate`,`g`.`g_Name` AS `Genre` from (((((((`FloatingShowElement` join `Tracks` `t` on((`t`.`t_TrackID` = `FloatingShowElement`.`fse_TrackId`))) join `Albums` `a` on((`a`.`a_AlbumID` = `t`.`t_AlbumID`))) left join `Genres` `g` on((`g`.`g_GenreID` = `a`.`a_GenreID`))) join `ScheduledEventInstance` `sei` on((`sei`.`sei_Id` = `FloatingShowElement`.`fse_ScheduledShowInstanceId`))) join `ScheduledEvent` `se` on((`se`.`se_Id` = `sei`.`sei_ScheduledEventId`))) join `Event` `e` on((`e`.`e_Id` = `se`.`se_EventId`))) left join `Host` `h` on((`h`.`UID` = `sei`.`sei_HostId`))) where (`FloatingShowElement`.`fse_DISCRIMINATOR` = 'TrackPlay');
