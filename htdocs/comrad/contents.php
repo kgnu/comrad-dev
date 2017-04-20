@@ -96,6 +96,13 @@
 		</div>
 		
 		<div class="column">
+		<a href="soundexchangereports.php">
+		<h1>Sound Exchange Reports</h1>
+		<p>Generate Sound Exchange reports</p>
+		</a>
+		</div>
+		
+		<div class="column">
 		<a href="about.php">
 		<h1>Help</h1>
 		<p>Get help with system features</p>
