@@ -89,9 +89,9 @@
 		</div>
 		
 		<div class="column">
-		<a href="soundexchangereport.php">
-		<h1>Sound Exchange Reporting</h1>
-		<p>Generate Sound Exchange reports</p>
+		<a href="charting.php">
+		<h1>Charting</h1>
+		<p>Generate Charting spreadsheets</p>
 		</a>
 		</div>
 		

@@ -33,17 +33,17 @@
 		$objPHPExcel = new PHPExcel();
 		// Set document properties
 		if (!empty($dateFrom) && !empty($dateTo)) {
-			$title = "Comrad Sound Exchange Report " . date('m-d-Y', strtotime($dateFrom)) . ' to ' . date('m-d-Y', strtotime($dateTo));
+			$title = "Comrad Charting Report " . date('m-d-Y', strtotime($dateFrom)) . ' to ' . date('m-d-Y', strtotime($dateTo));
 		} else if (!empty($dateFrom)) {
-			$title = "Comrad Sound Exchange Report " . date('m-d-Y', strtotime($dateFrom)) . " to " . date('m-d-Y');
+			$title = "Comrad Charting Report " . date('m-d-Y', strtotime($dateFrom)) . " to " . date('m-d-Y');
 		} else {
-			$title = "Comrad Sound Exchange Report before " . date('m-d-Y', strtotime($dateTo));
+			$title = "Comrad Charting Report before " . date('m-d-Y', strtotime($dateTo));
 		}
 		$objPHPExcel->getProperties()->setCreator("Comrad")
 									 ->setLastModifiedBy("Comrad")
 									 ->setTitle($title)
 									 ->setSubject($title)
-									 ->setDescription("Comrad Sound Exchange Report");
+									 ->setDescription("Comrad Charting Report");
 		
 		$genre = NULL;
 		$activeSheet = 0;
@@ -87,7 +87,7 @@
 		$objPHPExcel->setActiveSheetIndex(0);
 		// Redirect output to a client’s web browser (Excel2007)
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment;filename="soundexchange_' . 
+		header('Content-Disposition: attachment;filename="charting_' . 
 				(!empty($dateFrom) ? str_replace('/', '-', $dateFrom) . '_' : '') . 
 				(!empty($dateTo) ? str_replace('/', '-', $dateTo) : date('m-d-Y')) . 
 				'.xlsx"');
@@ -133,7 +133,7 @@
 <?php $head->write();                                                      # ?>
 <?php ###################################################################### ?>
 
-	<title>comrad: <?php echo $init->getProp('Organization_Name'); ?> &bull; Sound Exchange Report</title>
+	<title>comrad: <?php echo $init->getProp('Organization_Name'); ?> &bull; Charting</title>
 
 	<link type="text/css" rel="stylesheet" href="css/jquery/jgrowl/jquery.jgrowl.css" />
 	<style type="text/css">
@@ -180,14 +180,14 @@
 <?php $body->write();                                                      # ?>
 <?php ###################################################################### ?>
 
-	<h4>Submit Ticket Request</h4>
+	<h4>Charting</h4>
 	
 	<fieldset>
 		<p>
 			Please fill out at least one date field. If you leave the "From" field blank, the report will go back to the oldest track plays. If you leave the "To" field blank, the report will go up to the current track plays.
 		</p>
 		
-		<form id="TicketRequestForm" action="soundexchangereport.php" method="post">
+		<form id="ChartingForm" action="charting.php" method="post">
 			
 			<div class="field">
 				<label for="name">From</label>
