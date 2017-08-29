@@ -1,10 +1,13 @@
 // Documentation at http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html
 function searchITunes(params, callback) {
 	$.ajax({
-		method: 'GET',
-		url: 'http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch',
-		dataType: 'jsonp',
-		data: params,
+		type: 'POST',
+		url: 'ajax/itunesproxy.php',
+		dataType: 'json',
+		data: {
+			action: 'wsSearch',
+			parameters: params
+		},
 		success: function(response) {
 			var results = [];
 			
@@ -46,10 +49,13 @@ function searchITunes(params, callback) {
 
 function getITunesAlbumInfo(iTunesAlbumId, callback) {
     $.ajax({
-        method: 'GET',
-        url: 'http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsLookup',
-        dataType: 'jsonp',
-		data: { id: iTunesAlbumId },
+		type: 'POST',
+		url: 'ajax/itunesproxy.php',
+        dataType: 'json',
+		data: { 
+			action: 'wsLookup',
+			parameters: { id: iTunesAlbumId }
+		},
 		success: function(response) {
 		    if (response.results.length > 0) {
     			if (callback) callback(response.results[0]);

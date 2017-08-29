@@ -155,7 +155,7 @@
 	<script type="text/javascript" src="js/date/format/date.format.js"></script>
 	
 	<script type="text/javascript" src="js/ajax/ajaxdbinterface.js"></script>
-	<script type="text/javascript" src="js/ajax/itunessearch.js"></script>
+	<script type="text/javascript" src="js/ajax/itunessearch.js?v=2"></script>
 	<script type="text/javascript" src="js/ajax/searchmusiccatalog.js"></script>
 	<script type="text/javascript" src="js/ajax/findtracks.js"></script>
 	
