@@ -135,6 +135,7 @@
 					//trigger function to send emails
 					$.ajax({
 						url: 'ajax/sendgiveawayemails.php',
+						cache: false,
 						method: 'GET',
 						data: {
 							scheduledEventId: '<?php echo $instance->ScheduledEventId; ?>',
@@ -145,9 +146,10 @@
 							winnerEmail: $("[name=ScheduledTicketGiveawayEventInstanceWinnerEmail]").val(),
 							isListenerMember: $("[name=ScheduledTicketGiveawayEventInstanceIsListenerMember]").is(":checked") ? 1 : 0,
 							deliveryMethod: $("[name=ScheduledTicketGiveawayEventInstanceDeliveryMethod]:checked").val()
+						}, success: function() {
+							window.close();
 						}
 					});
-					window.close();
 				}
 				endLoading();
 			});
