@@ -63,6 +63,6 @@
 	$emailBody = str_replace('[ShowDate]', date('n/j/y', $event->ShowDate), $emailBody);
 	$emailBody = str_replace('[Venue]', $event->Venue, $emailBody);
 	
-	mail('tickets@kgnu.org', 'Congratulations! You Won a KGNU Ticket Giveaway', $emailBody, $headers);
+	mail($_GET['winnerEmail'], 'Congratulations! You Won a KGNU Ticket Giveaway', $emailBody, $headers);
 	
 ?>
