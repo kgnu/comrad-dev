@@ -42,7 +42,6 @@
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
 	
 	// Additional headers
-	$headers .= 'To: ' . $_GET['winnerName'] . ' <' . $_GET['winnerEmail'] . '>' . "\n";
 	$headers .= 'From: KGNU Tickets <tickets@kgnu.org>' . "\n";
 	switch ($event->TicketType) {
 		case 'Paper Ticket':
@@ -63,6 +62,6 @@
 	$emailBody = str_replace('[ShowDate]', date('n/j/y', $event->ShowDate), $emailBody);
 	$emailBody = str_replace('[Venue]', $event->Venue, $emailBody);
 	
-	mail($_GET['winnerEmail'], 'Congratulations! You Won a KGNU Ticket Giveaway', $emailBody, $headers);
+	mail($_GET['winnerName'] . ' <' . $_GET['winnerEmail'] . '>', 'Congratulations! You Won a KGNU Ticket Giveaway', $emailBody, $headers);
 	
 ?>
