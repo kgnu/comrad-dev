@@ -43,6 +43,7 @@
 	
 	// Additional headers
 	$headers .= 'From: KGNU Tickets <tickets@kgnu.org>' . "\n";
+	$headers .= 'Bcc: KGNU Tickets <tickets@kgnu.org>' .  "\n";
 	switch ($event->TicketType) {
 		case 'Paper Ticket':
 			$emailBody = file_get_contents(str_replace('htdocs/comrad/ajax', 'lib/resources/WinnerPaperTicketEmail.html', dirname(__FILE__)));
