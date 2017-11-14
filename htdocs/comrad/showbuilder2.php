@@ -163,6 +163,11 @@
 		var isRefreshing = false;
 		
 		$(function() {
+			//register global ajax handler
+			$( document ).ajaxError(function() {
+				alert('An unexpected AJAX error has occurred. Please reload the page to be sure all data was saved properly.');
+			});
+			
 			$('#Track_albumMissingInfo').dialog({
 				autoOpen: false,
 				modal: true,

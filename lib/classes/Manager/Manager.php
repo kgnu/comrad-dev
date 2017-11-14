@@ -66,6 +66,8 @@ class Manager {
 			$queryResults[] = $c;
 		}
 		
+		$stmt->close();
+		
 		return $queryResults;
 	}
 	
