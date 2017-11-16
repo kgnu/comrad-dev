@@ -161,11 +161,20 @@
 	
 	<script type="text/javascript">
 		var isRefreshing = false;
+		var ajaxErrorHappened = false;
 		
 		$(function() {
 			//register global ajax handler
-			$( document ).ajaxError(function() {
-				alert('An unexpected AJAX error has occurred. Please reload the page to be sure all data was saved properly.');
+			$( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
+				if (!ajaxErrorHappened) {
+					alert('An unexpected AJAX error has occurred. Please reload the page to be sure all data was saved properly.');
+					ajaxErrorHappened = true;
+				}
+				console.log('ajax error:');
+				console.log(event);
+				console.log(jqxhr);
+				console.log(settings);
+				console.log(thrownError);
 			});
 			
 			$('#Track_albumMissingInfo').dialog({
