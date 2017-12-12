@@ -1657,6 +1657,11 @@
 							}
 							
 							function Track_submit_addTrackAndTrackPlay(track, toSchedule, callback) {
+								if (track.Attributes.TrackID) {
+									Track_submit_trackPlay(track.Attributes.TrackID, toSchedule, callback);
+									return;
+								}
+								
 								var albumSearchAttributes = {
 									Title: track.Attributes.Album.Attributes.Title
 								};
