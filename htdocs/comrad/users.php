@@ -230,7 +230,7 @@
 						<?php $roles = DB::getInstance('MySql')->find(new Role()); ?>
 						<select name="role">
 						<?php foreach ($roles as $role): ?>
-							<option value="<?= $role->Id ?>"<? if ($user && $user->RoleId == $role->Id) echo ' selected="selected"' ?>><?= $role->Name ?></option>
+							<option value="<?= $role->Id ?>"<?php if ($user && $user->RoleId == $role->Id) echo ' selected="selected"' ?>><?= $role->Name ?></option>
 						<?php endforeach; ?>
 						</select>
 					</td>
