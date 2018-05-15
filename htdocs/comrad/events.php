@@ -345,7 +345,7 @@
 								<?php break;
 								
 								case 'String': ?>
-									<textarea name="<?php echo $eventType.$columnName ?>" id="<?php echo $eventType.$columnName ?>" class="inputField tinymce<?php if($titleColumnName == $columnName) echo ' titleColumn' ?>" <?php if (isset($column['defaultvalue'])) echo 'defaultvalue="' . str_replace('"', '\"', $column['defaultvalue']) . '"'; ?>></textarea>
+									<textarea name="<?php echo $eventType.$columnName ?>" id="<?php echo $eventType.$columnName ?>" class="inputField tinymce<?php if($titleColumnName == $columnName) echo ' titleColumn' ?>" <?php if (isset($column['defaultvalue'])) echo 'defaultvalue="' . str_replace('"', '\"', htmlentities(str_replace("\r\n", "", $column['defaultvalue']))) . '"'; ?>></textarea>
 								<?php break;
 								
 								case 'ShortString':
