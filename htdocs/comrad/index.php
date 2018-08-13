@@ -46,8 +46,8 @@
 		//  right, bail...
 		if ((array_key_exists('SignInAttempts', $_SESSION) ? $_SESSION['SignInAttempts'] : 0) > $init->getProp('Admin_SignInAttempts'))
 		{
-			$reCaptcha = recaptcha_check_answer($init->getProp('ReCaptcha_PrivateKey'), $_SERVER['REMOTE_ADDR'], $uri->getKey('recaptcha_challenge_field'), $uri->getKey('recaptcha_response_field'));
-			if (!$reCaptcha->is_valid)
+			$reCaptchaValid = recaptcha_check_answer($init->getProp('ReCaptcha_PrivateKey'), $_SERVER['REMOTE_ADDR'], $uri->getKey('g-recaptcha-response'));
+			if ($reCaptchaValid)
 			{
 				$init->log('Attempted sign in for user \'' . $uri->getKey('username') . '\', (time ' . $_SESSION['SignInAttempts'] . ')');
 				$uri->removeKey('password');
@@ -145,7 +145,7 @@
 	<?php } elseif ($uri->getKey('result') == '1') { ?>
 		<div id="notice" class="errorBox" style="margin-left: 0px;">
 		<div class="content">
-		The <b>security code</b> you have entered was <b>invalid</b>. Please try again with the new security code provided.
+		Please fill out the Recaptcha.
 		</div>
 		</div>
 
@@ -167,7 +167,7 @@
 
 	<?php if ((array_key_exists('SignInAttempts', $_SESSION) ? $_SESSION['SignInAttempts'] : 0) >= $init->getProp('Admin_SignInAttempts')) { ?>
 		<tr>
-		<td width="120"><b>Security:</b></td>
+		<td width="120"><b>Recaptcha:</b></td>
 		<td width="400">
 			<script>var RecaptchaOptions = { theme: 'white' };</script>
 			<?php echo recaptcha_get_html($init->getProp('ReCaptcha_PublicKey')); ?>
