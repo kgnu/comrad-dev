@@ -1,9 +1,9 @@
 <?php
 
 	require_once('initialize.php');
-	
+
 	$seiid = $uri->getKey('seiid');
-	
+
 	if (!$seiid) {
 		$seid = $uri->getKey('seid');
 		$sdt = $uri->getKey('sdt');
@@ -12,7 +12,7 @@
 			$possibleScheduledShowInstances = DB::getInstance('MySql')->find(new ScheduledShowInstance(array(
 				'ScheduledEventId' => $seid
 			)), $count, array('limit' => false));
-			
+
 			// See if one of them falls on the day specified by $sdt
 			$dateString = date('dmY', $sdt);
 			foreach ($possibleScheduledShowInstances as $possibleScheduledShowInstance) {
@@ -21,13 +21,13 @@
 					break;
 				}
 			}
-			
+
 			// If we did not find a matching Scheduled Event Instance, create a new one.
 			if (!$seiid) {
 				$se = DB::getInstance('MySql')->find(new ScheduledEvent(array(
 					'Id' => $seid
 				)));
-				
+
 				if (count($se) > 0) {
 					$se = $se[0];
 					$se->fetchForeignKeyItem('TimeInfo');
@@ -38,7 +38,7 @@
 					)));
 				}
 			}
-			
+
 			// If we now have a ScheduledEventInstance, redirect to that.  Otherwise, bail.
 			if ($seiid) {
 				$jump_uri = new UriBuilder('showbuilder2.php?seiid='.$seiid);
@@ -50,20 +50,20 @@
 			exit();
 		}
 	}
-	
+
 	// TODO: Replace with 'get' method
 	$results = DB::getInstance('MySql')->find(new ScheduledShowInstance(array('Id' => $seiid)));
 	$scheduledShowInstance = $results[0];
-	
+
 	if (!$scheduledShowInstance) {
 		echo 'Could not find Scheduled Event Instance with id: '.$seiid;
 		exit();
 	}
-	
+
 	// TODO: Add a hydrate function to AbstractDBObject class that automatically (recursively?) fetches all ForeignKeyItem types
 	$scheduledShowInstance->fetchForeignKeyItem('ScheduledEvent');
 	$scheduledShowInstance->ScheduledEvent->fetchForeignKeyItem('Event');
-	
+
 ?>
 <?php ###################################################################### ?>
 <?php $head = new HeadTemplateSection();								   # ?>
@@ -78,48 +78,48 @@
 	<!-- Scripting Buttons:	 http://www.filamentgroup.com/lab/styling_buttons_and_toolbars_with_the_jquery_ui_css_framework/ -->
 
 	<link type="text/css" rel="stylesheet" href="css/jquery/autocomplete/jquery.autocomplete.css" />
-	
+
 	<style type="text/css">
 		/* html body { font-size: 10px } */
-		
+
 		.dialog { display: none }
-		
+
 		div.field { padding-top: 3px }
 		div.field label { display: inline-block; width: 90px; text-align: right; float: left; margin-top: 4px }
 		div.field div.input { margin-left: 90px; margin-right: 20px }
 		div.field input, div.field select { text-align: left; margin-left: 6px; width: 100% }
 		div.field input[type="checkbox"] { width: auto }
-		
+
 		#left { float: left; width: 49%; height: 70px }
 		#right { float: right; width: 49%; height: 700px }
-		
+
 		#scratchpad { border: 1px solid #ccc }
 		#schedule { border: 1px solid #ccc }
 		#addevents { clear: both; padding-top: 10px; font-size: 10px }
-		
+
 		#Track_edit_Album, #Track_edit_Track { width: 50% }
 		#Track_edit_Track { float: right }
 		#Track_edit_Album .album_fields { display: none }
 		#Track_edit h4 { margin: 0px 0px 10px 0px; text-align: center }
-		
+
 		#Track_search_results { height: 250px; overflow: auto; border: 1px solid #ccc; margin-top: 10px;}
 		#Track_search_results ul { padding: 0px; margin: 0px }
 		#Track_search_results ul li { list-style-type: none; height: 80px; margin: 0px; background-color: #fff; border-bottom: 1px solid #ddd }
 		#Track_search_results ul li img.albumArt { float: left; width: 60px; height: 60px; margin: 10px }
 		#Track_search_results ul li div.trackDetails { margin-left: 80px; padding-top: 10px }
 		#Track_search_results ul li div.trackDetails span { display: block }
-		
+
 		.Track_not_found { background-color: #2694e8; color: #fff; padding: 10px; font-size: 1.2em }
-		
+
 		span.trackName { font-size: 1.2em; font-weight: bold }
 		span.artistName { font-size: 0.9em; font-style: italic; color: #333 }
-		
+
 		#scratchpad_list, #schedule_list { padding: 10px 15px 15px 15px; margin: 0px }
 		#scratchpad_list { height: 275px; overflow: auto }
 		#scratchpad_list li, #schedule_list li { list-style: none; margin: 2px; padding: 2px 5px; border: 0px; cursor: pointer }
-		
+
 		div.sorthandle { height: 12px; width: 18px; background: #fff; opacity: 0.5; display: inline-block; margin-right: 5px; cursor: move }
-		
+
 		li.Alert { background-color: darkred; border-color: darkred; color: white }
 		li.Announcement { background-color: green; border-color: green; color: white }
 		li.EASTest { background-color: #754C24; border-color: #754C24; color: white }
@@ -131,38 +131,39 @@
 		li.TrackPlay { background-color: #2694E8; border-color: #2694E8; color: white }
 		li.VoiceBreak { background-color: #BBBBBB; border-color: #BBBBBB; color: white }
 		li.DJComment { background-color: #BBBBBB; border-color: #BBBBBB; color: white }
-		
+		#psa-tab { display: none; }
+
 		#Track_albumMissingInfo_Genre, #Track_albumMissingInfo_Label { margin: 20px 0px }
 		#Track_albumMissingInfo_Genre div.field, #Track_albumMissingInfo_Label div.field { margin: 5px 0px }
 		.iTunesGenre, .iTunesCopyright { font-style: italic }
-		
+
 		#scratchpad_list li ul.eventDetails, #schedule_list li ul.eventDetails { background: rgba(255, 255, 255, 0.5); color: #000; margin: 0px; padding: 0px; cursor: auto; }
 		#scratchpad_list li ul.eventDetails li, #schedule_list li ul.eventDetails li { cursor: auto; }
 	</style>
-	
+
 	<script type="text/javascript" src="js/jquery/ajaxqueue/jquery.ajaxqueue.js"></script>
 	<script type="text/javascript" src="js/jquery/bgiframe/jquery.bgiframe.js"></script>
 	<script type="text/javascript" src="js/jquery/dimensions/jquery.dimensions.js"></script>
 	<script type="text/javascript" src="js/jquery/thickbox/thickbox.js"></script>
 	<script type="text/javascript" src="js/jquery/autocomplete/jquery.autocomplete.js"></script>
-	
+
 	<script type="text/javascript" src="js/jquery/json/jquery.json.js"></script>
 	<script type="text/javascript" src="js/jquery/qtip/jquery.qtip.js"></script>
-	
+
 	<script type="text/javascript" src="js/jquery/tinymce/tinymce/jquery.tinymce.js"></script>
 	<script type="text/javascript" src="js/tinymce/kgnutinymce.js"></script>
-	
+
 	<script type="text/javascript" src="js/date/format/date.format.js"></script>
-	
-	<script type="text/javascript" src="js/ajax/ajaxdbinterface.js"></script>
+
+	<script type="text/javascript" src="js/ajax/ajaxdbinterface.js?v=2"></script>
 	<script type="text/javascript" src="js/ajax/itunessearch.js?v=2"></script>
 	<script type="text/javascript" src="js/ajax/searchmusiccatalog.js"></script>
 	<script type="text/javascript" src="js/ajax/findtracks.js"></script>
-	
+
 	<script type="text/javascript">
 		var isRefreshing = false;
 		var ajaxErrorHappened = false;
-		
+
 		$(function() {
 			//register global ajax handler
 			$( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
@@ -176,7 +177,7 @@
 				console.log(settings);
 				console.log(thrownError);
 			});
-			
+
 			$('#Track_albumMissingInfo').dialog({
 				autoOpen: false,
 				modal: true,
@@ -186,10 +187,10 @@
 				position: 'top',
 				title: 'Additional Information Needed'
 			});
-			
+
 			// Initialize the tabs
 			$(".tabs").tabs();
-			
+
 			// Initialize the sortability of the scratchpad and schedule
 			$('#scratchpad_list, #schedule_list').sortable({
 			    // axis: 'y',
@@ -205,7 +206,7 @@
 					updateFloatingEventTimes(function() { endLoading(); });
 				}
 			});
-			
+
 			// Initialize host select change listener
 			$('#host_select').change(function(eventObject) {
 				startLoading();
@@ -213,33 +214,33 @@
 					endLoading();
 				});
 			});
-			
+
 			// Init TinyMCE fields
 			initializeKGNUTinyMCEForSelector($('.tabs .tinymce'));
-			
+
 			Track_show_search();
-            
+
             startLoading();
 			refreshScratchpadAndSchedule(function() { endLoading(); });
 		});
-		
+
 		function startLoading() {
 		    $('.disableWhenLoading').attr('disabled', 'disabled');
 		    $('#scratchpad_list, #schedule_list').sortable('option', 'disabled', true);
 		}
-		
+
 		function endLoading() {
 		    $('.disableWhenLoading').removeAttr('disabled');
 		    $('#scratchpad_list, #schedule_list').sortable('option', 'disabled', false);
 		}
-		
+
 		function getReadableEventType(eventType) {
 			var readableEventTypes = {
 				'LegalId': 'Legal Id',
 				'TicketGiveaway': 'Giveaway',
 				'TrackPlay': 'Track'
 			};
-			
+
 			return (readableEventTypes[eventType] ? readableEventTypes[eventType] : eventType);
 		}
 	</script>
@@ -251,7 +252,10 @@
 	<div>
 		<table style="width: 100%; white-space: nowrap">
 			<tr>
-				<td style="width: 25%"><h4><?php echo $scheduledShowInstance->ScheduledEvent->Event->Title ?></h4></td>
+				<td style="width: 25%">
+					<h4><?php echo $scheduledShowInstance->ScheduledEvent->Event->Title ?></h4>
+					<a onclick="return showEditShowDescriptionDialog();" href="#" style="font-size: 0.9em">Edit today's show description</a>
+				</td>
 				<td style="width: 25%"><select id="host_select" class="disableWhenLoading">
 					<option value="0">No Host</option>
 					<?php $hosts = DB::getInstance('MySql')->find(new Host(), $count, array('limit' => false, 'sortcolumn' => 'Name')); ?>
@@ -262,7 +266,7 @@
 				<td style="width: 25%"><?php if (substr($scheduledShowInstance->ScheduledEvent->Event->URL, 0, 4) != 'http') echo 'kgnu.org/' . $scheduledShowInstance->ScheduledEvent->Event->URL; ?></td>
 				<td style="width: 25%; text-align: right">
 					<h5><?php echo date('l, F jS, Y', $scheduledShowInstance->StartDateTime) ?> from <?php echo date('g:i a', $scheduledShowInstance->StartDateTime) ?> to <?php echo date('g:i a', $scheduledShowInstance->StartDateTime + $scheduledShowInstance->Duration * 60) ?></h5>
-					<a onclick="return showEditShowDescriptionDialog();" href="#" style="font-size: 0.6em">Edit today's show description</a>
+					<!-- <a onclick="return showEditShowDescriptionDialog();" href="#" style="font-size: 1.0em">Edit today's show description</a> -->
 				</td>
 			<tr>
 		</table>
@@ -276,25 +280,25 @@
 				<script type="text/javascript">
 					var scratchpadContents = new Array();
 					var scheduleContents = new Array();
-					
+
 					function updateFloatingEventTimes(callback) {
-						
+
 						var listsToUpdate = ['#schedule_list', '#scratchpad_list'];
-						
+
 						for (var l = 0; l < listsToUpdate.length; l++) {
 							var selector = listsToUpdate[l];
 							var list = $(selector).sortable('toArray');
-							
+
 							if (list.length > 1) {
 								var split = list[0].split(':');
 								var type = split[0];
 								var moveToIndex = null;
-							
+
 								if (type != 'FloatingShowElement' && type != 'FloatingShowEvent') {
 									split = split[1].split('-');
 									var start = split[0];
 									var end = split[1];
-								
+
 									for (var i = 1; i < list.length; i++) {
 										var iSplit = list[i].split(':');
 										var iType = iSplit[0];
@@ -302,23 +306,23 @@
 											iSplit = iSplit[1].split('-');
 											var iStart = iSplit[0];
 											var iEnd = iSplit[1];
-										
+
 											if (selector == '#schedule_list' && start < iStart ||
 												selector == '#scratchpad_list' && start > iStart) {
 												moveToIndex = i;
 											}
 										}
 									}
-								
+
 									if (moveToIndex !== null) {
 										var itemToMove = list.splice(0, 1)[0];
 										list.splice(moveToIndex, 0, itemToMove);
 									}
 								}
 							}
-						
+
 							if (selector == '#schedule_list') list = list.reverse();
-						
+
 							var split, type, end, floatingShowElements = new Array();
 							var start = parseInt($('#showStartTime').val());
 							var updates = {};
@@ -346,7 +350,7 @@
 	    							start = parseInt(split[0]);
 								}
 							}
-					
+
 							// Update all of the FloatingShowElements
 							var success = true, startdatetime;
 							var queries = [];
@@ -359,7 +363,7 @@
 									attributes.StartDateTime = startdatetime;
 									attributes.Executed = 0;
 								}
-								
+
 								queries.push({
 									method: 'update',
 									params: $.toJSON({
@@ -369,17 +373,17 @@
 									})
 								});
 							}
-							
+
 							dbCommandMultiple('update', queries, function(response) {
 								if (!response || response.error) {
 									success = false;
 								}
 							});
 						}
-					
+
 						refreshScratchpadAndSchedule(callback);
 					}
-					
+
 					function renderEventInstanceListElement(eventInstance) {
 						var instanceId = eventInstance.Attributes.Id;
 						var scheduledEventId = eventInstance.Attributes.ScheduledEvent.Attributes.Id;
@@ -390,10 +394,10 @@
 						var endDateTime = new Date(startDateTime.getTime() + duration * 60 * 1000);
 						var executedDateTime;
 						if (eventInstance.Attributes.Executed > 0) executedDateTime = new Date(eventInstance.Attributes.Executed * 1000);
-					
+
 						// Collect the event details
 						var eventDetails = {};
-					
+
 						// ... from the Event first
 						for (var key in eventInstance.Attributes.ScheduledEvent.Attributes.Event.Attributes) {
 							// TODO: Make a more maintainable attribute filtering system
@@ -403,7 +407,7 @@
 								if (eventInstance.Attributes.ScheduledEvent.Attributes.Event.Attributes[key] != null) eventDetails[key] = eventInstance.Attributes.ScheduledEvent.Attributes.Event.Attributes[key];
 							}
 						}
-					
+
 						// ... then from the Scheduled Event Instance
 						for (var key in eventInstance.Attributes) {
 							// TODO: Make a more maintainable attribute filtering system
@@ -413,9 +417,11 @@
 								if (eventInstance.Attributes[key] != null) eventDetails[key] = eventInstance.Attributes[key];
 							}
 						}
-					
+
 						// Create the event details list element
-						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function() { if (e.target.tagName.toLowerCase() != 'a') return false }).hide();
+						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function(e) { 
+              e.stopPropagation(); //don't collapse the element when clicking into the details, in case the user is clicking a link or wants to highlight something
+            }).hide();
 						for (var key in eventDetails) {
 							if (key != 'NoCallers' && key != 'WinnerName' && key != 'WinnerPhone' && key != 'WinnerEmail' && key != 'WinnerAddress' && key != 'IsListenerMember' && key != 'ShowName' && key != 'ShowDate' && key != 'Venue') {
 								eventDetailsList.append(
@@ -423,15 +429,15 @@
 								);
 							}
 						}
-						
+
 						var elementId = type + ':' + startDateTime.getTime() / 1000 + '-' + endDateTime.getTime() / 1000;
-						
+
 						if (type == 'TicketGiveaway') {
 							var giveawayLi = $('<li><button ' +
 													(!instanceId ? ' disabled="disabled"' : 'onclick="window.open(\'giveaway.php?seiid=' + instanceId + '\', \'giveaway\', \'width=550, height=650\');"') +
 													' class="WinnerInfo">Enter/View Winner Information</button></li>');
 							eventDetailsList.append(giveawayLi);
-							
+
 							if (!instanceId) {
 								var scheduledEventInstance = {
 									'Type': 'Scheduled' + type + 'Instance',
@@ -441,7 +447,7 @@
 										'ScheduledEventId': scheduledEventId
 									}
 								};
-								
+
 								dbCommand('save', scheduledEventInstance.Type, 'MySql', scheduledEventInstance.Attributes, {}, function(response) {
 									if (response && !response.error) {
 										scheduledEventInstance.Attributes.Id = response.Id;
@@ -452,7 +458,7 @@
 								});
 							}
 						}
-					
+
 						// Create the event element
 						var element = $('<li class="' + type + ' ui-corner-all"></li>').append(
 						    (!executedDateTime || (executedDateTime && type == 'LegalId') || true ? startDateTime.format('h:MM tt') + ' - ' : '')
@@ -469,7 +475,7 @@
 						}).attr(
 							'id', elementId
 						);
-						
+
 						if (executedDateTime) {
 							element.prepend(
 								$('<button class="disableWhenLoading" style="float: right">&lt;-</button>').click(function() {
@@ -493,9 +499,9 @@
 										alert('This operation is not available before the show starts.');
 										return false;
 									}
-									
+
 									var listElement = $(this).parent();
-									
+
 									// If it's not an instance, create a new instance
 									if (!instanceId && !$(this).data("scheduledEventInstance")) {
 										var scheduledEventInstance = {
@@ -506,7 +512,7 @@
 												'ScheduledEventId': scheduledEventId
 											}
 										};
-									    
+
 									    startLoading();
 										dbCommand('save', scheduledEventInstance.Type, 'MySql', scheduledEventInstance.Attributes, {}, function(response) {
 											if (response && !response.error) {
@@ -535,15 +541,15 @@
 								})
 							);
 						}
-						
+
 						// Don't allow sorting of prescheduled events for now
 						// element.prepend(
 						// 	$('<div class="sorthandle ui-corner-all"></div>').click(function() { return false })
 						// );
-						
+
 						return element;
 					}
-					
+
 					function renderFloatingShowEventListElement(floatingShowEvent) {
 						var floatingShowEventId = floatingShowEvent.Attributes.Id;
 						var type = floatingShowEvent.Attributes.Event.Type.substr(0, floatingShowEvent.Attributes.Event.Type.length - 5);
@@ -551,10 +557,10 @@
 						var startDateTime = new Date(floatingShowEvent.Attributes.StartDateTime * 1000);
 						var executedDateTime;
 						if (floatingShowEvent.Attributes.Executed > 0) executedDateTime = new Date(floatingShowEvent.Attributes.Executed * 1000);
-						
+
 						// Collect the event details
 						var eventDetails = {};
-					
+
 						// ... from the Event first
 						for (var key in floatingShowEvent.Attributes.Event.Attributes) {
 							// TODO: Make a more maintainable template or attribute filtering system
@@ -564,15 +570,17 @@
 								if (floatingShowEvent.Attributes.Event.Attributes[key] != null) eventDetails[key] = floatingShowEvent.Attributes.Event.Attributes[key];
 							}
 						}
-				
+
 						// Create the event details list element
-						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function(e) { if (e.target.tagName.toLowerCase() != 'a') return false }).hide();
+						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function(e) { 
+              e.stopPropagation(); //don't collapse the element when clicking into the details, in case the user is clicking a link or wants to highlight something
+            }).hide();
 						for (var key in eventDetails) {
 							eventDetailsList.append(
 								'<li><strong>' + key + ': </strong>' + eventDetails[key] + '</li>'
 							);
 						}
-					
+
 						var element = $('<li class="' + type + ' ui-corner-all"></li>').append(
 							'<strong>' + getReadableEventType(type) + ': </strong>'
 						).append(
@@ -588,7 +596,7 @@
 						}).attr(
 							'id', 'FloatingShowElement:' + floatingShowEventId
 						);
-					
+
 						if (executedDateTime) {
 							element.prepend(
 								$('<button class="disableWhenLoading" style="float: right">&lt;-</button>').click(function(event) {
@@ -614,7 +622,7 @@
 											if (response && response.error) {
 												alert(response.error);
 											}
-										
+
 											refreshScratchpadAndSchedule(function() {
 											    updateFloatingEventTimes(function() {endLoading(); })
 											});
@@ -640,14 +648,14 @@
 								})
 							);
 						}
-						
+
 						element.prepend(
 							$('<div class="sorthandle ui-corner-all"></div>').click(function() { return false })
 						);
-						
+
 						return element;
 					}
-					
+
 					function renderTrackPlayListElement(trackPlay) {
 						var trackPlayId = trackPlay.Attributes.Id;
 						var title = trackPlay.Attributes.Track.Attributes.Title;
@@ -657,7 +665,7 @@
 						var startDateTime = new Date(trackPlay.Attributes.StartDateTime * 1000);
 						var executedDateTime;
 						if (trackPlay.Attributes.Executed > 0) executedDateTime = new Date(trackPlay.Attributes.Executed * 1000);
-				
+
 						// Collect the event details
 						var eventDetails = {
 							'Track Title': title,
@@ -665,15 +673,17 @@
 							'Artist': artist
 							// 'Genre': trackPlay.Attributes.Track.Attributes.Album.Attributes.Genre.Attributes.Name
 						};
-				
+
 						// Create the event details list element
-						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function() { if (e.target.tagName.toLowerCase() != 'a') return false }).hide();
+						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function(e) { 
+              e.stopPropagation(); //don't collapse the element when clicking into the details, in case the user is clicking a link or wants to highlight something
+            }).hide();
 						for (var key in eventDetails) {
 							eventDetailsList.append(
 								'<li><strong>' + key + ': </strong>' + eventDetails[key] + '</li>'
 							);
 						}
-					
+
 						var element = $('<li class="TrackPlay ui-corner-all"></li>').append(
 							'<strong>Track: </strong>'
 						).append(
@@ -691,7 +701,7 @@
 						}).attr(
 							'id', 'FloatingShowElement:' + trackPlayId
 						);
-					
+
 						if (executedDateTime) {
 							element.prepend(
 								$('<button class="disableWhenLoading" style="float: right">&lt;-</button>').click(function(event) {
@@ -717,7 +727,7 @@
 											if (response && response.error) {
 												alert(response.error);
 											}
-										
+
 											refreshScratchpadAndSchedule(function() {
 											    updateFloatingEventTimes(function() { endLoading(); });
 											});
@@ -743,20 +753,20 @@
 								})
 							);
 						}
-						
+
 						element.prepend(
 							$('<div class="sorthandle ui-corner-all"></div>').click(function() { return false })
 						);
-						
+
 						return element;
 					}
-					
+
 					function renderVoiceBreakListElement(voiceBreak) {
 						var voiceBreakId = voiceBreak.Attributes.Id;
 						var startDateTime = new Date(voiceBreak.Attributes.StartDateTime * 1000);
 						var executedDateTime;
 						if (voiceBreak.Attributes.Executed > 0) executedDateTime = new Date(voiceBreak.Attributes.Executed * 1000);
-						
+
 						var element = $('<li class="VoiceBreak ui-corner-all"></li>').append(
 							'<strong>Voice Break</strong>'
 						).append(
@@ -766,7 +776,7 @@
 						).append(
 							'<div style="clear:both"></div>'
 						);
-					
+
 						if (executedDateTime) {
 							element.prepend(
 								$('<button class="disableWhenLoading" style="float: right">&lt;-</button>').click(function(event) {
@@ -792,7 +802,7 @@
 											if (response && response.error) {
 												alert(response.error);
 											}
-										
+
 											refreshScratchpadAndSchedule(function() {
 											    updateFloatingEventTimes(function() { endLoading(); });
 											});
@@ -818,25 +828,27 @@
 								})
 							);
 						}
-						
+
 						element.prepend(
 							$('<div class="sorthandle ui-corner-all"></div>').click(function() { return false })
 						);
-						
+
 						return element;
 					}
-					
+
 					function renderDJCommentListElement(djComment) {
 						var djCommentId = djComment.Attributes.Id;
 						var body = djComment.Attributes.Body;
 						var startDateTime = new Date(djComment.Attributes.StartDateTime * 1000);
 						var executedDateTime;
 						if (djComment.Attributes.Executed > 0) executedDateTime = new Date(djComment.Attributes.Executed * 1000);
-				
+
 						// Create the event details list element
-						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function(e) { if (e.target.tagName.toLowerCase() != 'a') return false }).hide();
+						var eventDetailsList = $('<ul class="eventDetails ui-corner-all"></ul>').click(function(e) { 
+              e.stopPropagation(); //don't collapse the element when clicking into the details, in case the user is clicking a link or wants to highlight something
+            }).hide();
 						eventDetailsList.append('<li>' + body + '</li>');
-					
+
 						var element = $('<li class="DJComment ui-corner-all"></li>').append(
 							'<strong>Comment: </strong>'
 						).append(
@@ -850,7 +862,7 @@
 						}).attr(
 							'id', 'FloatingShowElement:' + djCommentId
 						);
-					
+
 						if (executedDateTime) {
 							element.prepend(
 								$('<button class="disableWhenLoading" style="float: right">&lt;-</button>').click(function(event) {
@@ -876,7 +888,7 @@
 											if (response && response.error) {
 												alert(response.error);
 											}
-										
+
 											refreshScratchpadAndSchedule(function() {
 											    updateFloatingEventTimes(function() { endLoading(); });
 											});
@@ -902,18 +914,18 @@
 								})
 							);
 						}
-						
+
 						element.prepend(
 							$('<div class="sorthandle ui-corner-all"></div>').click(function() { return false })
 						);
-						
+
 						return element;
 					}
-					
+
 					function renderScratchpadAndSchedule() {
 						$('#scratchpad_list').empty();
 						$('#schedule_list').empty();
-						
+
 						$.each(scratchpadContents, function(index, scratchpadItem) {
 							var element;
 							switch (scratchpadItem.Type) {
@@ -933,10 +945,10 @@
 									element = renderEventInstanceListElement(scratchpadItem);
 									break;
 							}
-							
+
 							$('#scratchpad_list').append(element);
 						});
-						
+
 						$.each(scheduleContents, function(index, scheduleItem) {
 							var element;
 							switch (scheduleItem.Type) {
@@ -956,21 +968,21 @@
 									element = renderEventInstanceListElement(scheduleItem);
 									break;
 							}
-							
+
 							$('#schedule_list').append(element);
 						});
 					}
-					
+
 					function refreshScratchpadAndSchedule(callback) {
 						if (isRefreshing) {
 							if (callback) callback();
 							return;
 						}
 						isRefreshing = true;
-						
+
 						scratchpadContents = new Array();
 						scheduleContents = new Array();
-						
+
 						$.get('ajax/geteventsbetween.php', {
 							start: $('#showStartTime').val(),
 							end: $('#showEndTime').val(),
@@ -987,27 +999,27 @@
 										scratchpadContents.push(value)
 									}
 								});
-								
+
 								// Sort the scratchpad contents
 								scratchpadContents.sort(function(a, b) {
 									return a.Attributes.StartDateTime - b.Attributes.StartDateTime;
 								});
-								
+
 								// Sort the schedule contents
 								scheduleContents.sort(function(a, b) {
 									return b.Attributes.Executed - a.Attributes.Executed;
 								});
-								
+
 								// Finally, render the scratchpad and the schedule
 								renderScratchpadAndSchedule();
-								
+
 								isRefreshing = false;
-								
+
 								if (callback) callback();
 							}, 'json');
 						}, 'json');
 					}
-				
+
 					function setFloatingShowElementExecutedAndSave(fse, executed, callback) {
 					    var attributes = { Id: fse.Attributes.Id };
 						if (executed) {
@@ -1015,10 +1027,10 @@
 						} else {
 							attributes.Executed = 0;
 						}
-					
+
 						dbCommand('save', fse.Type, 'MySql', attributes, {}, callback);
 					}
-				
+
 					function setScheduledEventInstanceExecutedAndSave(sei, executed, callback) {
 					    var attributes = { Id: sei.Attributes.Id };
 						if (executed) {
@@ -1026,7 +1038,7 @@
 						} else {
 							attributes.Executed = 0;
 						}
-					
+
 						dbCommand('save', sei.Type, 'MySql', attributes, {}, callback);
 					}
 				</script>
@@ -1035,12 +1047,12 @@
 				<div class="tabs">
 					<ul>
 						<li><a href="#Track_tab">Track</a></li>
-						<li><a href="#PSA_tab">PSA</a></li>
+						<li><a id="psa-tab" href="#PSA_tab">PSA</a></li>
 						<!-- <li><a href="#TicketGiveaway_tab">Ticket Giveaway</a></li> -->
 						<li><a href="#DJComment_tab">Comment</a></li>
 						<li><a href="#VoiceBreak_tab">Voice Break</a></li>
 					</ul>
-				
+
 					<div id="Track_tab">
 						<script type="text/javascript">
 							$(function() {
@@ -1057,7 +1069,7 @@
 										}
 									}
 								});
-								
+
 								$('#Track_edit_AlbumSearch').autocomplete('ajax/autocomplete/albums.php', {
 									minChars: 1,
 									cacheLength: 0,
@@ -1071,11 +1083,11 @@
 								}).result(function(event, item) {
 								    if (item && item.length == 2) {
 										var album = $.evalJSON(item[1]);
-										
+
 										$('#Track_edit_AlbumSearch').val('').parent().parent().hide();
-										
+
 										$('#Track_edit_Track input').removeAttr('disabled');
-										
+
 										if (album.Attributes.AlbumID) {
 											$('#Track_edit_Album input, #Track_edit_Album select').attr('disabled', 'disabled');
 											$('#Track_edit_AlbumAlbumId').val(album.Attributes.AlbumID);
@@ -1086,7 +1098,7 @@
 											$('#Track_edit_AlbumCompilation').removeAttr('checked').change();
 											$('#Track_edit_AlbumArtist').focus();
 										}
-										
+
 										$('#Track_edit_AlbumTitle').val(album.Attributes.Title ? album.Attributes.Title : '');
 										$('#Track_edit_AlbumArtist').val(album.Attributes.Artist ? album.Attributes.Artist : '');
 										$('#Track_edit_AlbumLabel').val(album.Attributes.Label ? album.Attributes.Label : '');
@@ -1100,11 +1112,11 @@
 											$('#Track_edit_TrackArtist').parent().parent().hide();
 											$('#Track_edit_AlbumArtist').parent().parent().show();
 										}
-										
+
 										$('#Track_edit_Album .album_fields').show();
 									}
 								});
-								
+
 								$('#Track_edit_AlbumArtist, #Track_edit_TrackArtist').autocomplete('ajax/autocomplete/artists.php', {
 									minChars: 2,
 									cacheLength: 0,
@@ -1117,7 +1129,7 @@
 										$('#Track_edit_AlbumArtist').val(item[0]);
 									}
 								});
-								
+
 								$('#Track_edit_AlbumLabel').autocomplete('ajax/autocomplete/labels.php', {
 									minChars: 2,
 									cacheLength: 0,
@@ -1131,22 +1143,22 @@
 									}
 								});
 							});
-							
+
 							function Track_show_search() {
 								$('#Track_search').show();
 								$('#Track_edit').hide();
 								$('#Track_preview').hide();
 							}
-							
+
 							function Track_submit_search() {
 								$('#Track_search_keywords').blur();
 								$('#Track_search_keywords').attr('disabled', true);
 								$('#Track_search_results').html('<div style="text-align: center; margin-top: 90px"><h4>Searching</h4><img src="media/ajax.gif" title="Searching..." alt="Searching..."></div>');
-								
+
 								var cdCodeResults = null;
 								var localResults = null;
 								var iTunesResults = null;
-								
+
 								if ($('#Track_search_keywords').val().match(/^[\d]+$/)) {
 									var albumid = parseInt($('#Track_search_keywords').val());
 									findTracksInAlbum({
@@ -1157,28 +1169,28 @@
 									});
 									return;
 								}
-								
+
 								startLoading();
 								findTracksFromCatalogOrITunes($('#Track_search_keywords').val(), 0, function(results) {
 									endLoading();
 									Track_load_search_results(results);
 								});
 							}
-							
+
 							function Track_fetch_more_search_results() {
 								if ($('.load_more_results img').is(':visible')) return;
-								
+
 								$('.load_more_results img').show();
 								findTracksFromCatalogOrITunes($('#Track_search_keywords').val(), $('#Track_search_results').children('ul').length, function(results) {
 									if (results === false || results.length < 30) {
 										$('.load_more_results').hide();
 									} else {
 										$('.load_more_results').show();
-										
+
 										var image;
-										
+
 										$.each(results, function(i, track) {
-											
+
 											// Find the correct image to show for the Track
 											if (track.Attributes.Album.Attributes.AlbumArt) {
 												image = track.Attributes.Album.Attributes.AlbumArt;
@@ -1189,7 +1201,7 @@
 													image = 'media/kgnu.png';
 												}
 											}
-									
+
 											// Show all of the tracks
 											$('#Track_search_results ul:last').after(
 												$('<ul></ul>').append(
@@ -1255,19 +1267,19 @@
 												)
 											);
 										});
-										
+
 										$('.load_more_results img').hide();
 									}
 								});
 							}
-							
+
 							function Track_load_search_results(results) {
 								$('#Track_search_results').html('');
-								
+
 								var image;
-								
+
 								$.each(results, function(i, track) {
-									
+
 									// Find the correct image to show for the Track
 									if (track.Attributes.Album.Attributes.AlbumArt) {
 										image = track.Attributes.Album.Attributes.AlbumArt;
@@ -1278,7 +1290,7 @@
 											image = 'media/kgnu.png';
 										}
 									}
-									
+
 									// Show all of the tracks
 									$('#Track_search_results').append(
 										$('<ul></ul>').append(
@@ -1344,7 +1356,7 @@
 										)
 									);
 								});
-			
+
 								// Show the option for manual entry
 								$('#Track_search_results').append(
 									$('<div class="Track_not_found"></div>').append(
@@ -1363,24 +1375,24 @@
 										})
 									)
 								);
-								
+
 								if (results.length < 30) {
 									$('.load_more_results').hide();
 								} else {
 									$('.load_more_results').show();
 								}
-								
+
 								// Re-enable the search input
 								$('#Track_search_keywords').removeAttr('disabled');
 							}
-							
+
 							function Track_show_edit(track) {
 								// Reset the form
 								$(':input', ' #Track_edit').not(':button, :submit').val('').removeAttr('checked').removeAttr('selected').removeAttr('disabled');
 								$('#Track_edit_AlbumSearch').val('').parent().parent().show();
 								$('#Track_edit_Album .album_fields').hide();
 								$('#Track_edit_Track input').attr('disabled', 'disabled');
-								
+
 								if (track) {
 									if (track.Attributes.Album.Attributes.Title != null) $('#Track_edit_AlbumTitle').val(track.Attributes.Album.Attributes.Title).attr('disabled', 'disabled');
 									if (track.Attributes.Album.Attributes.Artist != null) $('#Track_edit_AlbumArtist').val(track.Attributes.Album.Attributes.Artist).attr('disabled', 'disabled');
@@ -1396,22 +1408,22 @@
 										}
 										$('#Track_edit_AlbumCompilation').attr('disabled', 'disabled');
 									}
-									
+
 									if (track.Attributes.Title != null) $('#Track_edit_TrackTitle').val(track.Attributes.Title).attr('disabled', 'disabled');
 									if (track.Attributes.Artist != null) $('#Track_edit_TrackArtist').val(track.Attributes.Artist);
 									if (track.Attributes.TrackNumber != null) $('#Track_edit_TrackTrackNumber').val(track.Attributes.TrackNumber).attr('disabled', 'disabled');
 									if (track.Attributes.Duration != null) $('#Track_edit_TrackDuration').val(Math.floor(parseInt(track.Attributes.Duration) / 60) + ':' + (parseInt(track.Attributes.Duration) % 60 < 10 ? '0' : '') + parseInt(track.Attributes.Duration) % 60).attr('disabled', 'disabled');
-									
+
 									// if ($('#Track_edit_AlbumGenreID').val() != '' && (track.Attributes.Album.Attributes.GenreID != null || (track.Attributes.Album.Attributes.Genre != null && track.Attributes.Album.Attributes.Genre.Attributes.Name != null))) {
 									// 	$('#Track_edit_AlbumGenreID').attr('disabled', 'disabled');
 									// }
-									
+
 									if (track.Attributes.Album.Attributes.Artist != null || track.Attributes.Artist != null) {
 										$('#Track_edit_TrackArtist').attr('disabled', 'disabled');
 										$('#Track_edit_AlbumArtist').attr('disabled', 'disabled');
 									}
 								}
-								
+
 								if ($('#Track_edit_AlbumCompilation').is(':checked')) {
 									$('#Track_edit_AlbumArtist').parent().parent().hide();
 									$('#Track_edit_TrackArtist').parent().parent().show();
@@ -1419,42 +1431,42 @@
 									$('#Track_edit_TrackArtist').parent().parent().hide();
 									$('#Track_edit_AlbumArtist').parent().parent().show();
 								}
-								
+
 								$('#Track_search').hide();
 								$('#Track_edit').show();
 								$('#Track_preview').hide();
 							}
-							
+
 							function Track_show_preview(track) {
 								$('#Track_search').hide();
 								$('#Track_edit').hide();
 								$('#Track_preview').show();
 							}
-							
+
 							function Track_validate_edit() {
 								// Check all of the fields here
 								return true;
 							}
-							
+
 							function Track_submit_edit(toSchedule) {
 								if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
 									alert('This operation is not available before the show starts.');
 									return false;
 								}
-								
+
 								// Calculate the duration
 								var duration = $('#Track_edit_TrackDuration').val();
 								var durationSplit = duration.split(':');
 								if (durationSplit.length > 1) {
 									duration = 60 * parseInt(durationSplit[0]) + parseInt(durationSplit[1]);
 								}
-								
+
 								// Require track artist if album is a compilation
 								if ($('#Track_edit_AlbumCompilation').is(':checked') && $('#Track_edit_TrackArtist').val() == '') {
 									alert('Track Artist is required.');
 									return;
 								}
-								
+
 								var track = {
 									Type: 'Track',
 									Attributes: {
@@ -1476,38 +1488,38 @@
 										}
 									}
 								};
-								
+
 								if ($('#Track_edit_AlbumAlbumId').val().length > 0) {
 									track.Attributes.AlbumID = track.Attributes.Album.Attributes.AlbumID = $('#Track_edit_AlbumAlbumId').val();
 								}
-								
+
 								startLoading();
 								Track_submit_addTrackAndTrackPlay(track, toSchedule);
 							}
-							
+
 							function Track_submit_trackAndTrackPlay(track, toSchedule) {
 								// Try to find the Album
 								var albumSearchAttributes = {
 									Title: track.Attributes.Album.Attributes.Title
 								};
-								
+
 								if (track.Attributes.Album.Attributes.AlbumID) {
 									albumSearchAttributes.AlbumID = track.Attributes.Album.Attributes.AlbumID;
 								}
-								
+
 								if (!track.Attributes.Album.Attributes.Compilation) {
 									albumSearchAttributes.Artist = track.Attributes.Album.Attributes.Artist;
 									albumSearchAttributes.Compilation = false;
 								} else {
 									albumSearchAttributes.Compilation = true;
 								}
-								
+
 								dbCommand('find', 'Album', 'MySql', albumSearchAttributes, {}, function(albums) {
 									if (albums.length > 0) {
 										track.Attributes.AlbumID = albums[0].Attributes.AlbumID;
 										track.Attributes.Album = albums[0];
 									}
-									
+
 									// Try to find Track
 									var trackSearchAttributes = {
 										AlbumID: track.Attributes.AlbumID,
@@ -1515,23 +1527,23 @@
 										DiskNumber: track.Attributes.DiskNumber,
 										TrackNumber: track.Attributes.TrackNumber
 									};
-									
+
 									if (track.Attributes.Album.Attributes.Compilation) {
 										trackSearchAttributes.Artist = track.Attributes.Artist;
 									}
-									
+
 									dbCommand('find', 'Track', 'MySql', trackSearchAttributes, {}, function(foundTracks) {
 										var foundTrack;
 										if (foundTracks.length > 0) {
 											foundTrack = foundTracks[0];
 										}
-										
+
 										// Try to find the Genre
 										dbCommand('find', 'Genre', 'MySql', (track.Attributes.Album.Attributes.Genre ? track.Attributes.Album.Attributes.Genre.Attributes : { GenreID: track.Attributes.Album.Attributes.GenreID }), {}, function(genres) {
 											var needGenre = false; //true; // Never need Genre in this situation any more
 											var needLabel = true;
 											var needDuration = true;
-										
+
 											if (genres.length > 0) {
 												track.Attributes.Album.Attributes.GenreID = genres[0].Attributes.GenreID;
 												needGenre = false;
@@ -1559,7 +1571,7 @@
 															alert('Please enter a valid label');
 															return;
 														}
-														
+
 														var validDuration = true;
 														var duration = $('#Track_albumMissingInfo_TrackDuration').val();
 														var durationSplit = duration.split(':');
@@ -1568,25 +1580,25 @@
 														} else {
 															validDuration = false;
 														}
-														
+
 														if (needDuration && !validDuration) {
 															alert('Please enter a valid duration');
 															return;
 														}
-														
+
 														$(this).dialog('close');
 														startLoading();
-													
+
 														if (needGenre) track.Attributes.Album.Attributes.GenreID = $('#Track_albumMissingInfo_AlbumGenreID').val();
 														if (needLabel) track.Attributes.Album.Attributes.Label = $('#Track_albumMissingInfo_AlbumLabel').val();
 														if (needDuration) track.Attributes.Duration = duration;
-														
+
 														var keepGoing = function() {
 															Track_submit_addTrackAndTrackPlay(track, toSchedule, function() {
 																$('#Track_albumMissingInfo').dialog('close');
 															});
 														};
-														
+
 														var saveAlbumAndKeepGoing = function() {
 															if (needLabel && track.Attributes.Album.Attributes.AlbumID) {
 																dbCommand('save', 'Album', 'MySql', { AlbumID: track.Attributes.Album.Attributes.AlbumID, Label: $('#Track_albumMissingInfo_AlbumLabel').val() }, {}, function() {
@@ -1596,7 +1608,7 @@
 																keepGoing();
 															}
 														};
-														
+
 														if (needDuration && track.Attributes.TrackID) {
 															dbCommand('save', 'Track', 'MySql', { TrackID: track.Attributes.TrackID, Duration: duration }, {}, function() {
 																saveAlbumAndKeepGoing();
@@ -1606,25 +1618,25 @@
 														}
 													}
 												});
-											
+
 												if (needGenre) {
 													$('#Track_albumMissingInfo_AlbumGenreID').val('');
-												
+
 													if (track.Attributes.Album.Attributes.Genre) {
 														$('#Track_albumMissingInfo_Genre .iTunesInfo').show();
 														$('#Track_albumMissingInfo_Genre .iTunesGenre').html(track.Attributes.Album.Attributes.Genre.Attributes.Name);
 													} else {
 														$('#Track_albumMissingInfo_Label .iTunesInfo').hide();
 													}
-												
+
 													$('#Track_albumMissingInfo_Genre').show();
 												} else {
 													$('#Track_albumMissingInfo_Genre').hide();
 												}
-											
+
 												if (needLabel) {
 													$('#Track_albumMissingInfo_AlbumLabel').val('');
-												
+
 													if (track.Attributes.Album.Attributes.Copyright) {
 														$('#Track_albumMissingInfo_Label .iTunesInfo').show();
 														$('#Track_albumMissingInfo_Label .iTunesCopyright').html(track.Attributes.Album.Attributes.Copyright);
@@ -1632,20 +1644,20 @@
 													} else {
 														$('#Track_albumMissingInfo_Label .iTunesInfo').hide();
 													}
-												
+
 													$('#Track_albumMissingInfo_Label').show();
 												} else {
 													$('#Track_albumMissingInfo_Label').hide();
 												}
-											
+
 												if (needDuration) {
 													$('#Track_albumMissingInfo_TrackDuration').val('');
-												
+
 													$('#Track_albumMissingInfo_Duration').show();
 												} else {
 													$('#Track_albumMissingInfo_Duration').hide();
 												}
-											
+
 												$('#Track_albumMissingInfo').dialog('open');
 												endLoading();
 											} else {
@@ -1655,47 +1667,47 @@
 									});
 								});
 							}
-							
+
 							function Track_submit_addTrackAndTrackPlay(track, toSchedule, callback) {
 								if (track.Attributes.TrackID) {
 									Track_submit_trackPlay(track.Attributes.TrackID, toSchedule, callback);
 									return;
 								}
-								
+
 								var albumSearchAttributes = {
 									Title: track.Attributes.Album.Attributes.Title
 								};
-								
+
 								if (!track.Attributes.Album.Attributes.Compilation) {
 									albumSearchAttributes.Artist = track.Attributes.Album.Attributes.Artist;
 									albumSearchAttributes.Compilation = false;
 								} else {
 									albumSearchAttributes.Compilation = true;
 								}
-								
+
 								// Find or create the Album:
 								findOrInsertDifferentDBObjects('Album', 'MySql', albumSearchAttributes, $.extend({'AddDate': 'NOW'}, track.Attributes.Album.Attributes), function(albumResponse) {
 									if (albumResponse && !albumResponse.error) {
 										var albumId = (albumResponse.AlbumID ? albumResponse.AlbumID : albumResponse.Attributes.AlbumID);
-										
+
 										track.Attributes.AlbumID = albumId;
-										
+
 										var trackSearchAttributes = {
 											AlbumID: track.Attributes.AlbumID,
 											Title: track.Attributes.Title,
 											DiskNumber: track.Attributes.DiskNumber,
 											TrackNumber: track.Attributes.TrackNumber
 										};
-										
+
 										if (track.Attributes.Album.Attributes.Compilation) {
 											trackSearchAttributes.Artist = track.Attributes.Artist;
 										}
-										
+
 										// Find or create the Track
 										findOrInsertDifferentDBObjects('Track', 'MySql', trackSearchAttributes,  track.Attributes, function(trackResponse) {
 											if (trackResponse && !trackResponse.error) {
 												var trackId = (trackResponse.TrackID ? trackResponse.TrackID : trackResponse.Attributes.TrackID);
-												
+
 												// Add the TrackPlay
 												Track_submit_trackPlay(trackId, toSchedule, callback);
 											} else {
@@ -1709,18 +1721,18 @@
 									}
 								});
 							}
-							
+
 							function Track_submit_trackPlay(trackId, toSchedule, callback) {
 								var startDateTime = new Date($('#showEndTime').val() * 1000).format('yyyy-mm-dd HH:MM:ss');
-			
+
 								var trackPlayAttributes = {
 									TrackId: trackId,
 									ScheduledShowInstanceId: $('#showId').val(),
 									StartDateTime: startDateTime
 								};
-			
+
 								if (toSchedule) trackPlayAttributes['Executed'] = parseInt($('#showEndTime').val());
-			
+
 								dbCommand('insert', 'TrackPlay', 'MySql', trackPlayAttributes, {}, function(trackPlayResponse) {
 									if (trackPlayResponse && !trackPlayResponse.error) {
 										$('#Track_search_keywords').val('');
@@ -1729,7 +1741,7 @@
 										refreshScratchpadAndSchedule(function() {
 											var scratchpadDone = false;
 											var scheduleDone = false;
-											
+
 											updateFloatingEventTimes(function() {
 												if (callback) callback();
 												endLoading();
@@ -1810,35 +1822,35 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div id="PSA_tab">
 						<script type="text/javascript">
 							$(function() {
 								PSA_update();
 							});
-							
+
 							function PSA_submit(toSchedule) {
 								if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
 									alert('This operation is not available before the show starts.');
 									return false;
 								}
-								
+
 								if (parseInt($('#PSA_tab_search_title').val()) > 0) {
 									var attributes = {
 										ScheduledShowInstanceId: $('#showId').val(),
 										StartDateTime: new Date($('#showEndTime').val() * 1000).format('yyyy-mm-dd HH:MM:ss'),
 										EventId: $('#PSA_tab_search_title').val()
 									};
-									
+
 									if (toSchedule) attributes['Executed'] = parseInt($('#showEndTime').val());
-									
+
 									startLoading();
 									dbCommand('save', 'FloatingShowEvent', 'MySql', attributes, {}, function(response) {
 										if (response && !response.error) {
 											refreshScratchpadAndSchedule(function() {
 												var scratchpadDone = false;
 												var scheduleDone = false;
-											
+
 												updateFloatingEventTimes(function() {
 													endLoading();
 													$('#PSA_tab_search_category').val('').change();
@@ -1848,13 +1860,13 @@
 									});
 								}
 							}
-							
+
 							function PSA_update() {
 								if ($('#PSA_tab_search_category').val() == '') {
 									$('#PSA_tab_search_title').html('');
 									return;
 								}
-								
+
 								var criteria = [['Active', '=', true], ['StartDate', '<=', new Date().format('yyyy-mm-dd')], ['KillDate', '>=', new Date().format('yyyy-mm-dd')]];
 								if ($('#PSA_tab_search_category').val() != 'All') criteria.push(['PSACategoryId', '=', $('#PSA_tab_search_category').val()]);
 								dbCommandCriteria('find', 'PSAEvent', 'MySql', criteria, { sortcolumn: 'Title' }, function(results) {
@@ -1892,21 +1904,21 @@
 						<script type="text/javascript">
 							function TicketGiveaway_submit(toSchedule) {
 								if ($('#TicketGiveaway_tab_search_title').val() == '') return;
-								
+
 								if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
 									alert('This operation is not available before the show starts.');
 									return false;
 								}
-								
+
 								if (parseInt($('#TicketGiveaway_tab_search_title').val()) > 0) {
 									var attributes = {
 										ScheduledShowInstanceId: $('#showId').val(),
 										StartDateTime: new Date($('#showEndTime').val() * 1000).format('yyyy-mm-dd HH:MM:ss'),
 										EventId: $('#TicketGiveaway_tab_search_title').val()
 									};
-									
+
 									if (toSchedule) attributes['Executed'] = $('#showEndTime').val();
-									
+
 									startLoading();
 									dbCommand('save', 'FloatingShowEvent', 'MySql', attributes, {}, function(response) {
 										if (response && !response.error) {
@@ -1946,22 +1958,22 @@
 									alert('This operation is not available before the show starts.');
 									return false;
 								}
-								
+
 								var attributes = {
 									ScheduledShowInstanceId: $('#showId').val(),
 									StartDateTime: new Date($('#showEndTime').val() * 1000).format('yyyy-mm-dd HH:MM:ss'),
 									Body: $('#DJComment_tab_body').val()
 								};
-								
+
 								if (toSchedule) attributes['Executed'] = parseInt($('#showEndTime').val());
-								
+
 								startLoading();
 								dbCommand('save', 'DJComment', 'MySql', attributes, {}, function(response) {
 									if (response && !response.error) {
 										refreshScratchpadAndSchedule(function() {
 											var scratchpadDone = false;
 											var scheduleDone = false;
-										
+
 											updateFloatingEventTimes(function() {
 												$('#DJComment_tab_body').val('');
 												endLoading();
@@ -1989,14 +2001,14 @@
 									alert('This operation is not available before the show starts.');
 									return false;
 								}
-								
+
 								var attributes = {
 									ScheduledShowInstanceId: $('#showId').val(),
 									StartDateTime: new Date($('#showEndTime').val() * 1000).format('yyyy-mm-dd HH:MM:ss')
 								};
-								
+
 								if (toSchedule) attributes['Executed'] = parseInt($('#showEndTime').val());
-								
+
 								startLoading();
 								dbCommand('save', 'VoiceBreak', 'MySql', attributes, {}, function(response) {
 									if (response && !response.error) {
@@ -2028,11 +2040,11 @@
 			</ul>
 		</div>
 	</div>
-	
+
 	<input id="showId" type="hidden" value="<?php echo $scheduledShowInstance->Id ?>">
 	<input id="showStartTime" type="hidden" value="<?php echo $scheduledShowInstance->StartDateTime ?>">
 	<input id="showEndTime" type="hidden" value="<?php echo $scheduledShowInstance->StartDateTime + $scheduledShowInstance->Duration * 60 ?>">
-	
+
 	<div id="EditShowDescription" class="dialog">
 		<div style="padding: 0px 20px; border: 1px solid #CCC; background-color: white;">
 			<script type="text/javascript">
@@ -2071,7 +2083,7 @@
 						}
 					});
 				}
-				
+
 				function showEditShowDescriptionDialog() {
 					startLoading();
 					dbCommand('find', 'ScheduledShowInstance', 'MySql', { Id: $('#showId').val() }, {}, function(sei) {
@@ -2090,21 +2102,21 @@
 							});
 						}
 					});
-					
+
 					return false;
 				}
-				
+
 				function removeRichTextFieldsFor(element) {
 					$.each($(':tinymce', element), function(i, textarea) {
 						tinyMCE.execCommand('mceRemoveControl', false, $(textarea).attr('id'));
 					});
 				}
-				
+
 				function initRichTextFieldsFor(element) {
 					// Init TinyMCE fields
 					initializeKGNUTinyMCEForSelector($('.tinymce:visible', element));
 				}
-				
+
 				$(function() {
 					initEditShowDescriptionDialog();
 				});
@@ -2119,7 +2131,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 <?php ###################################################################### ?>
 <?php $close = new CloseTemplateSection();								   # ?>
