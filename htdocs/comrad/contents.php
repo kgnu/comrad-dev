@@ -80,28 +80,33 @@
 		<p>KGNU announcements, policies, pledge drive info, and other important documents</p>
 		</a>
 		</div>
-		
+
 		<div class="column">
 		<a href="ticketrequest.php">
 		<h1>Volunteer Ticket Request</h1>
 		<p>Request tickets to events</p>
 		</a>
 		</div>
-		
+
+		<?php if (PermissionManager::getInstance()->currentUserHasPermissions(array('read', 'write', 'insert', 'delete'), array('Album', 'Genre', 'GenreTag', 'Track'))): ?>
 		<div class="column">
 		<a href="charting.php">
 		<h1>Charting</h1>
 		<p>Generate Charting spreadsheets</p>
 		</a>
 		</div>
-		
+		<?php endif; ?>
+
+		<?php if (PermissionManager::getInstance()->currentUserHasPermissions(array('read', 'write', 'insert', 'delete'), array('Album', 'Genre', 'GenreTag', 'Track'))): ?>
 		<div class="column">
 		<a href="soundexchangereports.php">
 		<h1>Sound Exchange Reports</h1>
 		<p>Generate Sound Exchange reports</p>
 		</a>
 		</div>
-		
+		<?php endif; ?>
+
+
 		<div class="column">
 		<a href="about.php">
 		<h1>Help</h1>
@@ -114,7 +119,7 @@
 		<a href="log.php">
 		<img src="media/icon-log.png" width="48" height="48" />
 		<h1>Activity and Debug Log</h1>
-		<p>Determine who and when a user has signed on and any other status or 
+		<p>Determine who and when a user has signed on and any other status or
 		error messages observed by comrad</p>
 		</a>
 		</div>
