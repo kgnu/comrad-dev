@@ -158,7 +158,7 @@
 	<script type="text/javascript" src="js/ajax/ajaxdbinterface.js?v=2"></script>
 	<script type="text/javascript" src="js/ajax/itunessearch.js?v=2"></script>
 	<script type="text/javascript" src="js/ajax/searchmusiccatalog.js"></script>
-	<script type="text/javascript" src="js/ajax/findtracks.js"></script>
+	<script type="text/javascript" src="js/ajax/findtracks.js?v=2"></script>
 
 	<script type="text/javascript">
 		var isRefreshing = false;
@@ -495,10 +495,10 @@
 						} else {
 							element.prepend(
 								$('<button class="disableWhenLoading AddToSavedItems" style="float: right">-&gt;</button>').click(function() {
-									if (new Date() < new Date($('#showStartTime').val() * 1000)) {
-										alert('This operation is not available before the show starts.');
-										return false;
-									}
+									// if (new Date() < new Date($('#showStartTime').val() * 1000)) {
+										// alert('This operation is not available before the show starts.');
+										// return false;
+									// }
 
 									var listElement = $(this).parent();
 
@@ -632,10 +632,10 @@
 								})
 							).prepend(
 								$('<button class="disableWhenLoading" style="float: right">-&gt;</button>').click(function() {
-									if (new Date() < new Date($('#showStartTime').val() * 1000)) {
-										alert('This operation is not available before the show starts.');
-										return false;
-									}
+									// if (new Date() < new Date($('#showStartTime').val() * 1000)) {
+										// alert('This operation is not available before the show starts.');
+										// return false;
+									// }
 									var listElement = $(this).parent();
 									startLoading();
 									setFloatingShowElementExecutedAndSave(floatingShowEvent, true, function(response) {
@@ -737,10 +737,10 @@
 								})
 							).prepend(
 								$('<button class="disableWhenLoading" style="float: right">-&gt;</button>').click(function() {
-									if (new Date() < new Date($('#showStartTime').val() * 1000)) {
-										alert('This operation is not available before the show starts.');
-										return false;
-									}
+									// if (new Date() < new Date($('#showStartTime').val() * 1000)) {
+										// alert('This operation is not available before the show starts.');
+										// return false;
+									// }
 									var listElement = $(this).parent();
 									startLoading();
 									setFloatingShowElementExecutedAndSave(trackPlay, true, function(response) {
@@ -812,10 +812,10 @@
 								})
 							).prepend(
 								$('<button class="disableWhenLoading" style="float: right">-&gt;</button>').click(function() {
-									if (new Date() < new Date($('#showStartTime').val() * 1000)) {
-										alert('This operation is not available before the show starts.');
-										return false;
-									}
+									// if (new Date() < new Date($('#showStartTime').val() * 1000)) {
+										// alert('This operation is not available before the show starts.');
+										// return false;
+									// }
 									var listElement = $(this).parent();
 									startLoading();
 									setFloatingShowElementExecutedAndSave(voiceBreak, true, function(response) {
@@ -898,10 +898,10 @@
 								})
 							).prepend(
 								$('<button class="disableWhenLoading" style="float: right">-&gt;</button>').click(function() {
-									if (new Date() < new Date($('#showStartTime').val() * 1000)) {
-										alert('This operation is not available before the show starts.');
-										return false;
-									}
+									// if (new Date() < new Date($('#showStartTime').val() * 1000)) {
+										// alert('This operation is not available before the show starts.');
+										// return false;
+									// }
 									var listElement = $(this).parent();
 									startLoading();
 									setFloatingShowElementExecutedAndSave(djComment, true, function(response) {
@@ -1229,10 +1229,10 @@
 															})
 														).append(
 															$('<button class="disableWhenLoading" style="width: 150px; margin-top: 3px; display: block">Add to Saved Items</button>').click(function(event) {
-																if (new Date() < new Date($('#showStartTime').val() * 1000)) {
-																	alert('This operation is not available before the show starts.');
-																	return false;
-																}
+																// if (new Date() < new Date($('#showStartTime').val() * 1000)) {
+																	// alert('This operation is not available before the show starts.');
+																	// return false;
+																// }
 																startLoading();
 																if (track.Type == 'Track') {
 																	Track_submit_trackAndTrackPlay(track, true);
@@ -1318,10 +1318,10 @@
 													})
 												).append(
 													$('<button class="disableWhenLoading" style="width: 150px; margin-top: 3px; display: block">Add to Saved Items</button>').click(function(event) {
-														if (new Date() < new Date($('#showStartTime').val() * 1000)) {
-															alert('This operation is not available before the show starts.');
-															return false;
-														}
+														// if (new Date() < new Date($('#showStartTime').val() * 1000)) {
+															// alert('This operation is not available before the show starts.');
+															// return false;
+														// }
 														startLoading();
 														if (track.Type == 'Track') {
 															Track_submit_trackAndTrackPlay(track, true);
@@ -1449,10 +1449,10 @@
 							}
 
 							function Track_submit_edit(toSchedule) {
-								if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
-									alert('This operation is not available before the show starts.');
-									return false;
-								}
+								// if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
+									// alert('This operation is not available before the show starts.');
+									// return false;
+								// }
 
 								// Calculate the duration
 								var duration = $('#Track_edit_TrackDuration').val();
@@ -1830,10 +1830,10 @@
 							});
 
 							function PSA_submit(toSchedule) {
-								if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
-									alert('This operation is not available before the show starts.');
-									return false;
-								}
+								// if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
+									// alert('This operation is not available before the show starts.');
+									// return false;
+								// }
 
 								if (parseInt($('#PSA_tab_search_title').val()) > 0) {
 									var attributes = {
@@ -1954,10 +1954,10 @@
 					<div id="DJComment_tab">
 						<script type="text/javascript">
 							function DJComment_submit(toSchedule) {
-								if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
-									alert('This operation is not available before the show starts.');
-									return false;
-								}
+								// if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
+									// alert('This operation is not available before the show starts.');
+									// return false;
+								// }
 
 								var attributes = {
 									ScheduledShowInstanceId: $('#showId').val(),
@@ -1997,10 +1997,10 @@
 					<div id="VoiceBreak_tab">
 						<script type="text/javascript">
 							function VoiceBreak_submitVoiceBreak(toSchedule) {
-								if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
-									alert('This operation is not available before the show starts.');
-									return false;
-								}
+								// if (toSchedule && new Date() < new Date($('#showStartTime').val() * 1000)) {
+									// alert('This operation is not available before the show starts.');
+									// return false;
+								// }
 
 								var attributes = {
 									ScheduledShowInstanceId: $('#showId').val(),
@@ -2120,6 +2120,12 @@
 				$(function() {
 					initEditShowDescriptionDialog();
 				});
+        
+        window.onerror = function(message, url, lineNumber) {  
+          alert('Show Builder Error: ' + message + '(' + lineNumber + ')');
+          //save error and send to server for example.
+          return false;
+        };  
 			</script>
 			<div style="margin: 20px 0">
 				<label for="EditShowDescription_ShortDescription" style="display: block; font-size: 1.2em; font-weight: bold;">Short Description:</label>
