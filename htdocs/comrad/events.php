@@ -92,7 +92,7 @@
 			//custom validation: validate the ShowName, ShowDate and Venue for Giveaways
 			if (type == 'TicketGiveawayEvent') {
 				var ticketType = $("#TicketGiveawayEventTicketType").val();
-				if (ticketType == 'Paper Ticket' || ticketType == 'Guest List Ticket') {
+				if (ticketType == 'Paper Ticket' || ticketType == 'Guest List Ticket' || ticketType == 'Digital Ticket') {
 					//we require ShowName, ShowDate and Venue because they are used in the winner's email template
 					if (!$("#TicketGiveawayEventShowName").val() || !$("#TicketGiveawayEventShowDate").val() || !$("#TicketGiveawayEventVenue").val()) {
 						$.jGrowl('You must provide a Show Name, Show Date and Venue for giveaways with Paper or Guest List Tickets.', {
@@ -257,14 +257,18 @@
 			$("#TicketGiveawayEventShowName").data("token", "[ShowName]");
 			$("#TicketGiveawayEventShowDate").data("token", "[ShowDate]");
 			$("#TicketGiveawayEventVenue").data("token", "[Venue]");
+			$("#TicketGiveawayEventTicketQuantity").data("token", "[TicketQuantity]");
 			
-			$("#TicketGiveawayEventShowName,#TicketGiveawayEventShowDate,#TicketGiveawayEventVenue").change(function() {
-				if (jQuery.trim($(this).val()).length == 0) return;
-				
-				var value = $(this).val();
-				var token = $(this).data("token");
-				$("#TicketGiveawayEventCopy").val($("#TicketGiveawayEventCopy").val().replace(token, value));
-				$(this).data("token", value);
+			var $fieldsWithTokens = $("#TicketGiveawayEventShowName,#TicketGiveawayEventShowDate,#TicketGiveawayEventVenue,#TicketGiveawayEventTicketQuantity");
+			$fieldsWithTokens.change(function() {
+					$fieldsWithTokens.each(function() {
+					if (jQuery.trim($(this).val()).length == 0) return;
+					
+					var value = $(this).val();
+					var token = $(this).data("token");
+					$("#TicketGiveawayEventCopy").val($("#TicketGiveawayEventCopy").val().replace(token, value));
+					$(this).data("token", value);
+				});
 			});
 		});
 	</script>
