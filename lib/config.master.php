@@ -30,4 +30,6 @@
   $config['ShowShortDescriptionMaxLength'] = 100;
   
   $config['ArchiveToken'] = xxxx;
+
+  $config['JotformUrl'] = 'https://test.com/';
 ?>

@@ -433,9 +433,49 @@
 						var elementId = type + ':' + startDateTime.getTime() / 1000 + '-' + endDateTime.getTime() / 1000;
 
 						if (type == 'TicketGiveaway') {
-							var giveawayLi = $('<li><button ' +
-													(!instanceId ? ' disabled="disabled"' : 'onclick="window.open(\'giveaway.php?seiid=' + instanceId + '\', \'giveaway\', \'width=550, height=650\');"') +
-													' class="WinnerInfo">Enter/View Winner Information</button></li>');
+							let attributes = eventInstance['Attributes'];
+							let showAttributes = attributes['ScheduledEvent']['Attributes']['Event']['Attributes'];
+							let giveawayAttributes = {
+								"Copy": "",
+								"TicketType": "",
+								"ShowName": "",
+								"Venue": "",
+								"ShowDate": "",
+							};
+							Object.keys(giveawayAttributes).forEach(k => {
+								if (attributes[k] != null && attributes[k].length > 0) {
+									// take from the event instance first
+									giveawayAttributes[k] = attributes[k];
+								} else {
+									giveawayAttributes[k] = showAttributes[k];
+								}
+							});
+							let ticketTypeMapping = {
+								'Guest List Ticket': 'Guest List',
+								'Digital Ticket': 'Digital',
+								'Paper Ticket': 'Paper'
+							};
+							if (giveawayAttributes['TicketType'] in ticketTypeMapping) {
+								giveawayAttributes['TicketType'] = ticketTypeMapping[giveawayAttributes['TicketType']];
+							}
+							if (giveawayAttributes['Copy'] != null) {
+								let newCopy = giveawayAttributes['Copy'];
+								// strip html
+								newCopy = newCopy.replaceAll('<br />', '\n').replaceAll('</p>', '\n').trim('');
+							    var tmp = document.createElement('DIV');
+								tmp.innerHTML = newCopy;
+								giveawayAttributes['Copy'] = tmp.textContent || tmp.innerText || '';
+							}
+							if (typeof giveawayAttributes['ShowDate'] == 'number') {
+								giveawayAttributes['ShowDate'] = new Date(giveawayAttributes['ShowDate'] * 1000).toLocaleDateString();
+							}
+							giveawayLi = $('<li><button ' +
+												(!instanceId ? ' disabled="disabled"' : 'onclick="window.open(\'<?php echo $init->getProp('JotformUrl'); ?>?' +
+													'venue=' + encodeURIComponent(giveawayAttributes['Venue']) + '&showArtist=' + encodeURIComponent(giveawayAttributes['ShowName']) +
+													'&showInfo=' + encodeURIComponent(giveawayAttributes['Copy']).replace(/\"/g,"\\\"").replace(/\'/g, "\\'") + '&showTime=' +
+													'&showDate=' + encodeURIComponent(giveawayAttributes['ShowDate']) + 
+													'&typeOf10=' + encodeURIComponent(giveawayAttributes['TicketType']) + '\', \'giveaway\', \'width=550, height=650\');"') +
+												' class="WinnerInfo">Enter Winner Information</button></li>');
 							eventDetailsList.append(giveawayLi);
 
 							if (!instanceId) {

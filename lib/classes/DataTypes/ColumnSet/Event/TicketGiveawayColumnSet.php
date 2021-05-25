@@ -31,8 +31,14 @@ class TicketGiveawayColumnSet extends EventColumnSet
 				'possiblevalues' => array(
 					'Paper Ticket',
 					'Guest List Ticket',
+					'Digital Ticket',
 					'Other Giveaway'
 				)
+			),
+			'TicketQuantity' => array(
+				'type' => 'Integer',
+				'tostring' => 'Ticket Quantity',
+				'default' => 2
 			),
 			'NoCallers' => array(
 				'type' => 'Boolean',
