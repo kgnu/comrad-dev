@@ -423,9 +423,16 @@
               e.stopPropagation(); //don't collapse the element when clicking into the details, in case the user is clicking a link or wants to highlight something
             }).hide();
 						for (var key in eventDetails) {
-							if (key != 'NoCallers' && key != 'WinnerName' && key != 'WinnerPhone' && key != 'WinnerEmail' && key != 'WinnerAddress' && key != 'IsListenerMember' && key != 'ShowName' && key != 'ShowDate' && key != 'Venue') {
+							if (key != 'NoCallers' && key != 'WinnerName' && key != 'WinnerPhone' && key != 'WinnerEmail' && 
+								key != 'WinnerAddress' && key != 'IsListenerMember' && key != 'ShowName' && key != 'ShowDate' && key != 'Venue') {
+								let displayText = key;
+								if (key == 'Copy') {
+									displayText = 'Show Details';
+								} else if (key == 'NotesToDJ') {
+									displayText = "Notes to DJ";
+								}
 								eventDetailsList.append(
-									'<li><strong>' + key + ': </strong>' + eventDetails[key] + '</li>'
+									'<li><strong>' + displayText + ': </strong>' + eventDetails[key] + '</li>'
 								);
 							}
 						}

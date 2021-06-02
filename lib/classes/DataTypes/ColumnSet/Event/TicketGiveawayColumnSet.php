@@ -22,6 +22,14 @@ class TicketGiveawayColumnSet extends EventColumnSet
 									str_replace('classes/DataTypes/ColumnSet/Event', 'resources/TicketGiveawayDefaultCopy.html', dirname(__FILE__))
 								), 
 				'type' => 'String',
+				'tostring' => 'Show Details',
+				'required' => true
+			),
+			'NotesToDJ' => array(
+				'defaultvalue' => file_get_contents(
+									str_replace('classes/DataTypes/ColumnSet/Event', 'resources/TicketGiveawayDefaultNotesToDJ.html', dirname(__FILE__))
+								), 
+				'type' => 'String',
 				'required' => true
 			),
 			'TicketType' => array(
