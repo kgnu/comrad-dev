@@ -254,21 +254,50 @@
 		});
 		
 		$(function() {
-			$("#TicketGiveawayEventShowName").data("token", "[ShowName]");
-			$("#TicketGiveawayEventShowDate").data("token", "[ShowDate]");
-			$("#TicketGiveawayEventVenue").data("token", "[Venue]");
-			$("#TicketGiveawayEventTicketQuantity").data("token", "[TicketQuantity]");
-			
+			$("#TicketGiveawayEventShowName").data("token", "\\[ShowName\\]");
+			$("#TicketGiveawayEventShowDate").data("token", "\\[ShowDate\\]");
+			$("#TicketGiveawayEventVenue").data("token", "\\[Venue\\]");
+			$("#TicketGiveawayEventTicketQuantity").data("token", "\\[TicketQuantity\\]");
+			window.locationToken = "\\[Location\\]";
+
 			var $fieldsWithTokens = $("#TicketGiveawayEventShowName,#TicketGiveawayEventShowDate,#TicketGiveawayEventVenue,#TicketGiveawayEventTicketQuantity");
 			$fieldsWithTokens.change(function() {
-					$fieldsWithTokens.each(function() {
+				$fieldsWithTokens.each(function() {
 					if (jQuery.trim($(this).val()).length == 0) return;
 					
 					var value = $(this).val();
 					var token = $(this).data("token");
-					$("#TicketGiveawayEventCopy").val($("#TicketGiveawayEventCopy").val().replace(token, value));
+					var regex = new RegExp(token, "g");
+					$("#TicketGiveawayEventCopy").val($("#TicketGiveawayEventCopy").val().replace(regex, value));
 					$(this).data("token", value);
 				});
+
+				if ($(this).is("#TicketGiveawayEventVenue") && jQuery.trim($(this).val()).length > 0) {
+					// look up the venue's location
+					let venue = $(this).val();
+					$.ajax({
+						"method": "GET",
+						"url": "/playlist/ajax/autocomplete/events.php?q=" + encodeURIComponent(venue) + "&showall=true&type=Venue",
+						"success": function(data) {
+							let lines = data.split("\n");
+							if (lines.length > 0) {
+								let lineParts = lines[0].split('|');
+								try {
+									let venueJson = JSON.parse(lineParts[1]);
+									let location = venueJson['Attributes']['Location'];
+									if (location.length > 0) {
+										var regex = new RegExp(window.locationToken, "g");
+										$("#TicketGiveawayEventCopy").val($("#TicketGiveawayEventCopy").val().replace(regex, location));
+										window.locationToken = location;
+									}
+								} catch (e) {
+									console.log('error in finding venue location:');
+									console.log(e);
+								}
+							}
+						}
+					});
+				}
 			});
 		});
 	</script>
