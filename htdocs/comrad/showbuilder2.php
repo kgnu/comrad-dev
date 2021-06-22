@@ -460,7 +460,8 @@
 							let ticketTypeMapping = {
 								'Guest List Ticket': 'Guest List',
 								'Digital Ticket': 'Digital',
-								'Paper Ticket': 'Paper'
+								'Paper Ticket': 'Paper',
+								'Other Giveaway': 'Other'
 							};
 							if (giveawayAttributes['TicketType'] in ticketTypeMapping) {
 								giveawayAttributes['TicketType'] = ticketTypeMapping[giveawayAttributes['TicketType']];
@@ -481,7 +482,7 @@
 													'venue=' + encodeURIComponent(giveawayAttributes['Venue']) + '&showArtist=' + encodeURIComponent(giveawayAttributes['ShowName']) +
 													'&showInfo=' + encodeURIComponent(giveawayAttributes['Copy']).replace(/\"/g,"\\\"").replace(/\'/g, "\\'") + '&showTime=' +
 													'&showDate=' + encodeURIComponent(giveawayAttributes['ShowDate']) + 
-													'&typeOf10=' + encodeURIComponent(giveawayAttributes['TicketType']) + '\', \'giveaway\', \'width=550, height=650\');"') +
+													'&ticketType=' + encodeURIComponent(giveawayAttributes['TicketType']) + '\', \'giveaway\', \'width=550, height=650\');"') +
 												' class="WinnerInfo">Enter Winner Information</button></li>');
 							eventDetailsList.append(giveawayLi);
 
