@@ -478,11 +478,11 @@
 								giveawayAttributes['ShowDate'] = new Date(giveawayAttributes['ShowDate'] * 1000).toLocaleDateString();
 							}
 							giveawayLi = $('<li><button ' +
-												(!instanceId ? ' disabled="disabled"' : 'onclick="window.open(\'<?php echo $init->getProp('JotformUrl'); ?>?' +
-													'venue=' + encodeURIComponent(giveawayAttributes['Venue']) + '&showArtist=' + encodeURIComponent(giveawayAttributes['ShowName']) +
-													'&showInfo=' + encodeURIComponent(giveawayAttributes['Copy']).replace(/\"/g,"\\\"").replace(/\'/g, "\\'") + '&showTime=' +
-													'&showDate=' + encodeURIComponent(giveawayAttributes['ShowDate']) + 
-													'&ticketType=' + encodeURIComponent(giveawayAttributes['TicketType']) + '\', \'giveaway\', \'width=550, height=650\');"') +
+												'onclick="window.open(\'<?php echo $init->getProp('JotformUrl'); ?>?' +
+													'venue=' + encodeURIComponent(giveawayAttributes['Venue']).replace(/'/g, "\\'").replace(/\"/g,"\\\"") + '&showArtist=' + encodeURIComponent(giveawayAttributes['ShowName']).replace(/'/g, "\\'").replace(/\"/g,"\\\"") +
+													'&showInfo=' + encodeURIComponent(giveawayAttributes['Copy']).replace(/'/g, "\\'").replace(/\"/g,"\\\"") + '&showTime=' +
+													'&showDate=' + encodeURIComponent(giveawayAttributes['ShowDate']).replace(/'/g, "\\'").replace(/\"/g,"\\\"") + 
+													'&ticketType=' + encodeURIComponent(giveawayAttributes['TicketType']).replace(/'/g, "\\'").replace(/\"/g,"\\\"") + '\', \'giveaway\', \'width=550, height=650\');"' +
 												' class="WinnerInfo">Enter Winner Information</button></li>');
 							eventDetailsList.append(giveawayLi);
 
@@ -499,8 +499,7 @@
 								dbCommand('save', scheduledEventInstance.Type, 'MySql', scheduledEventInstance.Attributes, {}, function(response) {
 									if (response && !response.error) {
 										scheduledEventInstance.Attributes.Id = response.Id;
-										$("[id='" + elementId + "'] button.WinnerInfo").attr("onclick", "window.open('giveaway.php?seiid=" + response.Id + "\', \'giveaway\', \'width=550, height=650\');").
-											attr("disabled", false);
+										
 										$("[id='" + elementId + "'] button.AddToSavedItems").data("scheduledEventInstance", scheduledEventInstance);
 									}
 								});
@@ -2169,6 +2168,7 @@
 					initEditShowDescriptionDialog();
 				});
         
+
         window.onerror = function(message, url, lineNumber) {  
           alert('Show Builder Error: ' + message + '(' + lineNumber + ')');
           //save error and send to server for example.
