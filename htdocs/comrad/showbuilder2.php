@@ -469,8 +469,10 @@
 							if (giveawayAttributes['Copy'] != null) {
 								let newCopy = giveawayAttributes['Copy'];
 								// strip html
-								newCopy = newCopy.replaceAll('<br />', '\n').replaceAll('</p>', '\n').trim('');
-							    var tmp = document.createElement('DIV');
+								if (newCopy != null) {
+									newCopy = newCopy.replaceAll('<br />', '\n').replaceAll('</p>', '\n').trim('');
+								}
+								var tmp = document.createElement('DIV');
 								tmp.innerHTML = newCopy;
 								giveawayAttributes['Copy'] = tmp.textContent || tmp.innerText || '';
 							}

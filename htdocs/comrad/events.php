@@ -258,18 +258,26 @@
 			$("#TicketGiveawayEventShowDate").data("token", "\\[ShowDate\\]");
 			$("#TicketGiveawayEventVenue").data("token", "\\[Venue\\]");
 			$("#TicketGiveawayEventTicketQuantity").data("token", "\\[TicketQuantity\\]");
+			$("[name=TicketGiveawayEventTicketType]").data("token", "\\[TicketType\\]");
 			window.locationToken = "\\[Location\\]";
 
-			var $fieldsWithTokens = $("#TicketGiveawayEventShowName,#TicketGiveawayEventShowDate,#TicketGiveawayEventVenue,#TicketGiveawayEventTicketQuantity");
+			var $fieldsWithTokens = $("#TicketGiveawayEventShowName,#TicketGiveawayEventShowDate,#TicketGiveawayEventVenue,#TicketGiveawayEventTicketQuantity,[name=TicketGiveawayEventTicketType]");
 			$fieldsWithTokens.change(function() {
 				$fieldsWithTokens.each(function() {
 					if (jQuery.trim($(this).val()).length == 0) return;
 					
 					var value = $(this).val();
+					if($(this).is("[name=TicketGiveawayEventTicketType]")) {
+						value = $("[name=TicketGiveawayEventTicketType]:checked").val();
+					}
 					var token = $(this).data("token");
 					var regex = new RegExp(token, "g");
 					$("#TicketGiveawayEventCopy").val($("#TicketGiveawayEventCopy").val().replace(regex, value));
-					$(this).data("token", value);
+					if($(this).is("[name=TicketGiveawayEventTicketType]")) {
+						$("[name=TicketGiveawayEventTicketType]").data("token", value);
+					} else {
+						$(this).data("token", value);
+					}
 				});
 
 				if ($(this).is("#TicketGiveawayEventVenue") && jQuery.trim($(this).val()).length > 0) {
