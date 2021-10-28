@@ -43,6 +43,8 @@
 	
 	<script type="text/javascript" src="js/jquery/json/jquery.json.js"></script>
 	<script type="text/javascript" src="js/jquery/jgrowl/jquery.jgrowl.js"></script>
+
+	<script type="text/javascript" src="js/date/format/date.format.js"></script>
 	
 	<script type="text/javascript" src="js/jquery/tinymce/tinymce/jquery.tinymce.js"></script>
 	<script type="text/javascript" src="js/tinymce/kgnutinymce.js"></script>
@@ -269,6 +271,8 @@
 					var value = $(this).val();
 					if($(this).is("[name=TicketGiveawayEventTicketType]")) {
 						value = $("[name=TicketGiveawayEventTicketType]:checked").val();
+					} else if ($(this).is("#TicketGiveawayEventShowDate")) {
+						value = (new Date(value)).format("ddd, mmm d, yyyy");
 					}
 					var token = $(this).data("token");
 					var regex = new RegExp(token, "g");

@@ -483,7 +483,7 @@
 												(!instanceId ? ' disabled="disabled"' : 'onclick="window.open(\'<?php echo $init->getProp('JotformUrl'); ?>?' +
 													'venue=' + encodeURIComponent(giveawayAttributes['Venue']) + '&showArtist=' + encodeURIComponent(giveawayAttributes['ShowName']) +
 													'&showInfo=' + encodeURIComponent(giveawayAttributes['Copy']).replace(/\"/g,"\\\"").replace(/\'/g, "\\'") + '&showTime=' +
-													'&showDate=' + encodeURIComponent(giveawayAttributes['ShowDate']) + 
+													'&showDate=' + encodeURIComponent((new Date(giveawayAttributes['ShowDate'])).format("ddd, mmm d, yyyy")) + 
 													'&ticketType=' + encodeURIComponent(giveawayAttributes['TicketType']) + '\', \'giveaway\', \'width=550, height=650\');"') +
 												' class="WinnerInfo">Enter Winner Information</button></li>');
 							eventDetailsList.append(giveawayLi);
