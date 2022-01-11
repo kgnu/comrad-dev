@@ -183,7 +183,7 @@
 					if (element.hasClass('datePickerInput')) {
 						if (event.Attributes[key]) {
 							var d = new Date(event.Attributes[key] * 1000);
-							element[0].value = (d.getMonth() + 1) + '/' + (d.getDate() + 1) + '/' + d.getFullYear();
+							element[0].value = (d.getMonth() + 1) + '/' + (d.getDate()) + '/' + d.getFullYear();
 						}
 					} else if (element.hasClass('autocomplete')) {
 						element[0].value = event.Attributes[key];
