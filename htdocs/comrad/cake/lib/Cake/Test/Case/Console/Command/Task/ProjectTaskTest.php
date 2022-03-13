@@ -4,19 +4,18 @@
  *
  * Test Case for project generation shell task
  *
- * PHP 5
- *
- * CakePHP : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2012, Cake Software Foundation, Inc.
+ * CakePHP : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc.
- * @link          http://cakephp.org CakePHP Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP Project
  * @package       Cake.Test.Case.Console.Command.Task
  * @since         CakePHP v 1.3.0
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('ShellDispatcher', 'Console');
@@ -150,7 +149,7 @@ class ProjectTaskTest extends CakeTestCase {
 	}
 
 /**
- * test bake with CakePHP on the include path.  The constants should remain commented out.
+ * test bake with CakePHP on the include path. The constants should remain commented out.
  *
  * @return void
  */
@@ -198,7 +197,6 @@ class ProjectTaskTest extends CakeTestCase {
 			'Test' . DS . 'Case' . DS . 'View' . DS . 'Helper' => 'empty',
 			'Test' . DS . 'Fixture' => 'empty',
 			'Vendor' => 'empty',
-			'View' . DS . 'Elements' => 'empty',
 			'View' . DS . 'Scaffolds' => 'empty',
 			'tmp' . DS . 'cache' . DS . 'models' => 'empty',
 			'tmp' . DS . 'cache' . DS . 'persistent' => 'empty',
@@ -250,6 +248,24 @@ class ProjectTaskTest extends CakeTestCase {
 	}
 
 /**
+ * test generation of cache prefix
+ *
+ * @return void
+ */
+	public function testCachePrefixGeneration() {
+		$this->_setupTestProject();
+
+		$path = $this->Task->path . 'bake_test_app' . DS;
+		$result = $this->Task->cachePrefix($path);
+		$this->assertTrue($result);
+
+		$File = new File($path . 'Config' . DS . 'core.php');
+		$contents = $File->read();
+		$this->assertRegExp('/\$prefix = \'.+\';/', $contents, '$prefix is not defined');
+		$this->assertNotRegExp('/\$prefix = \'myapp_\';/', $contents, 'Default cache prefix left behind. %s');
+	}
+
+/**
  * Test that index.php is generated correctly.
  *
  * @return void
@@ -296,7 +312,7 @@ class ProjectTaskTest extends CakeTestCase {
  * @return void
  */
 	public function testCakeAdmin() {
-		$File = new File(APP . 'Config' . DS . 'core.php');
+		$File = new File(CONFIG . 'core.php');
 		$contents = $File->read();
 		$File = new File(TMP . 'tests' . DS . 'core.php');
 		$File->write($contents);

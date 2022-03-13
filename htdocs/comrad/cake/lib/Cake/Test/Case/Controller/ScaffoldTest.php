@@ -2,21 +2,22 @@
 /**
  * ScaffoldTest file
  *
- * PHP 5
- *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <https://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.Controller
  * @since         CakePHP(tm) v 1.2.0.5436
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
+
 App::uses('Router', 'Routing');
+App::uses('CakeSession', 'Model/Datasource');
 App::uses('Controller', 'Controller');
 App::uses('Scaffold', 'Controller');
 App::uses('ScaffoldView', 'View');
@@ -30,13 +31,6 @@ require_once dirname(dirname(__FILE__)) . DS . 'Model' . DS . 'models.php';
  * @package       Cake.Test.Case.Controller
  */
 class ScaffoldMockController extends Controller {
-
-/**
- * name property
- *
- * @var string 'ScaffoldMock'
- */
-	public $name = 'ScaffoldMock';
 
 /**
  * scaffold property
@@ -56,7 +50,7 @@ class ScaffoldMockControllerWithFields extends Controller {
 /**
  * name property
  *
- * @var string 'ScaffoldMock'
+ * @var string
  */
 	public $name = 'ScaffoldMock';
 
@@ -70,11 +64,45 @@ class ScaffoldMockControllerWithFields extends Controller {
 /**
  * function beforeScaffold
  *
- * @param string method
+ * @param string $method Method name.
+ * @return bool true
  */
 	public function beforeScaffold($method) {
 		$this->set('scaffoldFields', array('title'));
 		return true;
+	}
+
+}
+
+/**
+ * ScaffoldMockControllerWithError class
+ *
+ * @package       Cake.Test.Case.Controller
+ */
+class ScaffoldMockControllerWithError extends Controller {
+
+/**
+ * name property
+ *
+ * @var string
+ */
+	public $name = 'ScaffoldMock';
+
+/**
+ * scaffold property
+ *
+ * @var mixed
+ */
+	public $scaffold;
+
+/**
+ * function beforeScaffold
+ *
+ * @param string $method Method name.
+ * @return bool false
+ */
+	public function beforeScaffold($method) {
+		return false;
 	}
 
 }
@@ -89,7 +117,8 @@ class TestScaffoldMock extends Scaffold {
 /**
  * Overload _scaffold
  *
- * @param unknown_type $params
+ * @param CakeRequest $request Request object for scaffolding
+ * @return void
  */
 	protected function _scaffold(CakeRequest $request) {
 		$this->_params = $request;
@@ -134,6 +163,7 @@ class ScaffoldTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
+		Configure::write('Config.language', 'eng');
 		$request = new CakeRequest(null, false);
 		$this->Controller = new ScaffoldMockController($request);
 		$this->Controller->response = $this->getMock('CakeResponse', array('_sendHeader'));
@@ -146,6 +176,7 @@ class ScaffoldTest extends CakeTestCase {
  */
 	public function tearDown() {
 		parent::tearDown();
+		CakeSession::destroy();
 		unset($this->Controller);
 	}
 
@@ -217,6 +248,7 @@ class ScaffoldTest extends CakeTestCase {
 		$this->assertEquals('scaffoldMock', $result['singularVar']);
 		$this->assertEquals('scaffoldMock', $result['pluralVar']);
 		$this->assertEquals(array('id', 'user_id', 'title', 'body', 'published', 'created', 'updated'), $result['scaffoldFields']);
+		$this->assertArrayHasKey('plugin', $result['associations']['belongsTo']['User']);
 	}
 
 /**
@@ -229,7 +261,7 @@ class ScaffoldTest extends CakeTestCase {
 		$this->Controller->theme = 'TestTheme';
 		$this->Controller->viewClass = 'Theme';
 		$this->Controller->constructClasses();
-		$Scaffold = new TestScaffoldMock($this->Controller, $this->Controller->request);
+		new TestScaffoldMock($this->Controller, $this->Controller->request);
 
 		$this->assertEquals('Scaffold', $this->Controller->viewClass);
 	}
@@ -347,4 +379,40 @@ class ScaffoldTest extends CakeTestCase {
 		$this->assertNotRegExp('/textarea name="data\[ScaffoldMock\]\[body\]" cols="30" rows="6" id="ScaffoldMockBody"/', $result);
 	}
 
+/**
+ * test in case of scaffold error
+ *
+ * @return void
+ */
+	public function testScaffoldError() {
+		$request = new CakeRequest(null, false);
+		$this->Controller = new ScaffoldMockControllerWithError($request);
+		$this->Controller->response = $this->getMock('CakeResponse', array('_sendHeader'));
+
+		$params = array(
+			'plugin' => null,
+			'pass' => array(1),
+			'form' => array(),
+			'named' => array(),
+			'url' => array('url' => 'scaffold_mock/edit'),
+			'controller' => 'scaffold_mock',
+			'action' => 'edit',
+		);
+		$this->Controller->request->base = '';
+		$this->Controller->request->webroot = '/';
+		$this->Controller->request->here = '/scaffold_mock/edit';
+		$this->Controller->request->addParams($params);
+
+		//set router.
+		Router::reload();
+		Router::setRequestInfo($this->Controller->request);
+
+		$this->Controller->constructClasses();
+		ob_start();
+		new Scaffold($this->Controller, $this->Controller->request);
+		$this->Controller->response->send();
+		$result = ob_get_clean();
+
+		$this->assertRegExp('/Scaffold Error/', $result);
+	}
 }

@@ -79,7 +79,7 @@ class Track extends AppModel {
 		return !(Configure::read('Options.ReportingPeriod') && empty($this->data['Track']['t_Duration']));
 	}
 	
-	function beforeSave() {
+	function beforeSave($options = array()) {
 		// Convert duration string into integer number of seconds
 		// if (is_string($this->data['Track']['t_Duration']) && preg_match('/^([0-9]+):([0-5][0-9])$/', $this->data['Track']['t_Duration'], $matches)) {
 		// 	$this->data['Track']['t_Duration'] = $matches[1] * 60 + $matches[2];
@@ -95,7 +95,7 @@ class Track extends AppModel {
 		return true;
 	}
 	
-	function afterSave($created) {
+	function afterSave($created, $options = array()) {
 		//update the TrackFullTextSearchInfo with the new data
 		if (! $created) {
 			$query = "DELETE FROM TrackFullTextSearchInfo WHERE tftsi_TrackId = " . $this->getDataSource()->value($this->data['Track']['t_TrackID']);

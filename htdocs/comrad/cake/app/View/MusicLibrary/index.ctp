@@ -48,12 +48,8 @@
 			<div class="span4">
 				<form class="form-inline" style="margin: 0">
 					<div class="input-append">
-						<?php echo $this->TB->basic_input('q', array(
-							'type' => 'text',
-							'label' => false,
-							'class' => 'input-xlarge',
-							'value' => (isset($this->request->query['q']) ? $this->request->query['q'] : '')
-						)); ?><button class="btn"><i class="icon-search"></i></button>
+						<input name="q" class="input-xlarge" value="<?php echo (isset($this->request->query['q']) ? $this->request->query['q'] : ''); ?>" field="q" type="text" id="q" spellcheck="false" data-ms-editor="true">
+						<button class="btn"><i class="icon-search"></i></button>
 					</div>
 				</form>
 			</div>

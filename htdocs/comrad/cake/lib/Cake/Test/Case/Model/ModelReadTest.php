@@ -2,21 +2,22 @@
 /**
  * ModelReadTest file
  *
- * PHP 5
- *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <https://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.Model
  * @since         CakePHP(tm) v 1.2.0.4206
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
+
 require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
+
 /**
  * ModelReadTest
  *
@@ -26,7 +27,7 @@ class ModelReadTest extends BaseModelTest {
 
 /**
  * testExists function
- * @retun void
+ * @return void
  */
 	public function testExists() {
 		$this->loadFixtures('User');
@@ -80,9 +81,190 @@ class ModelReadTest extends BaseModelTest {
 
 		$this->assertEquals(2, count($result['SomethingElse']));
 
-		$doomed = Set::extract('/JoinThing/doomed', $result['SomethingElse']);
+		$doomed = Hash::extract($result['SomethingElse'], '{n}.JoinThing.doomed');
 		$this->assertTrue(in_array(true, $doomed));
 		$this->assertTrue(in_array(false, $doomed));
+	}
+
+/**
+ * Test IN operator
+ *
+ * @return void
+ */
+	public function testInOperator() {
+		$this->loadFixtures('Product');
+		$Product = new Product();
+		$expected = array(
+			array(
+				'Product' => array(
+					'id' => 1,
+					'name' => "Park's Great Hits",
+					'type' => 'Music',
+					'price' => 19
+				)
+			)
+		);
+
+		$result = $Product->find('all', array('conditions' => array('Product.id IN' => array(1))));
+		$this->assertEquals($expected, $result);
+
+		$expected = array(
+			array(
+				'Product' => array(
+					'id' => 2,
+					'name' => "Silly Puddy",
+					'type' => 'Toy',
+					'price' => 3
+				)
+			),
+			array(
+				'Product' => array(
+					'id' => 3,
+					'name' => "Playstation",
+					'type' => 'Toy',
+					'price' => 89
+				)
+			),
+			array(
+				'Product' => array(
+					'id' => 4,
+					'name' => "Men's T-Shirt",
+					'type' => 'Clothing',
+					'price' => 32
+				)
+			),
+			array(
+				'Product' => array(
+					'id' => 5,
+					'name' => "Blouse",
+					'type' => 'Clothing',
+					'price' => 34
+				)
+			),
+			array(
+				'Product' => array(
+					'id' => 6,
+					'name' => "Electronica 2002",
+					'type' => 'Music',
+					'price' => 4
+				)
+			),
+			array(
+				'Product' => array(
+					'id' => 7,
+					'name' => "Country Tunes",
+					'type' => 'Music',
+					'price' => 21
+				)
+			),
+			array(
+				'Product' => array(
+					'id' => 8,
+					'name' => "Watermelon",
+					'type' => 'Food',
+					'price' => 9
+				)
+			)
+		);
+		$result = $Product->find('all', array('conditions' => array('Product.id NOT IN' => array(1))));
+		$this->assertEquals($expected, $result);
+
+		$expected = array(
+			array(
+				'Product' => array(
+					'id' => 1,
+					'name' => "Park's Great Hits",
+					'type' => 'Music',
+					'price' => 19
+				)
+			),
+			array(
+				'Product' => array(
+					'id' => 2,
+					'name' => "Silly Puddy",
+					'type' => 'Toy',
+					'price' => 3
+				)
+			),
+		);
+
+		$result = $Product->find('all', array('conditions' => array('Product.id IN' => array(1, 2))));
+		$this->assertEquals($expected, $result);
+	}
+
+	public function skipIfIsStrictGroupBy() {
+		$isOnlyFullGroupBy = false;
+		if ($this->db instanceof Mysql) {
+			$sqlMode = $this->db->query('SELECT @@sql_mode AS sql_mode;');
+			if (strpos($sqlMode[0][0]['sql_mode'], 'ONLY_FULL_GROUP_BY') > -1) {
+				$isOnlyFullGroupBy = true;
+			}
+		}
+		$isStrictGroupBy = $isOnlyFullGroupBy ||
+			$this->db instanceof Postgres ||
+			$this->db instanceof Sqlite ||
+			$this->db instanceof Oracle ||
+			$this->db instanceof Sqlserver;
+		$message = 'Postgres, Oracle, SQLite, SQL Server and MySQL in ONLY_FULL_GROUP_BY ' .
+			'mode have strict GROUP BY and are incompatible with this test.';
+		$this->skipIf($isStrictGroupBy, $message);
+	}
+
+/**
+ * testGroupByAndOrder method
+ *
+ * This test will never pass with Postgres or Oracle as all fields in a select must be
+ * part of an aggregate function or in the GROUP BY statement.
+ *
+ * @return void
+ */
+	public function testGroupByAndOrder() {
+		$this->skipIfIsStrictGroupBy();
+		$this->loadFixtures('Project', 'Thread', 'Message');
+		$Thread = new Thread();
+		$result = $Thread->find('all', array(
+			'group' => 'Thread.project_id',
+			'order' => 'Thread.id ASC',
+		));
+		$expected = array(
+			array(
+				'Thread' => array(
+					'id' => 1,
+					'project_id' => 1,
+					'name' => 'Project 1, Thread 1',
+				),
+				'Project' => array(
+					'id' => 1,
+					'name' => 'Project 1',
+				),
+				'Message' => array(
+					array(
+						'id' => 1,
+						'thread_id' => 1,
+						'name' => 'Thread 1, Message 1',
+					),
+				),
+			),
+			array (
+				'Thread' => array(
+					'id' => 3,
+					'project_id' => 2,
+					'name' => 'Project 2, Thread 1',
+				),
+				'Project' => array(
+					'id' => 2,
+					'name' => 'Project 2',
+				),
+				'Message' => array(
+					array(
+						'id' => 3,
+						'thread_id' => 3,
+						'name' => 'Thread 3, Message 1',
+					),
+				),
+			),
+		);
+		$this->assertEquals($expected, $result);
 	}
 
 /**
@@ -94,54 +276,11 @@ class ModelReadTest extends BaseModelTest {
  * @return void
  */
 	public function testGroupBy() {
-		$isStrictGroupBy = $this->db instanceof Postgres || $this->db instanceof Sqlite || $this->db instanceof Oracle || $this->db instanceof Sqlserver;
-		$message = 'Postgres, Oracle, SQLite and SQL Server have strict GROUP BY and are incompatible with this test.';
-
-		$this->skipIf($isStrictGroupBy, $message);
+		$this->skipIfIsStrictGroupBy();
 
 		$this->loadFixtures('Project', 'Product', 'Thread', 'Message', 'Bid');
 		$Thread = new Thread();
 		$Product = new Product();
-
-		$result = $Thread->find('all', array(
-			'group' => 'Thread.project_id',
-			'order' => 'Thread.id ASC'
-		));
-
-		$expected = array(
-			array(
-				'Thread' => array(
-					'id' => 1,
-					'project_id' => 1,
-					'name' => 'Project 1, Thread 1'
-				),
-				'Project' => array(
-					'id' => 1,
-					'name' => 'Project 1'
-				),
-				'Message' => array(
-					array(
-						'id' => 1,
-						'thread_id' => 1,
-						'name' => 'Thread 1, Message 1'
-			))),
-			array(
-				'Thread' => array(
-					'id' => 3,
-					'project_id' => 2,
-					'name' => 'Project 2, Thread 1'
-				),
-				'Project' => array(
-					'id' => 2,
-					'name' => 'Project 2'
-				),
-				'Message' => array(
-					array(
-						'id' => 3,
-						'thread_id' => 3,
-						'name' => 'Thread 3, Message 1'
-		))));
-		$this->assertEquals($expected, $result);
 
 		$rows = $Thread->find('all', array(
 			'group' => 'Thread.project_id',
@@ -231,7 +370,7 @@ class ModelReadTest extends BaseModelTest {
 			array('Product' => array('type' => 'Music'), array('price' => 4)),
 			array('Product' => array('type' => 'Toy'), array('price' => 3))
 		);
-		$result = $Product->find('all',array(
+		$result = $Product->find('all', array(
 			'fields' => array('Product.type', 'MIN(Product.price) as price'),
 			'group' => 'Product.type',
 			'order' => 'Product.type ASC'
@@ -246,6 +385,33 @@ class ModelReadTest extends BaseModelTest {
 	}
 
 /**
+ * Test find method with having clause
+ *
+ * @return void
+ */
+	public function testHaving() {
+		$this->loadFixtures('Comment');
+
+		$Comment = ClassRegistry::init('Comment');
+		$comments = $Comment->find('all', array(
+			'fields' => array('user_id', 'COUNT(*) AS count'),
+			'group' => array('user_id'),
+			'having' => array('COUNT(*) >' => 1),
+			'order' => array('COUNT(*)' => 'DESC'),
+			'recursive' => -1,
+		));
+
+		$results = Hash::combine($comments, '{n}.Comment.user_id', '{n}.0.count');
+
+		$expected = array(
+			1 => 3,
+			2 => 2,
+		);
+
+		$this->assertEquals($expected, $results);
+	}
+
+/**
  * testOldQuery method
  *
  * @return void
@@ -254,7 +420,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->loadFixtures('Article', 'User', 'Tag', 'ArticlesTag', 'Comment', 'Attachment');
 		$Article = new Article();
 
-		$query  = 'SELECT title FROM ';
+		$query = 'SELECT title FROM ';
 		$query .= $this->db->fullTableName('articles');
 		$query .= ' WHERE ' . $this->db->fullTableName('articles') . '.id IN (1,2)';
 
@@ -262,7 +428,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertTrue(is_array($results));
 		$this->assertEquals(2, count($results));
 
-		$query  = 'SELECT title, body FROM ';
+		$query = 'SELECT title, body FROM ';
 		$query .= $this->db->fullTableName('articles');
 		$query .= ' WHERE ' . $this->db->fullTableName('articles') . '.id = 1';
 
@@ -270,7 +436,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertFalse($this->db->getQueryCache($query));
 		$this->assertTrue(is_array($results));
 
-		$query  = 'SELECT title, id FROM ';
+		$query = 'SELECT title, id FROM ';
 		$query .= $this->db->fullTableName('articles');
 		$query .= ' WHERE ' . $this->db->fullTableName('articles');
 		$query .= '.published = ' . $this->db->value('Y');
@@ -296,7 +462,7 @@ class ModelReadTest extends BaseModelTest {
 		$query .= '.id = ? AND ' . $this->db->fullTableName('articles') . '.published = ?';
 
 		$params = array(1, 'Y');
-		$result = $Article->query($query, $params);
+		$result = $Article->query($query, $params, true);
 		$expected = array(
 			'0' => array(
 				$this->db->fullTableName('articles', false, false) => array(
@@ -312,7 +478,7 @@ class ModelReadTest extends BaseModelTest {
 		$result = $this->db->getQueryCache($query, $params);
 		$this->assertFalse(empty($result));
 
-		$query  = 'SELECT id, created FROM ';
+		$query = 'SELECT id, created FROM ';
 		$query .= $this->db->fullTableName('articles');
 		$query .= '  WHERE ' . $this->db->fullTableName('articles') . '.title = ?';
 
@@ -320,29 +486,29 @@ class ModelReadTest extends BaseModelTest {
 		$result = $Article->query($query, $params, false);
 		$this->assertTrue(is_array($result));
 		$this->assertTrue(
-			   isset($result[0][$this->db->fullTableName('articles', false, false)])
-			|| isset($result[0][0])
+			isset($result[0][$this->db->fullTableName('articles', false, false)]) ||
+			isset($result[0][0])
 		);
 		$result = $this->db->getQueryCache($query, $params);
 		$this->assertTrue(empty($result));
 
-		$query  = 'SELECT title FROM ';
+		$query = 'SELECT title FROM ';
 		$query .= $this->db->fullTableName('articles');
 		$query .= ' WHERE ' . $this->db->fullTableName('articles') . '.title LIKE ?';
 
 		$params = array('%First%');
-		$result = $Article->query($query, $params);
+		$result = $Article->query($query, $params, true);
 		$this->assertTrue(is_array($result));
 		$this->assertTrue(
-			   isset($result[0][$this->db->fullTableName('articles', false, false)]['title'])
-			|| isset($result[0][0]['title'])
+			isset($result[0][$this->db->fullTableName('articles', false, false)]['title']) ||
+			isset($result[0][0]['title'])
 		);
 
 		//related to ticket #5035
-		$query  = 'SELECT title FROM ';
+		$query = 'SELECT title FROM ';
 		$query .= $this->db->fullTableName('articles') . ' WHERE title = ? AND published = ?';
 		$params = array('First? Article', 'Y');
-		$Article->query($query, $params);
+		$Article->query($query, $params, true);
 
 		$result = $this->db->getQueryCache($query, $params);
 		$this->assertFalse($result === false);
@@ -359,12 +525,12 @@ class ModelReadTest extends BaseModelTest {
 		$this->loadFixtures('Article', 'User', 'Tag', 'ArticlesTag');
 		$Article = new Article();
 
-		$query  = 'SELECT * FROM ' . $this->db->fullTableName('articles');
+		$query = 'SELECT * FROM ' . $this->db->fullTableName('articles');
 		$query .= ' WHERE ' . $this->db->fullTableName('articles');
 		$query .= '.published = ? AND ' . $this->db->fullTableName('articles') . '.user_id = ?';
 		$params = array('Y');
 
-		$result = $Article->query($query, $params);
+		$Article->query($query, $params);
 	}
 
 /**
@@ -384,7 +550,7 @@ class ModelReadTest extends BaseModelTest {
 			$this->db->fullTableName('articles') . '.published', 'Y'
 		);
 
-		$result = $Article->query($query, $param);
+		$Article->query($query, $param);
 	}
 
 /**
@@ -2178,10 +2344,10 @@ class ModelReadTest extends BaseModelTest {
 
 		$this->assertEquals($expected, $result);
 
-		$result = $TestModel->unbindModel(array('hasMany' => array('Child')));
+		$result = $TestModel->unbindModel(array('hasMany' => 'Child'));
 		$this->assertTrue($result);
 
-		$result = $TestModel->Sample->unbindModel(array('belongsTo' => array('Apple')));
+		$result = $TestModel->Sample->unbindModel(array('belongsTo' => 'Apple'));
 		$this->assertTrue($result);
 
 		$result = $TestModel->find('all');
@@ -2996,7 +3162,6 @@ class ModelReadTest extends BaseModelTest {
 
 		$duplicateModel = new NodeAfterFind();
 		$duplicateModel->recursive = 3;
-		$duplicateModelData = $duplicateModel->find('all');
 
 		$noAfterFindModel = new NodeNoAfterFind();
 		$noAfterFindModel->recursive = 3;
@@ -3004,6 +3169,30 @@ class ModelReadTest extends BaseModelTest {
 
 		$this->assertFalse($afterFindModel == $noAfterFindModel);
 		$this->assertEquals($afterFindData, $noAfterFindData);
+	}
+
+/**
+ * Test that afterFind can completely unset data.
+ *
+ * @return void
+ */
+	public function testAfterFindUnset() {
+		$this->loadFixtures('Article', 'Comment', 'User');
+		$model = new CustomArticle();
+		$model->bindModel(array(
+			'hasMany' => array(
+				'ModifiedComment' => array(
+					'className' => 'ModifiedComment',
+					'foreignKey' => 'article_id',
+				)
+			)
+		));
+		$model->ModifiedComment->remove = true;
+		$result = $model->find('all');
+		$this->assertTrue(
+			empty($result[0]['ModifiedComment']),
+			'Zeroith row should be removed by afterFind'
+		);
 	}
 
 /**
@@ -3015,8 +3204,8 @@ class ModelReadTest extends BaseModelTest {
 		$this->loadFixtures('Apple', 'Sample');
 		$Apple = new Apple();
 		$result = $Apple->find('threaded');
-		$result = Set::extract($result, '{n}.children');
-		$expected = array(array(), array(), array(), array(), array(), array(),	array());
+		$result = Hash::extract($result, '{n}.children');
+		$expected = array(array(), array(), array(), array(), array(), array(), array());
 		$this->assertEquals($expected, $result);
 	}
 
@@ -3030,8 +3219,8 @@ class ModelReadTest extends BaseModelTest {
 		$Model = new Person();
 		$Model->recursive = -1;
 		$result = $Model->find('threaded');
-		$result = Set::extract($result, '{n}.children');
-		$expected = array(array(), array(), array(), array(), array(), array(),	array());
+		$result = Hash::extract($result, '{n}.children');
+		$expected = array(array(), array(), array(), array(), array(), array(), array());
 		$this->assertEquals($expected, $result);
 
 		$result = $Model->find('threaded', array('parent' => 'mother_id'));
@@ -3737,6 +3926,31 @@ class ModelReadTest extends BaseModelTest {
 	}
 
 /**
+ * Test find(neighbors) with missing fields so no neighbors are found.
+ *
+ * @return void
+ */
+	public function testFindNeighborsNoPrev() {
+		$this->loadFixtures('User', 'Article', 'Comment', 'Tag', 'ArticlesTag', 'Attachment');
+		$Article = new Article();
+
+		$result = $Article->find('neighbors', array(
+			'field' => 'Article.title',
+			'value' => 'Second Article',
+			'fields' => array('id'),
+			'conditions' => array(
+				'Article.title LIKE' => '%Article%'
+			),
+			'recursive' => 0,
+		));
+		$expected = array(
+			'prev' => null,
+			'next' => null
+		);
+		$this->assertEquals($expected, $result);
+	}
+
+/**
  * testFindCombinedRelations method
  *
  * @return void
@@ -4030,7 +4244,6 @@ class ModelReadTest extends BaseModelTest {
 /**
  * testFindAllWithConditionInChildQuery
  *
- * @todo external conditions like this are going to need to be revisited at some point
  * @return void
  */
 	public function testFindAllWithConditionInChildQuery() {
@@ -4179,7 +4392,8 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertTrue($result);
 
 		$result = $TestModel->find('all', array(
-			'fields' => 'User.id, User.user'
+			'fields' => 'User.id, User.user',
+			'order' => array('User.id' => 'ASC'),
 		));
 		$expected = array(
 			array(
@@ -4266,13 +4480,14 @@ class ModelReadTest extends BaseModelTest {
 
 		$TestModel->resetAssociations();
 		$result = $TestModel->hasMany;
-		$this->assertEquals(array(), $result);
+		$this->assertSame(array(), $result);
 
 		$result = $TestModel->bindModel(array('hasMany' => array('Comment')), false);
 		$this->assertTrue($result);
 
 		$result = $TestModel->find('all', array(
-			'fields' => 'User.id, User.user'
+			'fields' => 'User.id, User.user',
+			'order' => array('User.id' => 'ASC'),
 		));
 
 		$expected = array(
@@ -4383,7 +4598,8 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 
 		$result = $TestModel->find('all', array(
-			'fields' => 'User.id, User.user'
+			'fields' => 'User.id, User.user',
+			'order' => array('User.id' => 'ASC'),
 		));
 		$expected = array(
 			array('User' => array('id' => '1', 'user' => 'mariano')),
@@ -4393,7 +4609,8 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 
 		$result = $TestModel->find('all', array(
-			'fields' => 'User.id, User.user'
+			'fields' => 'User.id, User.user',
+			'order' => array('User.id' => 'ASC'),
 		));
 		$expected = array(
 			array(
@@ -4481,7 +4698,10 @@ class ModelReadTest extends BaseModelTest {
 		$result = $TestModel->unbindModel(array('hasMany' => array('Comment')), false);
 		$this->assertTrue($result);
 
-		$result = $TestModel->find('all', array('fields' => 'User.id, User.user'));
+		$result = $TestModel->find('all', array(
+			'fields' => 'User.id, User.user',
+			'order' => array('User.id' => 'ASC'),
+		));
 		$expected = array(
 			array('User' => array('id' => '1', 'user' => 'mariano')),
 			array('User' => array('id' => '2', 'user' => 'nate')),
@@ -4498,7 +4718,10 @@ class ModelReadTest extends BaseModelTest {
 		)));
 		$this->assertTrue($result);
 
-		$result = $TestModel->find('all', array('fields' => 'User.id, User.user'));
+		$result = $TestModel->find('all', array(
+			'fields' => 'User.id, User.user',
+			'order' => array('User.id' => 'ASC'),
+		));
 		$expected = array(
 			array(
 				'User' => array(
@@ -4935,7 +5158,9 @@ class ModelReadTest extends BaseModelTest {
 	public function testAssociationAfterFind() {
 		$this->loadFixtures('Post', 'Author', 'Comment');
 		$TestModel = new Post();
-		$result = $TestModel->find('all');
+		$result = $TestModel->find('all', array(
+			'order' => array('Post.id' => 'ASC')
+		));
 		$expected = array(
 			array(
 				'Post' => array(
@@ -5004,6 +5229,7 @@ class ModelReadTest extends BaseModelTest {
 		)));
 		$result = $Author->find('all', array(
 			'conditions' => array('Author.id' => 1),
+			'order' => array('Author.id' => 'ASC'),
 			'recursive' => 2
 		));
 		$expected = array(
@@ -5020,6 +5246,39 @@ class ModelReadTest extends BaseModelTest {
 	}
 
 /**
+ * testDeeperAssociationAfterFind method
+ *
+ * @return void
+ */
+	public function testDeeperAssociationAfterFind() {
+		$this->loadFixtures('Post', 'Author', 'Comment', 'Attachment', 'Article');
+
+		$Post = new Post();
+		$Post->bindModel(array(
+			'hasMany' => array(
+				'Comment' => array(
+					'className' => 'ModifiedComment',
+					'foreignKey' => 'article_id',
+				)
+		)));
+		$Post->Comment->bindModel(array(
+			'hasOne' => array(
+				'Attachment' => array(
+					'className' => 'ModifiedAttachment',
+				)
+		)));
+
+		$result = $Post->find('first', array(
+			'conditions' => array('Post.id' => 2),
+			'recursive' => 2
+		));
+		$this->assertTrue(isset($result['Comment'][0]['callback']));
+		$this->assertEquals('Fire', $result['Comment'][0]['callback']);
+		$this->assertTrue(isset($result['Comment'][0]['Attachment']['callback']));
+		$this->assertEquals('Fired', $result['Comment'][0]['Attachment']['callback']);
+	}
+
+/**
  * Tests that callbacks can be properly disabled
  *
  * @return void
@@ -5028,19 +5287,19 @@ class ModelReadTest extends BaseModelTest {
 		$this->loadFixtures('Author');
 		$TestModel = new ModifiedAuthor();
 
-		$result = Set::extract($TestModel->find('all'), '/Author/user');
+		$result = Hash::extract($TestModel->find('all'), '{n}.Author.user');
 		$expected = array('mariano (CakePHP)', 'nate (CakePHP)', 'larry (CakePHP)', 'garrett (CakePHP)');
 		$this->assertEquals($expected, $result);
 
-		$result = Set::extract($TestModel->find('all', array('callbacks' => 'after')), '/Author/user');
+		$result = Hash::extract($TestModel->find('all', array('callbacks' => 'after')), '{n}.Author.user');
 		$expected = array('mariano (CakePHP)', 'nate (CakePHP)', 'larry (CakePHP)', 'garrett (CakePHP)');
 		$this->assertEquals($expected, $result);
 
-		$result = Set::extract($TestModel->find('all', array('callbacks' => 'before')), '/Author/user');
+		$result = Hash::extract($TestModel->find('all', array('callbacks' => 'before')), '{n}.Author.user');
 		$expected = array('mariano', 'nate', 'larry', 'garrett');
 		$this->assertEquals($expected, $result);
 
-		$result = Set::extract($TestModel->find('all', array('callbacks' => false)), '/Author/user');
+		$result = Hash::extract($TestModel->find('all', array('callbacks' => false)), '{n}.Author.user');
 		$expected = array('mariano', 'nate', 'larry', 'garrett');
 		$this->assertEquals($expected, $result);
 	}
@@ -5053,7 +5312,10 @@ class ModelReadTest extends BaseModelTest {
 	public function testAssociationAfterFindCalbacksDisabled() {
 		$this->loadFixtures('Post', 'Author', 'Comment');
 		$TestModel = new Post();
-		$result = $TestModel->find('all', array('callbacks' => false));
+		$result = $TestModel->find('all', array(
+			'callbacks' => false,
+			'order' => array('Post.id' => 'ASC'),
+		));
 		$expected = array(
 			array(
 				'Post' => array(
@@ -5120,6 +5382,7 @@ class ModelReadTest extends BaseModelTest {
 		$result = $Author->find('all', array(
 			'conditions' => array('Author.id' => 1),
 			'recursive' => 2,
+			'order' => array('Author.id' => 'ASC'),
 			'callbacks' => false
 		));
 		$expected = array(
@@ -5327,7 +5590,9 @@ class ModelReadTest extends BaseModelTest {
 		));
 		$Post->Tag->primaryKey = 'tag';
 
-		$result = $Post->find('all');
+		$result = $Post->find('all', array(
+			'order' => 'Post.id ASC',
+		));
 		$expected = array(
 			array(
 				'Post' => array(
@@ -5542,7 +5807,9 @@ class ModelReadTest extends BaseModelTest {
 		$Project = new Project();
 		$Project->recursive = 3;
 
-		$result = $Project->find('all');
+		$result = $Project->find('all', array(
+			'order' => 'Project.id ASC',
+		));
 		$expected = array(
 			array(
 				'Project' => array(
@@ -5656,7 +5923,9 @@ class ModelReadTest extends BaseModelTest {
 		$TestModel = new Home();
 		$TestModel->recursive = 2;
 
-		$result = $TestModel->find('all');
+		$result = $TestModel->find('all', array(
+			'order' => 'Home.id ASC',
+		));
 		$expected = array(
 			array(
 				'Home' => array(
@@ -5769,7 +6038,9 @@ class ModelReadTest extends BaseModelTest {
 		$MyUser = new MyUser();
 		$MyUser->recursive = 2;
 
-		$result = $MyUser->find('all');
+		$result = $MyUser->find('all', array(
+			'order' => 'MyUser.id ASC'
+		));
 		$expected = array(
 			array(
 				'MyUser' => array('id' => '1', 'firstname' => 'userA'),
@@ -5960,7 +6231,7 @@ class ModelReadTest extends BaseModelTest {
 		$fullDebug = $this->db->fullDebug;
 		$this->db->fullDebug = true;
 		$TestModel->recursive = 6;
-		$result = $TestModel->find('all', null, null, 'CategoryThread.id ASC');
+		$result = $TestModel->find('all');
 		$expected = array(
 			array(
 				'CategoryThread' => array(
@@ -6194,7 +6465,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->loadFixtures('User');
 		$TestModel = new User();
 		$TestModel->cacheQueries = false;
-
+		$TestModel->order = null;
 		$expected = array(
 			'conditions' => array(
 				'user' => 'larry'
@@ -6203,15 +6474,155 @@ class ModelReadTest extends BaseModelTest {
 			'joins' => array(),
 			'limit' => null,
 			'offset' => null,
-			'order' => array(
-				0 => null
-			),
+			'order' => array(),
 			'page' => 1,
 			'group' => null,
 			'callbacks' => true,
 			'returnQuery' => true
 		);
 		$result = $TestModel->buildQuery('all', array('returnQuery' => true, 'conditions' => array('user' => 'larry')));
+		$this->assertEquals($expected, $result);
+	}
+
+	public function testBuildQueryAllI18nConditions() {
+		$this->skipIf(!$this->db instanceof Mysql, 'This test is only compatible with Mysql.');
+		$dbName = $this->db->config['database'];
+
+		$this->loadFixtures('TranslateArticle', 'TranslatedArticle', 'User');
+		$TestModel = new TranslatedArticle();
+		$TestModel->cacheQueries = false;
+		$TestModel->locale = 'eng';
+		$expected = array(
+			'conditions' => array(
+				'NOT' => array('I18n__title.content' => ''),
+			),
+			'fields' => null,
+			'joins' => array(
+				array(
+					'type' => 'INNER',
+					'alias' => 'I18n__title',
+					'table' => (object)array(
+						'tablePrefix' => '',
+						'table' => 'article_i18n',
+						'schemaName' => $dbName
+					),
+					'conditions' => array(
+						'TranslatedArticle.id' => (object)array(
+							'type' => 'identifier',
+							'value' => 'I18n__title.foreign_key',
+						),
+						'I18n__title.model' => 'TranslatedArticle',
+						'I18n__title.field' => 'title',
+						'I18n__title.locale' => 'eng',
+					),
+				),
+				array(
+					'type' => 'INNER',
+					'alias' => 'I18n__body',
+					'table' => (object)array(
+						'tablePrefix' => '',
+						'table' => 'article_i18n',
+						'schemaName' => $dbName
+					),
+					'conditions' => array(
+						'TranslatedArticle.id' => (object)array(
+							'type' => 'identifier',
+							'value' => 'I18n__body.foreign_key',
+						),
+						'I18n__body.model' => 'TranslatedArticle',
+						'I18n__body.field' => 'body',
+						'I18n__body.locale' => 'eng',
+					),
+				),
+			),
+			'limit' => 2,
+			'offset' => null,
+			'order' => array(
+				'TranslatedArticle.id' => 'ASC',
+			),
+			'page' => 1,
+			'group' => null,
+			'callbacks' => true,
+			'recursive' => 0,
+		);
+		$query = array(
+			'recursive' => 0,
+			'conditions' => array(
+				'NOT' => array('I18n__title.content' => ''),
+			),
+			'limit' => 2,
+		);
+		$result = $TestModel->buildQuery('all', $query);
+		$this->assertEquals($expected, $result);
+	}
+
+	public function testBuildQueryCountI18nConditions() {
+		$this->skipIf(!$this->db instanceof Mysql, 'This test is only compatible with Mysql.');
+		$dbName = $this->db->config['database'];
+		$this->loadFixtures('TranslateArticle', 'TranslatedArticle', 'User');
+		$TestModel = new TranslatedArticle();
+		$TestModel->cacheQueries = false;
+		$TestModel->locale = 'eng';
+		$expected = array(
+			'conditions' => array(
+				'NOT' => array('I18n__title.content' => ''),
+			),
+			'fields' => 'COUNT(DISTINCT(`TranslatedArticle`.`id`)) AS count',
+			'joins' => array(
+				array(
+					'type' => 'INNER',
+					'alias' => 'TranslateArticleModel',
+					'table' => (object)array(
+						'tablePrefix' => '',
+						'table' => 'article_i18n',
+						'schemaName' => $dbName
+					),
+					'conditions' => array(
+						'`TranslatedArticle`.`id`' => (object)array(
+							'type' => 'identifier',
+							'value' => '`TranslateArticleModel`.`foreign_key`',
+						),
+						'`TranslateArticleModel`.`model`' => 'TranslatedArticle',
+						'`TranslateArticleModel`.`locale`' => 'eng',
+					),
+				),
+				array(
+					'type' => 'INNER',
+					'alias' => 'I18n__title',
+					'table' => (object)array(
+						'tablePrefix' => '',
+						'table' => 'article_i18n',
+						'schemaName' => $dbName
+					),
+					'conditions' => array(
+						'TranslatedArticle.id' => (object)array(
+							'type' => 'identifier',
+							'value' => 'I18n__title.foreign_key',
+						),
+						'I18n__title.model' => 'TranslatedArticle',
+						'I18n__title.field' => 'title',
+						'I18n__title.locale' => 'eng',
+					),
+				),
+			),
+			'limit' => 2,
+			'offset' => null,
+			'order' => array(
+				0 => false,
+			),
+			'page' => 1,
+			'group' => null,
+			'callbacks' => true,
+			'recursive' => 0,
+		);
+		$query = array(
+			'recursive' => 0,
+			'conditions' => array(
+				'NOT' => array('I18n__title.content' => ''),
+			),
+			'limit' => 2,
+		);
+		$result = $TestModel->buildQuery('count', $query);
 		$this->assertEquals($expected, $result);
 	}
 
@@ -6445,11 +6856,98 @@ class ModelReadTest extends BaseModelTest {
 	}
 
 /**
+ * Test that find() with array conditions works when there is only one element.
+ *
+ * @return void
+ */
+	public function testFindAllArrayConditions() {
+		$this->loadFixtures('User');
+		$TestModel = new User();
+		$TestModel->cacheQueries = false;
+
+		$result = $TestModel->find('all', array(
+			'conditions' => array('User.id' => array(3)),
+		));
+		$expected = array(
+			array(
+				'User' => array(
+					'id' => '3',
+					'user' => 'larry',
+					'password' => '5f4dcc3b5aa765d61d8327deb882cf99',
+					'created' => '2007-03-17 01:20:23',
+					'updated' => '2007-03-17 01:22:31'
+			))
+		);
+		$this->assertEquals($expected, $result);
+
+		$result = $TestModel->find('all', array(
+			'conditions' => array('User.user' => array('larry')),
+		));
+		$this->assertEquals($expected, $result);
+	}
+
+	public function testFindAllI18nConditions() {
+		$this->loadFixtures('TranslateArticle', 'TranslatedArticle', 'User');
+		$TestModel = new TranslatedArticle();
+		$TestModel->cacheQueries = false;
+		$TestModel->locale = 'eng';
+		$options = array(
+			'recursive' => 0,
+			'conditions' => array(
+				'NOT' => array('I18n__title.content' => ''),
+			),
+			'limit' => 2,
+		);
+		$result = $TestModel->find('all', $options);
+		$expected = array(
+			array(
+				'TranslatedArticle' => array(
+					'id' => '1',
+					'user_id' => '1',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:39:23',
+					'updated' => '2007-03-18 10:41:31',
+					'locale' => 'eng',
+					'title' => 'Title (eng) #1',
+					'body' => 'Body (eng) #1',
+				),
+				'User' => array(
+					'id' => '1',
+					'user' => 'mariano',
+					'password' => '5f4dcc3b5aa765d61d8327deb882cf99',
+					'created' => '2007-03-17 01:16:23',
+					'updated' => '2007-03-17 01:18:31',
+				),
+			),
+			array(
+				'TranslatedArticle' => array(
+					'id' => '2',
+					'user_id' => '3',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:41:23',
+					'updated' => '2007-03-18 10:43:31',
+					'locale' => 'eng',
+					'title' => 'Title (eng) #2',
+					'body' => 'Body (eng) #2',
+				),
+				'User' => array(
+					'id' => '3',
+					'user' => 'larry',
+					'password' => '5f4dcc3b5aa765d61d8327deb882cf99',
+					'created' => '2007-03-17 01:20:23',
+					'updated' => '2007-03-17 01:22:31',
+				),
+			),
+		);
+		$this->assertEquals($expected, $result);
+	}
+
+/**
  * test find('list') method
  *
  * @return void
  */
-	public function testGenerateFindList() {
+	public function testFindList() {
 		$this->loadFixtures('Article', 'Apple', 'Post', 'Author', 'User', 'Comment');
 
 		$TestModel = new Article();
@@ -6479,7 +6977,7 @@ class ModelReadTest extends BaseModelTest {
 			$this->assertEquals($expected, $result);
 		}
 
-		$result = Set::combine(
+		$result = Hash::combine(
 			$TestModel->find('all', array(
 				'order' => 'Article.title ASC',
 				'fields' => array('id', 'title')
@@ -6493,7 +6991,7 @@ class ModelReadTest extends BaseModelTest {
 		);
 		$this->assertEquals($expected, $result);
 
-		$result = Set::combine(
+		$result = Hash::combine(
 			$TestModel->find('all', array(
 				'order' => 'Article.title ASC'
 			)),
@@ -6530,7 +7028,7 @@ class ModelReadTest extends BaseModelTest {
 
 		$this->assertEquals($expected, $result);
 
-		$result = Set::combine(
+		$result = Hash::combine(
 			$TestModel->find('all', array(
 				'order' => 'Article.title ASC'
 			)),
@@ -6569,7 +7067,7 @@ class ModelReadTest extends BaseModelTest {
 
 		$this->assertEquals($expected, $result);
 
-		$result = Set::combine(
+		$result = Hash::combine(
 			$TestModel->find('all', array(
 				'order' => 'Article.title ASC',
 				'fields' => array('id', 'title', 'user_id')
@@ -6720,6 +7218,60 @@ class ModelReadTest extends BaseModelTest {
 	}
 
 /**
+ * test find('list') method
+ *
+ * @return void
+ */
+	public function testFindListZeroValue() {
+		$this->loadFixtures('Article');
+
+		$model = new Article();
+		$model->displayField = 'title';
+		$model->save(array(
+			'title' => 'Zeroth Article',
+			'user_id' => 0,
+			'published' => 'Y'
+		));
+
+		$result = $model->find('list', array(
+			'fields' => array('title', 'user_id')
+		));
+		$expected = array(
+			'Zeroth Article' => 0,
+			'First Article' => 1,
+			'Second Article' => 3,
+			'Third Article' => 1,
+		);
+		$this->assertEquals($expected, $result);
+	}
+
+/**
+ * Test that find(list) works with array conditions that have only one element.
+ *
+ * @return void
+ */
+	public function testFindListArrayCondition() {
+		$this->loadFixtures('User');
+		$TestModel = new User();
+		$TestModel->cacheQueries = false;
+
+		$result = $TestModel->find('list', array(
+			'fields' => array('id', 'user'),
+			'conditions' => array('User.id' => array(3)),
+		));
+		$expected = array(
+			3 => 'larry'
+		);
+		$this->assertEquals($expected, $result);
+
+		$result = $TestModel->find('list', array(
+			'fields' => array('id', 'user'),
+			'conditions' => array('User.user' => array('larry')),
+		));
+		$this->assertEquals($expected, $result);
+	}
+
+/**
  * testFindField method
  *
  * @return void
@@ -6740,12 +7292,18 @@ class ModelReadTest extends BaseModelTest {
 			'user' => 'mariano'
 		));
 		$this->assertEquals('mariano', $result);
-
+		$TestModel->order = null;
 		$result = $TestModel->field('COUNT(*) AS count', true);
 		$this->assertEquals(4, $result);
 
 		$result = $TestModel->field('COUNT(*)', true);
 		$this->assertEquals(4, $result);
+
+		$TestModel->id = null;
+		$result = $TestModel->field('user', array(
+			'user' => 'mariano'
+		));
+		$this->assertEquals('mariano', $result);
 	}
 
 /**
@@ -6796,6 +7354,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertNotRegExp('/ORDER\s+BY/', $log['log'][0]['query']);
 
 		$Article = new Article();
+		$Article->order = null;
 		$Article->recursive = -1;
 		$expected = count($Article->find('all', array(
 			'fields' => array('Article.user_id'),
@@ -6803,6 +7362,33 @@ class ModelReadTest extends BaseModelTest {
 		));
 		$result = $Article->find('count', array('group' => array('Article.user_id')));
 		$this->assertEquals($expected, $result);
+
+		$expected = count($Article->find('all', array(
+			'fields' => array('Article.user_id'),
+			'conditions' => array('Article.user_id' => 1),
+			'group' => 'Article.user_id')
+		));
+		$result = $Article->find('count', array(
+			'conditions' => array('Article.user_id' => 1),
+			'group' => array('Article.user_id'),
+		));
+		$this->assertEquals($expected, $result);
+	}
+
+	public function testFindCountI18nConditions() {
+		$this->loadFixtures('TranslateArticle', 'TranslatedArticle', 'User');
+		$TestModel = new TranslatedArticle();
+		$TestModel->cacheQueries = false;
+		$TestModel->locale = 'eng';
+		$options = array(
+			'recursive' => 0,
+			'conditions' => array(
+				'NOT' => array('I18n__title.content' => ''),
+			),
+			'limit' => 2,
+		);
+		$result = $TestModel->find('count', $options);
+		$this->assertEquals(3, $result);
 	}
 
 /**
@@ -6829,7 +7415,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->skipIf($this->db instanceof Sqlite, 'SELECT COUNT(DISTINCT field) is not compatible with SQLite.');
 		$this->skipIf($this->db instanceof Sqlserver, 'This test is not compatible with SQL Server.');
 
-		$this->loadFixtures('Project');
+		$this->loadFixtures('Project', 'Thread');
 		$TestModel = new Project();
 		$TestModel->create(array('name' => 'project')) && $TestModel->save();
 		$TestModel->create(array('name' => 'project')) && $TestModel->save();
@@ -6840,7 +7426,7 @@ class ModelReadTest extends BaseModelTest {
 	}
 
 /**
- * Test find(count) with Db::expression
+ * Test find(count) with DboSource::expression
  *
  * @return void
  */
@@ -6863,12 +7449,44 @@ class ModelReadTest extends BaseModelTest {
 	}
 
 /**
+ * Test 'order' with DboSource::expression
+ */
+	public function testOrderWithDbExpressions() {
+		$this->loadFixtures('User');
+
+		$User = new User();
+
+		$results = $User->find('all', array(
+			'fields' => array('id'),
+			'recursive' => -1,
+			'order' => $this->db->expression('CASE id WHEN 4 THEN 0 ELSE id END'),
+		));
+
+		$expected = array(
+			array(
+				'User' => array('id' => 4),
+			),
+			array(
+				'User' => array('id' => 1),
+			),
+			array(
+				'User' => array('id' => 2),
+			),
+			array(
+				'User' => array('id' => 3),
+			),
+		);
+
+		$this->assertEquals($expected, $results);
+	}
+
+/**
  * testFindMagic method
  *
  * @return void
  */
 	public function testFindMagic() {
-		$this->loadFixtures('User');
+		$this->loadFixtures('User', 'Comment', 'Article');
 		$TestModel = new User();
 
 		$result = $TestModel->findByUser('mariano');
@@ -6891,6 +7509,113 @@ class ModelReadTest extends BaseModelTest {
 			'updated' => '2007-03-17 01:18:31'
 		));
 		$this->assertEquals($expected, $result);
+
+		$Comment = new Comment();
+		$Comment->recursive = -1;
+		$results = $Comment->findAllByUserId(1);
+		$expected = array(
+			array(
+				'Comment' => array(
+					'id' => 3,
+					'article_id' => 1,
+					'user_id' => 1,
+					'comment' => 'Third Comment for First Article',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:49:23',
+					'updated' => '2007-03-18 10:51:31'
+				)
+			),
+			array(
+				'Comment' => array(
+					'id' => 4,
+					'article_id' => 1,
+					'user_id' => 1,
+					'comment' => 'Fourth Comment for First Article',
+					'published' => 'N',
+					'created' => '2007-03-18 10:51:23',
+					'updated' => '2007-03-18 10:53:31'
+				)
+			),
+			array(
+				'Comment' => array(
+					'id' => 5,
+					'article_id' => 2,
+					'user_id' => 1,
+					'comment' => 'First Comment for Second Article',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:53:23',
+					'updated' => '2007-03-18 10:55:31'
+				)
+			)
+		);
+		$this->assertEquals($expected, $results);
+
+		$results = $Comment->findAllByUserIdAndPublished(1, 'Y');
+		$expected = array(
+			array(
+				'Comment' => array(
+					'id' => 3,
+					'article_id' => 1,
+					'user_id' => 1,
+					'comment' => 'Third Comment for First Article',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:49:23',
+					'updated' => '2007-03-18 10:51:31'
+				)
+			),
+			array(
+				'Comment' => array(
+					'id' => 5,
+					'article_id' => 2,
+					'user_id' => 1,
+					'comment' => 'First Comment for Second Article',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:53:23',
+					'updated' => '2007-03-18 10:55:31'
+				)
+			)
+		);
+		$this->assertEquals($expected, $results);
+
+		$Article = new CustomArticle();
+		$Article->recursive = -1;
+		$results = $Article->findListByUserId(1);
+		$expected = array(
+			1 => 'First Article',
+			3 => 'Third Article'
+		);
+		$this->assertEquals($expected, $results);
+
+		$results = $Article->findPublishedByUserId(1);
+		$expected = array(
+			array(
+				'CustomArticle' => array(
+					'id' => 1,
+					'user_id' => 1,
+					'title' => 'First Article',
+					'body' => 'First Article Body',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:39:23',
+					'updated' => '2007-03-18 10:41:31'
+				)
+			),
+			array(
+				'CustomArticle' => array(
+					'id' => 3,
+					'user_id' => 1,
+					'title' => 'Third Article',
+					'body' => 'Third Article Body',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:43:23',
+					'updated' => '2007-03-18 10:45:31'
+				)
+			)
+		);
+		$this->assertEquals($expected, $results);
+
+		$results = $Article->findUnPublishedByUserId(1);
+		$expected = array();
+		$this->assertEquals($expected, $results);
 	}
 
 /**
@@ -7601,34 +8326,34 @@ class ModelReadTest extends BaseModelTest {
 			$this->assertFalse((bool)$result['Author']['false']);
 		}
 
-		$result = $Post->find('first',array('fields' => array('author_id')));
+		$result = $Post->find('first', array('fields' => array('author_id')));
 		$this->assertFalse(isset($result['Post']['two']));
 		$this->assertFalse(isset($result['Author']['false']));
 
-		$result = $Post->find('first',array('fields' => array('author_id', 'two')));
+		$result = $Post->find('first', array('fields' => array('author_id', 'two')));
 		$this->assertEquals(2, $result['Post']['two']);
 		$this->assertFalse(isset($result['Author']['false']));
 
-		$result = $Post->find('first',array('fields' => array('two')));
+		$result = $Post->find('first', array('fields' => array('two')));
 		$this->assertEquals(2, $result['Post']['two']);
 
 		$Post->id = 1;
 		$result = $Post->field('two');
 		$this->assertEquals(2, $result);
 
-		$result = $Post->find('first',array(
+		$result = $Post->find('first', array(
 			'conditions' => array('two' => 2),
 			'limit' => 1
 		));
 		$this->assertEquals(2, $result['Post']['two']);
 
-		$result = $Post->find('first',array(
+		$result = $Post->find('first', array(
 			'conditions' => array('two <' => 3),
 			'limit' => 1
 		));
 		$this->assertEquals(2, $result['Post']['two']);
 
-		$result = $Post->find('first',array(
+		$result = $Post->find('first', array(
 			'conditions' => array('NOT' => array('two >' => 3)),
 			'limit' => 1
 		));
@@ -7641,6 +8366,7 @@ class ModelReadTest extends BaseModelTest {
 			'limit' => 1
 		));
 		$this->assertEquals(2, $result['Post']['id']);
+		$Post->order = null;
 
 		$Post->virtualFields = array('other_field' => 'Post.id + 1');
 		$result = $Post->find('all', array(
@@ -7649,7 +8375,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertEquals(4, $result[0][0]['other_field']);
 
 		ClassRegistry::flush();
-		$Writing = ClassRegistry::init(array('class' => 'Post', 'alias' => 'Writing'), 'Model');
+		$Writing = ClassRegistry::init(array('class' => 'Post', 'alias' => 'Writing'));
 		$Writing->virtualFields = array('two' => "1 + 1");
 		$result = $Writing->find('first');
 		$this->assertEquals(2, $result['Writing']['two']);
@@ -7658,6 +8384,38 @@ class ModelReadTest extends BaseModelTest {
 		$Post->virtualFields = array('other_field' => 'COUNT(Post.id) + 1');
 		$result = $Post->field('other_field');
 		$this->assertEquals(4, $result);
+	}
+
+/**
+ * Test virtualfields that contain subqueries get correctly
+ * quoted allowing reserved words to be used.
+ *
+ * @return void
+ */
+	public function testVirtualFieldSubqueryReservedWords() {
+		$this->loadFixtures('User');
+		$user = ClassRegistry::init('User');
+		$user->cacheMethods = false;
+		$ds = $user->getDataSource();
+
+		$sub = $ds->buildStatement(
+			array(
+				'fields' => array('Table.user'),
+				'table' => $ds->fullTableName($user),
+				'alias' => 'Table',
+				'limit' => 1,
+				'conditions' => array(
+					"Table.id > 1"
+				)
+			),
+			$user
+		);
+		$user->virtualFields = array(
+			'sub_test' => $sub
+		);
+
+		$result = $user->find('first');
+		$this->assertNotEmpty($result);
 	}
 
 /**
@@ -7688,20 +8446,45 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertEquals($expected, $result);
 
 		$Post->Author->virtualFields = array('joined' => 'Post.id * Author.id');
-		$result = $Post->find('all');
-		$result = Set::extract('{n}.Author.joined', $result);
+		$result = $Post->find('all', array(
+			'order' => array('Post.id' => 'ASC')
+		));
+		$result = Hash::extract($result, '{n}.Author.joined');
 		$expected = array(1, 6, 3);
 		$this->assertEquals($expected, $result);
 
 		$result = $Post->find('all', array('order' => array('Author.joined' => 'ASC')));
-		$result = Set::extract('{n}.Author.joined', $result);
+		$result = Hash::extract($result, '{n}.Author.joined');
 		$expected = array(1, 3, 6);
 		$this->assertEquals($expected, $result);
 
 		$result = $Post->find('all', array('order' => array('Author.joined' => 'DESC')));
-		$result = Set::extract('{n}.Author.joined', $result);
+		$result = Hash::extract($result, '{n}.Author.joined');
 		$expected = array(6, 3, 1);
 		$this->assertEquals($expected, $result);
+	}
+
+	public function testVirtualFieldsMysqlGroup() {
+		$this->skipIf(!($this->db instanceof Mysql), 'The rest of virtualFields test only compatible with Mysql.');
+		$this->skipIfIsStrictGroupBy();
+		$this->loadFixtures('Post');
+		$Post = ClassRegistry::init('Post');
+		$Post->create();
+		$Post->virtualFields = array(
+			'low_title' => 'lower(Post.title)',
+			'unique_test_field' => 'COUNT(Post.id)',
+		);
+		$expectation = array(
+			'Post' => array(
+				'low_title' => 'first post',
+				'unique_test_field' => 1,
+			),
+		);
+		$result = $Post->find('first', array(
+			'fields' => array_keys($Post->virtualFields),
+			'group' => array('low_title'),
+		));
+		$this->assertEquals($expectation, $result);
 	}
 
 /**
@@ -7710,45 +8493,21 @@ class ModelReadTest extends BaseModelTest {
  * Test correct fetching of virtual fields
  * currently is not possible to do Relation.virtualField
  *
+ * @return void
  */
 	public function testVirtualFieldsMysql() {
 		$this->skipIf(!($this->db instanceof Mysql), 'The rest of virtualFields test only compatible with Mysql.');
-
-		$this->loadFixtures('Post', 'Author');
-		$Post = ClassRegistry::init('Post');
-
-		$Post->create();
-		$Post->virtualFields = array(
-			'low_title' => 'lower(Post.title)',
-			'unique_test_field' => 'COUNT(Post.id)'
-		);
-
-		$expectation = array(
-			'Post' => array(
-				'low_title' => 'first post',
-				'unique_test_field' => 1
-			)
-		);
-
-		$result = $Post->find('first', array(
-			'fields' => array_keys($Post->virtualFields),
-			'group' => array('low_title')
-		));
-
-		$this->assertEquals($expectation, $result);
-
+		$this->loadFixtures('Author');
 		$Author = ClassRegistry::init('Author');
 		$Author->virtualFields = array(
 			'full_name' => 'CONCAT(Author.user, " ", Author.id)'
 		);
-
 		$result = $Author->find('first', array(
 			'conditions' => array('Author.user' => 'mariano'),
 			'fields' => array('Author.password', 'Author.full_name'),
 			'recursive' => -1
 		));
 		$this->assertTrue(isset($result['Author']['full_name']));
-
 		$result = $Author->find('first', array(
 			'conditions' => array('Author.user' => 'mariano'),
 			'fields' => array('Author.full_name', 'Author.password'),
@@ -7826,6 +8585,27 @@ class ModelReadTest extends BaseModelTest {
 	}
 
 /**
+ * test to assert that != in key together with a single element array will work
+ *
+ * @return void
+ */
+	public function testNotEqualsInArrayWithOneValue() {
+		$this->loadFixtures('Article');
+		$Article = new Article();
+		$Article->recursive = -1;
+
+		$result = $Article->find(
+			'all',
+			array(
+				'conditions' => array(
+					'Article.id !=' => array(1)
+				)
+			)
+		);
+		$this->assertTrue(is_array($result) && !empty($result));
+	}
+
+/**
  * test custom find method
  *
  * @return void
@@ -7835,7 +8615,7 @@ class ModelReadTest extends BaseModelTest {
 		$Article = new CustomArticle();
 		$data = array('user_id' => 3, 'title' => 'Fourth Article', 'body' => 'Article Body, unpublished', 'published' => 'N');
 		$Article->create($data);
-		$Article->save();
+		$Article->save(null, false);
 		$this->assertEquals(4, $Article->id);
 
 		$result = $Article->find('published');
@@ -7845,4 +8625,361 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertEquals(1, count($result));
 	}
 
+/**
+ * test after find callback on related model
+ *
+ * @return void
+ */
+	public function testRelatedAfterFindCallback() {
+		$this->loadFixtures('Something', 'SomethingElse', 'JoinThing');
+		$Something = new Something();
+
+		$Something->bindModel(array(
+			'hasMany' => array(
+				'HasMany' => array(
+					'className' => 'JoinThing',
+					'foreignKey' => 'something_id'
+				)
+			),
+			'hasOne' => array(
+				'HasOne' => array(
+					'className' => 'JoinThing',
+					'foreignKey' => 'something_id'
+				)
+			)
+		));
+
+		$results = $Something->find('all');
+
+		$expected = array(
+			array(
+				'Something' => array(
+					'id' => '1',
+					'title' => 'First Post',
+					'body' => 'First Post Body',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:39:23',
+					'updated' => '2007-03-18 10:41:31'
+				),
+				'HasOne' => array(
+					'id' => '1',
+					'something_id' => '1',
+					'something_else_id' => '2',
+					'doomed' => true,
+					'created' => '2007-03-18 10:39:23',
+					'updated' => '2007-03-18 10:41:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				),
+				'HasMany' => array(
+					array(
+						'id' => '1',
+						'something_id' => '1',
+						'something_else_id' => '2',
+						'doomed' => true,
+						'created' => '2007-03-18 10:39:23',
+						'updated' => '2007-03-18 10:41:31',
+						'afterFind' => 'Successfully added by AfterFind'
+					)
+				),
+				'SomethingElse' => array(
+					array(
+						'id' => '2',
+						'title' => 'Second Post',
+						'body' => 'Second Post Body',
+						'published' => 'Y',
+						'created' => '2007-03-18 10:41:23',
+						'updated' => '2007-03-18 10:43:31',
+						'afterFind' => 'Successfully added by AfterFind',
+						'JoinThing' => array(
+							'doomed' => true,
+							'something_id' => '1',
+							'something_else_id' => '2',
+							'afterFind' => 'Successfully added by AfterFind'
+						)
+					)
+				)
+			),
+			array(
+				'Something' => array(
+					'id' => '2',
+					'title' => 'Second Post',
+					'body' => 'Second Post Body',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:41:23',
+					'updated' => '2007-03-18 10:43:31'
+				),
+				'HasOne' => array(
+					'id' => '2',
+					'something_id' => '2',
+					'something_else_id' => '3',
+					'doomed' => false,
+					'created' => '2007-03-18 10:41:23',
+					'updated' => '2007-03-18 10:43:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				),
+				'HasMany' => array(
+					array(
+						'id' => '2',
+						'something_id' => '2',
+						'something_else_id' => '3',
+						'doomed' => false,
+						'created' => '2007-03-18 10:41:23',
+						'updated' => '2007-03-18 10:43:31',
+						'afterFind' => 'Successfully added by AfterFind'
+					)
+				),
+				'SomethingElse' => array(
+					array(
+						'id' => '3',
+						'title' => 'Third Post',
+						'body' => 'Third Post Body',
+						'published' => 'Y',
+						'created' => '2007-03-18 10:43:23',
+						'updated' => '2007-03-18 10:45:31',
+						'afterFind' => 'Successfully added by AfterFind',
+						'JoinThing' => array(
+							'doomed' => false,
+							'something_id' => '2',
+							'something_else_id' => '3',
+							'afterFind' => 'Successfully added by AfterFind'
+						)
+					)
+				)
+			),
+			array(
+				'Something' => array(
+					'id' => '3',
+					'title' => 'Third Post',
+					'body' => 'Third Post Body',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:43:23',
+					'updated' => '2007-03-18 10:45:31'
+				),
+				'HasOne' => array(
+					'id' => '3',
+					'something_id' => '3',
+					'something_else_id' => '1',
+					'doomed' => true,
+					'created' => '2007-03-18 10:43:23',
+					'updated' => '2007-03-18 10:45:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				),
+				'HasMany' => array(
+					array(
+						'id' => '3',
+						'something_id' => '3',
+						'something_else_id' => '1',
+						'doomed' => true,
+						'created' => '2007-03-18 10:43:23',
+						'updated' => '2007-03-18 10:45:31',
+						'afterFind' => 'Successfully added by AfterFind'
+					)
+				),
+				'SomethingElse' => array(
+					array(
+						'id' => '1',
+						'title' => 'First Post',
+						'body' => 'First Post Body',
+						'published' => 'Y',
+						'created' => '2007-03-18 10:39:23',
+						'updated' => '2007-03-18 10:41:31',
+						'afterFind' => 'Successfully added by AfterFind',
+						'JoinThing' => array(
+							'doomed' => true,
+							'something_id' => '3',
+							'something_else_id' => '1',
+							'afterFind' => 'Successfully added by AfterFind'
+						)
+					)
+				)
+			)
+		);
+		$this->assertEquals($expected, $results, 'Model related with has* afterFind callback fails');
+
+		$JoinThing = new JoinThing();
+		$JoinThing->unbindModel(array(
+			'belongsTo' => array(
+				'Something'
+			)
+		));
+		$results = $JoinThing->find('all');
+
+		$expected = array(
+			array(
+				'JoinThing' => array(
+					'id' => '1',
+					'something_id' => '1',
+					'something_else_id' => '2',
+					'doomed' => true,
+					'created' => '2007-03-18 10:39:23',
+					'updated' => '2007-03-18 10:41:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				),
+				'SomethingElse' => array(
+					'id' => '2',
+					'title' => 'Second Post',
+					'body' => 'Second Post Body',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:41:23',
+					'updated' => '2007-03-18 10:43:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				)
+			),
+			array(
+				'JoinThing' => array(
+					'id' => '2',
+					'something_id' => '2',
+					'something_else_id' => '3',
+					'doomed' => false,
+					'created' => '2007-03-18 10:41:23',
+					'updated' => '2007-03-18 10:43:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				),
+				'SomethingElse' => array(
+					'id' => '3',
+					'title' => 'Third Post',
+					'body' => 'Third Post Body',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:43:23',
+					'updated' => '2007-03-18 10:45:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				)
+			),
+			array(
+				'JoinThing' => array(
+					'id' => '3',
+					'something_id' => '3',
+					'something_else_id' => '1',
+					'doomed' => true,
+					'created' => '2007-03-18 10:43:23',
+					'updated' => '2007-03-18 10:45:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				),
+				'SomethingElse' => array(
+					'id' => '1',
+					'title' => 'First Post',
+					'body' => 'First Post Body',
+					'published' => 'Y',
+					'created' => '2007-03-18 10:39:23',
+					'updated' => '2007-03-18 10:41:31',
+					'afterFind' => 'Successfully added by AfterFind'
+				)
+			)
+		);
+		$this->assertEquals($expected, $results, 'Model related with belongsTo afterFind callback fails');
+	}
+
+/**
+ * Pull out the username from a result set.
+ *
+ * @param array $result The results.
+ * @return string The username.
+ */
+	public static function extractUserNameFromQueryResult(array $result) {
+		return isset($result[0][0]) ? $result[0][0]['user'] : $result[0]['u']['user'];
+	}
+
+/**
+ * Test that query() doesn't override the 2nd argument with a default.
+ *
+ * @return void
+ */
+	public function testQueryRespectsCacheQueriesAsSecondArgument() {
+		$model = new User();
+		$model->save(array('user' => 'Chuck'));
+		$userTableName = $this->db->fullTableName('users');
+
+		$getUserNameFromDb = function ($cacheArgument) use ($model, $userTableName) {
+			$query = sprintf('SELECT u.user FROM %s u WHERE id=%d', $userTableName, $model->id);
+			$users = $model->query($query, $cacheArgument);
+			return ModelReadTest::extractUserNameFromQueryResult($users);
+		};
+
+		$model->cacheQueries = true;
+		$this->assertSame('Chuck', $getUserNameFromDb(true));
+		$this->assertSame('Chuck', $getUserNameFromDb(false));
+
+		$model->updateAll(array('User.user' => "'Sylvester'"), array('User.id' => $model->id));
+		$model->cacheQueries = false;
+		$this->assertSame('Chuck', $getUserNameFromDb(true));
+		$this->assertSame('Sylvester', $getUserNameFromDb(false));
+	}
+
+/**
+ * Test that query() doesn't override the cache param in the 3nd argument
+ * with a default.
+ *
+ * @return void
+ */
+	public function testQueryRespectsCacheQueriesAsThirdArgument() {
+		$model = new User();
+		$model->save(array('user' => 'Chuck'));
+		$userTableName = $this->db->fullTableName('users');
+
+		$getUserNameFromDb = function ($cacheArgument) use ($model, $userTableName) {
+			$query = sprintf('SELECT u.user FROM %s u WHERE id=?', $userTableName);
+			$users = $model->query($query, array($model->id), $cacheArgument);
+			return ModelReadTest::extractUserNameFromQueryResult($users);
+		};
+
+		$model->cacheQueries = true;
+		$this->assertSame('Chuck', $getUserNameFromDb(true));
+		$this->assertSame('Chuck', $getUserNameFromDb(false));
+
+		$model->updateAll(array('User.user' => "'Sylvester'"), array('User.id' => $model->id));
+		$model->cacheQueries = false;
+		$this->assertSame('Chuck', $getUserNameFromDb(true));
+		$this->assertSame('Sylvester', $getUserNameFromDb(false));
+	}
+
+/**
+ * Test that query() uses the cacheQueries property when there is one argument.
+ *
+ * @return void
+ */
+	public function testQueryTakesModelCacheQueriesValueAsDefaultForOneArgument() {
+		$model = new User();
+		$model->save(array('user' => 'Chuck'));
+		$userTableName = $this->db->fullTableName('users');
+
+		$getUserNameFromDb = function () use ($model, $userTableName) {
+			$query = sprintf('SELECT u.user FROM %s u WHERE id=%d', $userTableName, $model->id);
+			$users = $model->query($query);
+			return ModelReadTest::extractUserNameFromQueryResult($users);
+		};
+
+		$model->cacheQueries = true;
+		$this->assertSame('Chuck', $getUserNameFromDb());
+		$model->updateAll(array('User.user' => "'Sylvester'"), array('User.id' => $model->id));
+
+		$this->assertSame('Chuck', $getUserNameFromDb());
+		$model->cacheQueries = false;
+		$this->assertSame('Sylvester', $getUserNameFromDb());
+	}
+
+/**
+ * Test that query() uses the cacheQueries property when there are two arguments.
+ *
+ * @return void
+ */
+	public function testQueryTakesModelCacheQueriesValueAsDefaultForTwoArguments() {
+		$model = new User();
+		$model->save(array('user' => 'Chuck'));
+		$userTableName = $this->db->fullTableName('users');
+
+		$getUserNameFromDb = function () use ($model, $userTableName) {
+			$query = sprintf('SELECT u.user FROM %s u WHERE id=?', $userTableName);
+			$users = $model->query($query, array($model->id));
+			return ModelReadTest::extractUserNameFromQueryResult($users);
+		};
+
+		$model->cacheQueries = true;
+		$this->assertSame('Chuck', $getUserNameFromDb());
+
+		$model->updateAll(array('User.user' => "'Sylvester'"), array('User.id' => $model->id));
+		$this->assertSame('Chuck', $getUserNameFromDb());
+
+		$model->cacheQueries = false;
+		$this->assertSame('Sylvester', $getUserNameFromDb());
+	}
 }

@@ -64,7 +64,7 @@ class Album extends AppModel {
 		)
 	);
 	
-	function beforeSave() {
+	function beforeSave($options = array()) {
 		// If the album is a compilation, clear the Artist field
 		if ($this->data['Album']['a_Compilation']) {
 			$this->data['Album']['a_Artist'] = '';
@@ -73,7 +73,7 @@ class Album extends AppModel {
 		return true;
 	}
 	
-	function afterSave($created) {
+	function afterSave($created, $options = array()) {
 		//update the TrackFullTextSearchInfo with the new data
 		if (! $created) {
 			$query = "DELETE FROM TrackFullTextSearchInfo 

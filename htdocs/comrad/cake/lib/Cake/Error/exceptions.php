@@ -1,32 +1,68 @@
 <?php
 /**
- * Exceptions file.  Contains the various exceptions CakePHP will throw until they are
+ * Exceptions file. Contains the various exceptions CakePHP will throw until they are
  * moved into their permanent location.
  *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://book.cakephp.org/2.0/en/development/testing.html
  * @package       Cake.Error
  * @since         CakePHP(tm) v 2.0
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 /**
+ * Base class that all Exceptions extend.
+ *
+ * @package       Cake.Error
+ */
+class CakeBaseException extends RuntimeException {
+
+/**
+ * Array of headers to be passed to CakeResponse::header()
+ *
+ * @var array
+ */
+	protected $_responseHeaders = null;
+
+/**
+ * Get/set the response header to be used
+ *
+ * @param string|array $header An array of header strings or a single header string
+ *  - an associative array of "header name" => "header value"
+ *  - an array of string headers is also accepted
+ * @param string $value The header value.
+ * @return array
+ * @see CakeResponse::header()
+ */
+	public function responseHeader($header = null, $value = null) {
+		if ($header) {
+			if (is_array($header)) {
+				return $this->_responseHeaders = $header;
+			}
+			$this->_responseHeaders = array($header => $value);
+		}
+		return $this->_responseHeaders;
+	}
+
+}
+
+if (!class_exists('HttpException', false)) {
+/**
  * Parent class for all of the HTTP related exceptions in CakePHP.
+ *
  * All HTTP status/error related exceptions should extend this class so
  * catch blocks can be specifically typed.
  *
  * @package       Cake.Error
  */
-if (!class_exists('HttpException')) {
-	class HttpException extends RuntimeException {
+	class HttpException extends CakeBaseException {
 	}
 }
 
@@ -41,7 +77,7 @@ class BadRequestException extends HttpException {
  * Constructor
  *
  * @param string $message If no message is given 'Bad Request' will be the message
- * @param string $code Status code, defaults to 400
+ * @param int $code Status code, defaults to 400
  */
 	public function __construct($message = null, $code = 400) {
 		if (empty($message)) {
@@ -63,7 +99,7 @@ class UnauthorizedException extends HttpException {
  * Constructor
  *
  * @param string $message If no message is given 'Unauthorized' will be the message
- * @param string $code Status code, defaults to 401
+ * @param int $code Status code, defaults to 401
  */
 	public function __construct($message = null, $code = 401) {
 		if (empty($message)) {
@@ -85,7 +121,7 @@ class ForbiddenException extends HttpException {
  * Constructor
  *
  * @param string $message If no message is given 'Forbidden' will be the message
- * @param string $code Status code, defaults to 403
+ * @param int $code Status code, defaults to 403
  */
 	public function __construct($message = null, $code = 403) {
 		if (empty($message)) {
@@ -107,7 +143,7 @@ class NotFoundException extends HttpException {
  * Constructor
  *
  * @param string $message If no message is given 'Not Found' will be the message
- * @param string $code Status code, defaults to 404
+ * @param int $code Status code, defaults to 404
  */
 	public function __construct($message = null, $code = 404) {
 		if (empty($message)) {
@@ -129,7 +165,7 @@ class MethodNotAllowedException extends HttpException {
  * Constructor
  *
  * @param string $message If no message is given 'Method Not Allowed' will be the message
- * @param string $code Status code, defaults to 405
+ * @param int $code Status code, defaults to 405
  */
 	public function __construct($message = null, $code = 405) {
 		if (empty($message)) {
@@ -151,7 +187,7 @@ class InternalErrorException extends HttpException {
  * Constructor
  *
  * @param string $message If no message is given 'Internal Server Error' will be the message
- * @param string $code Status code, defaults to 500
+ * @param int $code Status code, defaults to 500
  */
 	public function __construct($message = null, $code = 500) {
 		if (empty($message)) {
@@ -168,7 +204,7 @@ class InternalErrorException extends HttpException {
  *
  * @package       Cake.Error
  */
-class CakeException extends RuntimeException {
+class CakeException extends CakeBaseException {
 
 /**
  * Array of attributes that are passed in from the constructor, and
@@ -191,9 +227,9 @@ class CakeException extends RuntimeException {
  * Allows you to create exceptions that are treated as framework errors and disabled
  * when debug = 0.
  *
- * @param mixed $message Either the string of the error message, or an array of attributes
+ * @param string|array $message Either the string of the error message, or an array of attributes
  *   that are made available in the view, and sprintf()'d into CakeException::$_messageTemplate
- * @param string $code The code of the error, is also the HTTP status code for the error.
+ * @param int $code The code of the error, is also the HTTP status code for the error.
  */
 	public function __construct($message, $code = 500) {
 		if (is_array($message)) {
@@ -224,9 +260,11 @@ class MissingControllerException extends CakeException {
 
 	protected $_messageTemplate = 'Controller class %s could not be found.';
 
+//@codingStandardsIgnoreStart
 	public function __construct($message, $code = 404) {
 		parent::__construct($message, $code);
 	}
+//@codingStandardsIgnoreEnd
 
 }
 
@@ -240,9 +278,11 @@ class MissingActionException extends CakeException {
 
 	protected $_messageTemplate = 'Action %s::%s() could not be found.';
 
+//@codingStandardsIgnoreStart
 	public function __construct($message, $code = 404) {
 		parent::__construct($message, $code);
 	}
+//@codingStandardsIgnoreEnd
 
 }
 
@@ -256,9 +296,11 @@ class PrivateActionException extends CakeException {
 
 	protected $_messageTemplate = 'Private Action %s::%s() is not directly accessible.';
 
+//@codingStandardsIgnoreStart
 	public function __construct($message, $code = 404, Exception $previous = null) {
 		parent::__construct($message, $code, $previous);
 	}
+//@codingStandardsIgnoreEnd
 
 }
 
@@ -337,6 +379,19 @@ class MissingConnectionException extends CakeException {
 
 	protected $_messageTemplate = 'Database connection "%s" is missing, or could not be created.';
 
+/**
+ * Constructor
+ *
+ * @param string|array $message The error message.
+ * @param int $code The error code.
+ */
+	public function __construct($message, $code = 500) {
+		if (is_array($message)) {
+			$message += array('enabled' => true);
+		}
+		parent::__construct($message, $code);
+	}
+
 }
 
 /**
@@ -390,7 +445,7 @@ class MissingDatasourceConfigException extends CakeException {
  */
 class MissingDatasourceException extends CakeException {
 
-	protected $_messageTemplate = 'Datasource class %s could not be found.';
+	protected $_messageTemplate = 'Datasource class %s could not be found. %s';
 
 }
 
@@ -439,7 +494,18 @@ class MissingPluginException extends CakeException {
 }
 
 /**
- * Exception class for AclComponent and Interface implementations. 
+ * Exception raised when a Dispatcher filter could not be found
+ *
+ * @package       Cake.Error
+ */
+class MissingDispatcherFilterException extends CakeException {
+
+	protected $_messageTemplate = 'Dispatcher filter %s could not be found.';
+
+}
+
+/**
+ * Exception class for AclComponent and Interface implementations.
  *
  * @package       Cake.Error
  */
@@ -447,7 +513,7 @@ class AclException extends CakeException {
 }
 
 /**
- * Exception class for Cache.  This exception will be thrown from Cache when it
+ * Exception class for Cache. This exception will be thrown from Cache when it
  * encounters an error.
  *
  * @package       Cake.Error
@@ -456,7 +522,7 @@ class CacheException extends CakeException {
 }
 
 /**
- * Exception class for Router.  This exception will be thrown from Router when it
+ * Exception class for Router. This exception will be thrown from Router when it
  * encounters an error.
  *
  * @package       Cake.Error
@@ -465,7 +531,7 @@ class RouterException extends CakeException {
 }
 
 /**
- * Exception class for CakeLog.  This exception will be thrown from CakeLog when it
+ * Exception class for CakeLog. This exception will be thrown from CakeLog when it
  * encounters an error.
  *
  * @package       Cake.Error
@@ -474,7 +540,7 @@ class CakeLogException extends CakeException {
 }
 
 /**
- * Exception class for CakeSession.  This exception will be thrown from CakeSession when it
+ * Exception class for CakeSession. This exception will be thrown from CakeSession when it
  * encounters an error.
  *
  * @package       Cake.Error
@@ -483,7 +549,7 @@ class CakeSessionException extends CakeException {
 }
 
 /**
- * Exception class for Configure.  This exception will be thrown from Configure when it
+ * Exception class for Configure. This exception will be thrown from Configure when it
  * encounters an error.
  *
  * @package       Cake.Error
@@ -501,7 +567,7 @@ class SocketException extends CakeException {
 }
 
 /**
- * Exception class for Xml.  This exception will be thrown from Xml when it
+ * Exception class for Xml. This exception will be thrown from Xml when it
  * encounters an error.
  *
  * @package       Cake.Error
@@ -510,10 +576,129 @@ class XmlException extends CakeException {
 }
 
 /**
- * Exception class for Console libraries.  This exception will be thrown from Console library
+ * Exception class for Console libraries. This exception will be thrown from Console library
  * classes when they encounter an error.
  *
  * @package       Cake.Error
  */
 class ConsoleException extends CakeException {
+}
+
+/**
+ * Represents a fatal error
+ *
+ * @package       Cake.Error
+ */
+class FatalErrorException extends CakeException {
+
+/**
+ * Constructor
+ *
+ * @param string $message The error message.
+ * @param int $code The error code.
+ * @param string $file The file the error occurred in.
+ * @param int $line The line the error occurred on.
+ */
+	public function __construct($message, $code = 500, $file = null, $line = null) {
+		parent::__construct($message, $code);
+		if ($file) {
+			$this->file = $file;
+		}
+		if ($line) {
+			$this->line = $line;
+		}
+	}
+
+}
+
+/**
+ * Not Implemented Exception - used when an API method is not implemented
+ *
+ * @package       Cake.Error
+ */
+class NotImplementedException extends CakeException {
+
+	protected $_messageTemplate = '%s is not implemented.';
+
+//@codingStandardsIgnoreStart
+	public function __construct($message, $code = 501) {
+		parent::__construct($message, $code);
+	}
+//@codingStandardsIgnoreEnd
+
+}
+
+/**
+ * Security exception - used when SecurityComponent detects any issue with the current request
+ *
+ * @package       Cake.Error
+ */
+class SecurityException extends BadRequestException {
+
+/**
+ * Security Exception type
+ * @var string
+ */
+	protected $_type = 'secure';
+
+/**
+ * Reason for request blackhole
+ *
+ * @var string
+ */
+	protected $_reason = null;
+
+/**
+ * Getter for type
+ *
+ * @return string
+ */
+	public function getType() {
+		return $this->_type;
+	}
+
+/**
+ * Set Message
+ *
+ * @param string $message Exception message
+ * @return void
+ */
+	public function setMessage($message) {
+		$this->message = $message;
+	}
+
+/**
+ * Set Reason
+ *
+ * @param string|null $reason Reason details
+ * @return void
+ */
+	public function setReason($reason = null) {
+		$this->_reason = $reason;
+	}
+
+/**
+ * Get Reason
+ *
+ * @return string
+ */
+	public function getReason() {
+		return $this->_reason;
+	}
+
+}
+
+/**
+ * Auth Security exception - used when SecurityComponent detects any issue with the current request
+ *
+ * @package       Cake.Error
+ */
+class AuthSecurityException extends SecurityException {
+
+/**
+ * Security Exception type
+ * @var string
+ */
+	protected $_type = 'auth';
+
 }
