@@ -5,7 +5,7 @@
 		<div class="page-header">
 			<h1>Add Album</h1>
 		</div>
-		<?php echo $this->Form->create(false, array('type' => 'put', 'class' => 'form-horizontal')); ?>
+		<?php echo $this->Form->create(false, array('type' => 'put', 'class' => 'form-horizontal', 'novalidate' => TRUE)); ?>
 			<?php if (isset($this->request->data['localAlbumId'])) echo $this->Form->hidden('localAlbumId'); ?>
 			<?php if (isset($this->request->data['iTunesAlbumId'])) echo $this->Form->hidden('iTunesAlbumId'); ?>
 			<fieldset id="album">

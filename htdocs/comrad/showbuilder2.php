@@ -167,6 +167,11 @@
 		$(function() {
 			//register global ajax handler
 			$( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
+				//ignore the error if this is an error in the autocomplete API
+				if (settings.url.indexOf('ajax/autocomplete') != -1) {
+					console.log('ignoring AJAX error on autocomplete API endpoint');
+					return;
+				}
 				if (!ajaxErrorHappened) {
 					alert('An unexpected AJAX error has occurred. Please reload the page to be sure all data was saved properly.');
 					ajaxErrorHappened = true;
@@ -1152,6 +1157,7 @@
 										$('#Track_edit_AlbumTitle').val(album.Attributes.Title ? album.Attributes.Title : '');
 										$('#Track_edit_AlbumArtist').val(album.Attributes.Artist ? album.Attributes.Artist : '');
 										$('#Track_edit_AlbumLabel').val(album.Attributes.Label ? album.Attributes.Label : '');
+										$("#Track_edit_AlbumLocation").val(album.Attributes.Location ? album.Attributes.Location : '');
 										// $('#Track_edit_AlbumGenreID').val(album.Attributes.GenreID ? album.Attributes.GenreID : '');
 										if (album.Attributes.Compilation) {
 											$('#Track_edit_AlbumCompilation').attr('checked', 'checked').change();
@@ -1447,6 +1453,8 @@
 									if (track.Attributes.Album.Attributes.Title != null) $('#Track_edit_AlbumTitle').val(track.Attributes.Album.Attributes.Title).attr('disabled', 'disabled');
 									if (track.Attributes.Album.Attributes.Artist != null) $('#Track_edit_AlbumArtist').val(track.Attributes.Album.Attributes.Artist).attr('disabled', 'disabled');
 									if (track.Attributes.Album.Attributes.Label != null) $('#Track_edit_AlbumLabel').val(track.Attributes.Album.Attributes.Label).attr('disabled', 'disabled');
+									if (track.Attributes.Album.Attributes.Location != null) $('#Track_edit_AlbumLocation').val(track.Attributes.Album.Attributes.Label).attr('disabled', 'disabled');
+									
 									// if (track.Attributes.Album.Attributes.GenreID != null) $('#Track_edit_AlbumGenreID').val(track.Attributes.Album.Attributes.GenreID);
 									// if (track.Attributes.Album.Attributes.Genre != null && track.Attributes.Album.Attributes.Genre.Attributes.Name != null) $("#Track_edit_AlbumGenreID").val($("#Track_edit_AlbumGenreID option:contains('" + track.Attributes.Album.Attributes.Genre.Attributes.Name + "')").val());
 									if (track.Attributes.Album.Attributes.Label != null) $('#Track_edit_AlbumLabel').val(track.Attributes.Album.Attributes.Label).attr('disabled', 'disabled');
@@ -1530,6 +1538,7 @@
 												Title: $('#Track_edit_AlbumTitle').val(),
 												Artist: $('#Track_edit_AlbumArtist').val(),
 												Label: $('#Track_edit_AlbumLabel').val(),
+												Location: $("#Track_edit_AlbumLocation").val(),
 												// GenreID: $('#Track_edit_AlbumGenreID').val(),
 												Local: $('#Track_edit_AlbumLocal').is(':checked'),
 												Compilation: $('#Track_edit_AlbumCompilation').is(':checked'),
@@ -1837,6 +1846,13 @@
 <?php endforeach; ?>
 										</select>
 									</div></div>-->
+									<div class="field"><label for="Track_edit_AlbumLocation">Compilation:</label><div class="input"><select type="checkbox" id="Track_edit_AlbumLocation">
+										<option value="Gnu Bin">Gnu Bin</option>
+										<option value="Personal">Personal</option>
+										<option value="Library">Library</option>
+										<option value="Digital Library">Digital Library</option>
+										<option value="Discarded/Lost">Discarded/Lost</option>
+									</select></div></div>
 									<div class="field"><label for="Track_edit_AlbumCompilation">Compilation:</label><div class="input"><input type="checkbox" id="Track_edit_AlbumCompilation"></div></div>
 								</div>
 								<input type="hidden" id="Track_edit_AlbumAlbumId" value="">

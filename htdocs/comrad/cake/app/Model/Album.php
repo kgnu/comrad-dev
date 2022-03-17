@@ -104,11 +104,11 @@ class Album extends AppModel {
 	}
 	
 	// Require artist unless the album is a compilation
-	protected function _hasArtistOrIsCompilation() {
+	public function _hasArtistOrIsCompilation() {
 		return ($this->data['Album']['a_Compilation'] || !empty($this->data['Album']['a_Artist']));
 	}
 	
-	protected function _hasUniqueCDCode() {
+	public function _hasUniqueCDCode() {
 		return (count($this->find('list', array('conditions' => array('a_AlbumID' => $this->data['Album']['a_AlbumID'])))) === 0);
 	}
 	
