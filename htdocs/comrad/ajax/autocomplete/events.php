@@ -45,7 +45,7 @@
 		// Format the results
 		$results = array();
 		foreach($queryResults as $queryResult) {
-			array_push($results, $queryResult->{$event->getTitleColumn()}.'|'.json_encode($queryResult->toArray()));
+			array_push($results, $queryResult->{$event->getTitleColumn()}.'|'.str_replace('|', '&vert;', json_encode($queryResult->toArray())));
 		}
 		
 		if ($allowNone && strlen(trim($uri->getKey('q'))) == 0) {
