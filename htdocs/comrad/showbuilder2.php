@@ -155,7 +155,7 @@
 
 	<script type="text/javascript" src="js/date/format/date.format.js"></script>
 
-	<script type="text/javascript" src="js/ajax/ajaxdbinterface.js?v=2"></script>
+	<script type="text/javascript" src="js/ajax/ajaxdbinterface.js?v=3"></script>
 	<script type="text/javascript" src="js/ajax/itunessearch.js?v=2"></script>
 	<script type="text/javascript" src="js/ajax/searchmusiccatalog.js"></script>
 	<script type="text/javascript" src="js/ajax/findtracks.js?v=2"></script>
@@ -166,13 +166,26 @@
 
 		$(function() {
 			//register global ajax handler
+			$.ajaxSetup({
+				statusCode: {
+					408: function(){
+
+						// Redirec the to the login page.
+						//location.href = "./login.cfm";
+						console.log('User is logged out. Redirecting to login page.');
+						alert('Your session has expired. Please log in again.');
+						location.href= "/playlist";
+
+					}
+				}
+			});
 			$( document ).ajaxError(function(event, jqxhr, settings, thrownError) {
 				//ignore the error if this is an error in the autocomplete API
 				if (settings.url.indexOf('ajax/autocomplete') != -1) {
 					console.log('ignoring AJAX error on autocomplete API endpoint');
 					return;
 				}
-				if (!ajaxErrorHappened) {
+				if (!ajaxErrorHappened && jqxhr.status != 408) {
 					alert('An unexpected AJAX error has occurred. Please reload the page to be sure all data was saved properly.');
 					ajaxErrorHappened = true;
 				}

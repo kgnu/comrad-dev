@@ -32,8 +32,10 @@ function dbCommand(method, type, db, attributes, options, callback) {
 			callback(response);
 		},
 		error: function(a, b) {
-			alert('AJAX error: ' + a.responseText);
-			debugger;
+			if (a.status != 408 || document.location.pathname != '/playlist/showbuilder2.php') { // session timeout errors are handled in showbuilder
+				alert('AJAX error: ' + a.responseText);
+				debugger;
+			}
 		}
 	});
 }
