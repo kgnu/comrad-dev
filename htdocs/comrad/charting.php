@@ -19,7 +19,7 @@
 			$init->getProp('MySql_Database')
 		);
 		
-		$query = 'SELECT Count(*) as Plays, AlbumTitle, TrackArtist, Artist, AddDate, AlbumId, Label, Genre FROM SoundExchangePlaylist ' .
+		$query = 'SELECT Count(*) as Plays, AlbumTitle, GROUP_CONCAT(DISTINCT TrackArtist ORDER BY TrackArtist SEPARATOR \',\') AS TrackArtist, Artist, AddDate, AlbumId, Label, Genre FROM SoundExchangePlaylist ' .
 				 'WHERE ' .
 				 (!empty($dateFrom) ? "StartDateTime >= '" . $db->real_escape_string(date('Y-m-d', strtotime($dateFrom))) . " 00:00:00' " : '') .
 				 (!empty($dateFrom) && !empty($dateTo) ? 'AND ' : '') .
